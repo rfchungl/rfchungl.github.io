@@ -35,6 +35,18 @@ var store = [{
         "url": "/OzarkRide/",
         "teaser": null
       },{
+        "title": "SQL Data Definition Language - Part 1",
+        "excerpt":"Introduction to using SQL data definition language to create tables with relationships. Description An introduction to data definition language by creating tables and its relationships based on the scenario. Problems 1. DDL from a Logical Data Model &amp; Data Dictionary Specification. Create the tables and relationships based on the following...","categories": [],
+        "tags": ["sql"],
+        "url": "/SQL-DDL-Part-1/",
+        "teaser": null
+      },{
+        "title": "SQL Data Definition Language - Part 2",
+        "excerpt":"Intermediate to using SQL data definition language to create tables with relationships. Description Intermediate problems to data definition language and different ways and scenarios to apply them using create and alter functions. Problems 1. Dimensional Data Model &amp; Data Dictionary Specification -&gt; DDL Our DW consultant gave us a good...","categories": [],
+        "tags": ["sql"],
+        "url": "/SQL-DDL-Part-2/",
+        "teaser": null
+      },{
         "title": "SQL Dump - Part 2",
         "excerpt":"Intermediate SQL statements with outputs Description A mix of SQL problems that involves aggregate functions, joins, and window functions. Problems Enterprise Data Sets on SQL Server Database: Dillards 1.What total quantity of products from brand Nike that has been sold to date? (Note: each record in the TRANSACT table is...","categories": [],
         "tags": ["sql"],

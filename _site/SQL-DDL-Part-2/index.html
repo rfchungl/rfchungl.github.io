@@ -1,0 +1,512 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>SQL Data Definition Language - Part 2 - RUBEN’S PORTFOLIO</title>
+<meta name="description" content="Intermediate to using SQL data definition language to create tables with relationships.">
+
+
+  <meta name="author" content="Ruben Chung">
+  
+  <meta property="article:author" content="Ruben Chung">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="RUBEN'S PORTFOLIO">
+<meta property="og:title" content="SQL Data Definition Language - Part 2">
+<meta property="og:url" content="http://localhost:4000/SQL-DDL-Part-2/">
+
+
+  <meta property="og:description" content="Intermediate to using SQL data definition language to create tables with relationships.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-11-16T00:00:00-06:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/SQL-DDL-Part-2/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Ruben Chung",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="RUBEN'S PORTFOLIO Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          RUBEN'S PORTFOLIO
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">About Me</a>
+            </li><li class="masthead__menu-item">
+              <a href="/posts/">Projects</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="https://media-exp1.licdn.com/dms/image/C4E03AQGcjdyOf5rUuQ/profile-displayphoto-shrink_400_400/0/1555974682520?e=1673481600&v=beta&t=u3V-M4gaPsJ0JoDcQ6LZMvM18lDUYJr1GdigVcZXCBU" alt="Ruben Chung" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Ruben Chung</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>Aspiring Data/Business Analyst with a Passion in Supply Chain</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Fayetteville, Arkansas</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/rfchungl/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/rfchungl" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+            <li><a href="https://instagram.com/rubenzh" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="SQL Data Definition Language - Part 2">
+    <meta itemprop="description" content="Intermediate to using SQL data definition language to create tables with relationships.">
+    <meta itemprop="datePublished" content="2022-11-16T00:00:00-06:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/SQL-DDL-Part-2/" class="u-url" itemprop="url">SQL Data Definition Language - Part 2
+</a>
+          </h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this project</h4></header>
+              <ul class="toc__menu"><li><a href="#description">Description</a></li><li><a href="#problems">Problems</a><ul><li><a href="#1-dimensional-data-model--data-dictionary-specification---ddl">1. Dimensional Data Model &amp; Data Dictionary Specification -&gt; DDL</a></li><li><a href="#2-external-data-source--data-mart-extension---ddl">2. External Data Source &amp; Data Mart Extension -&gt; DDL</a></li><li><a href="#3-extending-the-dw-from-a-system-of-record-sor---ddl">3. Extending the DW from a System of Record (SoR) -&gt; DDL</a></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p>Intermediate to using SQL data definition language to create tables with relationships.</p>
+
+<h3 id="description">Description</h3>
+<p>Intermediate problems to data definition language and different ways and scenarios to apply them using create and alter functions.</p>
+
+<hr />
+<h3 id="problems">Problems</h3>
+
+<h4 id="1-dimensional-data-model--data-dictionary-specification---ddl">1. Dimensional Data Model &amp; Data Dictionary Specification -&gt; DDL</h4>
+<p>Our DW consultant gave us a good starting point for a simple “sales” data mart design. Create the tables and relationships based on the following data model and data dictionary.
+<img src="\assets\images\sql4\1.png" alt="SQL1" class="align-center" /></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CREATE TABLE A2B_Item_Dim  (
+    Item_Key  int NOT NULL,
+    Item_Id  int NOT NULL,
+    Item_Name varchar(50) NOT NULL,
+    Item_Type varchar(10) NOT NULL,
+    Band_Name varchar(50) NOT NULL,
+    Release_Date DATE   NOT NULL,
+    Agent_Name varchar(40) NOT NULL,
+    PRIMARY KEY (Item_Key)
+);
+CREATE TABLE A2B_Date_Dim  (
+    Date_Key   int NOT NULL,
+    Date_Desc  DATE NOT NULL,
+    Day_of_Month int NOT NULL,
+    Month_of_Year int NOT NULL,
+    Year_Number int NOT NULL,
+    Day_of_Year int NOT NULL,
+    Quarter_of_Year int NOT NULL,
+    Day_of_Week varchar(15) NOT NULL,
+    PRIMARY KEY (Date_Key)
+);
+CREATE TABLE A2B_Customer_Dim (
+    Customer_Key   int NOT NULL,
+    Customer_Id  int NOT NULL,
+    Customer_Name varchar(50) NOT NULL,
+    Street_Address varchar(50) NOT NULL,
+    Zip_Code char(5) NOT NULL,
+    City varchar(20) NOT NULL,
+    State_Name varchar(15) NOT NULL,
+    Gender varchar(1) NOT NULL,
+    DOB DATE   NOT NULL,
+    SC_Begin_Date DATE   NOT NULL,
+    SC_End_Date DATE   NOT NULL,
+    PRIMARY KEY (Customer_Key)
+);
+CREATE TABLE A2B_Order_Fact   (
+    Item_Key  int NOT NULL,
+    Customer_Key  int NOT NULL,
+    Date_Key  int NOT NULL,
+    Order_Id  int NOT NULL,
+    Quantity  int NOT NULL,
+    Unit_Price  DECIMAL(6,2) NOT NULL,
+    FOREIGN KEY (Item_Key) REFERENCES A2B_Item_Dim(Item_Key),
+    FOREIGN KEY (Customer_Key) REFERENCES A2B_Customer_Dim(Customer_Key),
+    FOREIGN KEY (Date_Key) REFERENCES A2B_Date_Dim(Date_Key)
+);
+</code></pre></div></div>
+
+<hr />
+
+<h4 id="2-external-data-source--data-mart-extension---ddl">2. External Data Source &amp; Data Mart Extension -&gt; DDL</h4>
+<p>Hallux has recently started receiving enhanced Billboard® charting information for the songs in their catalog, including weekly rank, previous week rank, number of downloads, iTunes sales and Spotify streams. We need to be able to take this data and merge it with our existing warehouse tables to allow us to perform analysis over time on this new data stream. Include fields for our internal weekly sales (in units and $) to store alongside this data. You can assume that the ETL job that will be loading this data can locate the correct item_key that corresponds with the Song data coming from Billboard (hint: conformed dimension). We need to make sure that we have the appropriate units of time in a dimension such as week of the year, month of the year, month description, season, and a flag for “festival season” (which stretches from late Spring to early Fall). Here’s a snippet of the csv file coming from Billboard:
+<img src="\assets\images\sql4\2.png" alt="SQL2" class="align-center" /></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CREATE TABLE A2B_Band_Dim (
+Band_ID int NOT NULL,
+Band_Name varchar(50) NOT NULL,
+PRIMARY KEY (Band_ID)
+);
+CREATE TABLE A2B_Song_Dim (
+Song_ID int NOT NULL,
+Item_Key int NOT NULL,
+Song_Name varchar(40) NOT NULL,
+PRIMARY KEY (Song_ID),
+FOREIGN KEY (Item_Key) REFERENCES A2B_Item_Dim(Item_Key)
+);
+CREATE TABLE A2B_Sales_Fact (
+Sales_ID int NOT NULL,
+Previous_rank int,
+Current_rank int,
+Downloads int NOT NULL,
+iTunes_Sales decimal(10,2) NOT NULL,
+Spotify_Streams int NOT NULL,
+Date_Key int NOT Null,
+Item_Key int NOT NULL,
+Band_ID int NOT NULL,
+PRIMARY KEY (Sales_ID),
+FOREIGN KEY (Item_Key) REFERENCES A2B_Item_Dim(Item_Key),
+FOREIGN KEY (Date_Key) REFERENCES A2B_Date_Dim(Date_Key),
+FOREIGN KEY (Band_ID) REFERENCES A2B_Band_Dim(Band_ID)
+);
+</code></pre></div></div>
+
+<hr />
+
+<h4 id="3-extending-the-dw-from-a-system-of-record-sor---ddl">3. Extending the DW from a System of Record (SoR) -&gt; DDL</h4>
+<p>Management has asked that we add performance metrics to the DW. Using the data in our existing transaction system, we need to construct a star schema that allows us to track the revenue for each performance by venue, date, band and booking agent. We will need important information about the venue (including name, contact information, and location details), the band (including name, formation date, genres, and contact information) and the booking agent (at this point we’re only concerned about the agent’s name). For bands, consider how you need to represent that the band might be in multiple genres, capturing at least a primary and secondary genre. For venues, they sometimes move across town or change their name under new ownership, so design to track such changes. Where possible, use conformed dimensions (hint: likely only one in this case). Here are the relevant tables from the SoR.
+<img src="\assets\images\sql4\3.png" alt="SQL3" class="align-center" /></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ALTER TABLE A2B_Band_Dim 
+ADD Contact_Info varchar(15), Formation_Date datetime
+
+CREATE TABLE A2B_Genre_Dim (
+Genre_ID int NOT NULL,
+Band_ID int NOT NULL,
+Genre1 varchar(20) NOT NULL,
+Genre2 varchar(20) NOT NULL,
+PRIMARY KEY (Genre_ID),
+FOREIGN KEY (Band_ID) REFERENCES A2B_Band_Dim(Band_ID)
+);
+CREATE TABLE A2B_Booking_Agent_Dim (
+Genre_ID int NOT NULL,
+Agent_ID int NOT NULL,
+Band_ID int NOT NULL,
+Agent_Name varchar(50) NOT NULL,
+PRIMARY KEY (Agent_ID),
+FOREIGN KEY (Band_ID) REFERENCES A2B_Band_Dim(Band_ID)
+);
+CREATE TABLE A2B_Venue_Dim (
+Venue_ID int NOT NULL,
+Venue_Name varchar(40) NOT NULL,
+Venue_Contact_Info varchar(15),
+Location_Details varchar(50),
+PRIMARY KEY (Venue_ID)
+);
+CREATE TABLE A2B_Performance_Dim (
+Performance_ID int NOT NULL,
+Band_ID int NOT NULL,
+Venue_ID int NOT NULL,
+Agent_ID int NOT NULL,
+Performance_Date datetime,
+PRIMARY KEY (Performance_ID),
+FOREIGN KEY (Band_ID) REFERENCES A2B_Band_Dim(Band_ID),
+FOREIGN KEY (Venue_ID) REFERENCES A2B_Venue_Dim(Venue_ID),
+FOREIGN KEY (Agent_ID) REFERENCES A2B_Booking_Agent_Dim(Agent_ID)
+);
+CREATE TABLE A2B_Revenue_Fact (
+Revenue_ID int NOT NULL,
+Revenue decimal(10,2) NOT NULL,
+Performance_ID int NOT NULL,
+Band_ID int NOT NULL,
+Venue_ID int NOT NULL,
+Agent_ID int NOT NULL,
+FOREIGN KEY (Band_ID) REFERENCES A2B_Band_Dim(Band_ID),
+FOREIGN KEY (Venue_ID) REFERENCES A2B_Venue_Dim(Venue_ID),
+FOREIGN KEY (Agent_ID) REFERENCES A2B_Booking_Agent_Dim(Agent_ID),
+FOREIGN KEY (Performance_ID) REFERENCES A2B_Performance_Dim(Performance_ID)
+);
+</code></pre></div></div>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#sql" class="page__taxonomy-item p-category" rel="tag">sql</a>
+    
+    </span>
+  </p>
+
+
+
+
+      </footer>
+
+      
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Ruben Chung. All Rights Reserved. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

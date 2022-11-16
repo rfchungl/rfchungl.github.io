@@ -26,6 +26,8 @@ GROUP BY Quarter_of_Year;
  ```
 ![SQL1](\assets\images\sql1\1.png){: .align-center} 
  
+---
+
 **2.What are the total sales for albums in the second quarter of 2013?**
 ```
 SELECT SUM(Quantity * Unit_Price) AS Album_Total_Sales  
@@ -36,6 +38,8 @@ WHERE Quarter_of_Year = 2 AND Item_Type = 'Album' AND Year_Number = 2013;
 ```
 ![SQL2](\assets\images\sql1\2.png){: .align-center} 
 
+---
+
 **3.What are the total sales of albums, bought by female customers living in Arizona and California?**
 ```
 SELECT SUM(Quantity * Unit_Price) AS Female_Album_Sales  
@@ -45,6 +49,8 @@ FROM A2C_Order_Fact O
 WHERE CD.Gender = 'F' AND CD.State_Name IN ('Arizona', 'California') AND Item_Type = 'Album';  
 ```
 ![SQL3](\assets\images\sql1\3.png){: .align-center} 
+
+---
 
 **4.Who is the best agent, according to the sales data for 2014?**
 ```
@@ -58,6 +64,8 @@ ORDER BY Total_Sales DESC;
 ```
 ![SQL4](\assets\images\sql1\4.png){: .align-center} 
 
+---
+
 **5.What are the total sales from each customer each year?**
 ```
 SELECT Customer_Name, SUM(Quantity * Unit_Price) AS Total_Sales, Year_Number  
@@ -68,6 +76,8 @@ GROUP BY Customer_Name, Year_Number
 ORDER BY Customer_Name, Total_Sales DESC;  
 ```
 ![SQL5](\assets\images\sql1\5.png){: .align-center} 
+
+---
 
 **6.How much revenue each state generates by year?**
 ```

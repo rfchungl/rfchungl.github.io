@@ -60,6 +60,8 @@ WHERE SKU = '1137460' AND STORE IN (171 , 723);
 ```
 ![SQL2](\assets\images\sql2\2.png){: .align-center} 
 
+---
+
 **Database: Sam's Club**  
 **3. We want to look at meat price trends. What was the average retail price for 
 BOLOGNA by month between January and March of 2014?**  
@@ -89,6 +91,8 @@ GROUP BY STATE, STORE_INFO.STORE_NBR
 ORDER BY STATE, UNIT_SALES DESC, STORE_RANK;
 ```
 ![SQL4](\assets\images\sql2\4.png){: .align-center} 
+
+---
 
 #### Enterprise Data Sets on Teradata
 **Database: Dillards**  
@@ -131,6 +135,8 @@ ORDER BY EXTRACT(MONTH FROM TRAN_DATE);
 ```
 ![SQL6](\assets\images\sql2\6.png){: .align-center} 
 
+---
+
 **Database: Sam's Club**  
 **7. How many stores are in each state? Provide a report showing each state and the 
 number of stores it has. Order by the number of stores, descending (and only 
@@ -161,6 +167,8 @@ GROUP BY STATE, TENDER_TYPE
 ORDER BY STATE, STATE_RANK;
 ```
 ![SQL8](\assets\images\sql2\8.png){: .align-center} 
+
+---
 
 #### Building My Own Queries Using Enterprise Datasets
 

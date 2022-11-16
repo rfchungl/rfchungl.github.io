@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>SQL Dump - Part 1 - RUBEN’S PORTFOLIO</title>
-<meta name="description" content="Introductory SQL statements with outputs">
+<!-- begin _includes/seo.html --><title>SQL Data Definition Language - Part 1 - RUBEN’S PORTFOLIO</title>
+<meta name="description" content="Introduction to using SQL data definition language to create tables with relationships.">
 
 
   <meta name="author" content="Ruben Chung">
@@ -22,30 +22,30 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="RUBEN'S PORTFOLIO">
-<meta property="og:title" content="SQL Dump - Part 1">
-<meta property="og:url" content="http://localhost:4000/SQL-Dump-Part-1/">
+<meta property="og:title" content="SQL Data Definition Language - Part 1">
+<meta property="og:url" content="http://localhost:4000/SQL-DDL-Part-1/">
 
 
-  <meta property="og:description" content="Introductory SQL statements with outputs">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2022-11-12T00:00:00-06:00">
+  <meta property="og:description" content="Introduction to using SQL data definition language to create tables with relationships.">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2022-11-16T00:00:00-06:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4000/SQL-Dump-Part-1/">
+
+<link rel="canonical" href="http://localhost:4000/SQL-DDL-Part-1/">
 
 
 
@@ -264,16 +264,16 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="SQL Dump - Part 1">
-    <meta itemprop="description" content="Introductory SQL statements with outputs">
-    <meta itemprop="datePublished" content="2022-11-12T00:00:00-06:00">
+    <meta itemprop="headline" content="SQL Data Definition Language - Part 1">
+    <meta itemprop="description" content="Introduction to using SQL data definition language to create tables with relationships.">
+    <meta itemprop="datePublished" content="2022-11-16T00:00:00-06:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/SQL-Dump-Part-1/" class="u-url" itemprop="url">SQL Dump - Part 1
+            <a href="http://localhost:4000/SQL-DDL-Part-1/" class="u-url" itemprop="url">SQL Data Definition Language - Part 1
 </a>
           </h1>
           
@@ -287,85 +287,115 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this project</h4></header>
-              <ul class="toc__menu"><li><a href="#description">Description</a></li><li><a href="#problems">Problems</a></li></ul>
+              <ul class="toc__menu"><li><a href="#description">Description</a></li><li><a href="#problems">Problems</a><ul><li><a href="#1-ddl-from-a-logical-data-model--data-dictionary-specification">1. DDL from a Logical Data Model &amp; Data Dictionary Specification.</a></li><li><a href="#2-ddl-from-a-conceptual-data-model">2. DDL from a Conceptual Data Model</a></li><li><a href="#3-ddl-from-a-narrative-case">3. DDL from a Narrative Case</a></li></ul></li></ul>
 
             </nav>
           </aside>
         
-        <p>Introductory SQL statements with outputs</p>
+        <p>Introduction to using SQL data definition language to create tables with relationships.</p>
 
 <h3 id="description">Description</h3>
-<p>A mix of SQL problems that involves aggregate functions and joins.</p>
+<p>An introduction to data definition language by creating tables and its relationships based on the scenario.</p>
 
 <hr />
 <h3 id="problems">Problems</h3>
-<p><strong>1.What are the total sales for the second quarter of 2013?</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT SUM(Quantity * Unit_Price) AS Total_Sales  
-FROM A2C_Order_Fact O  
-JOIN A2C_Date_Dimension DD ON O.Date_Key = DD.Date_Key  
-WHERE Quarter_of_Year = 2 AND Year_Number = 2013  
-GROUP BY Quarter_of_Year;  
+
+<h4 id="1-ddl-from-a-logical-data-model--data-dictionary-specification">1. DDL from a Logical Data Model &amp; Data Dictionary Specification.</h4>
+<p>Create the tables and relationships based on the following logical data model and data dictionary.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CREATE TABLE A1B_Band 
+(
+	BandId	INT PRIMARY KEY IDENTITY (1,1),
+	BandName VARCHAR(25) NULL,
+	FormationDate DATETIME NULL,
+)
+CREATE TABLE A1B_Album 
+(
+	AlbumId INT PRIMARY KEY IDENTITY (1,1),
+	AlbumTitle VARCHAR(30) NULL,
+	ReleaseDate DATETIME NULL,
+	ProductionCost DECIMAL(10,2) NULL,
+	BandId INT FOREIGN KEY REFERENCES A1B_Band(BandId),
+)
 </code></pre></div></div>
-<p><img src="\assets\images\sql1\1.png" alt="SQL1" class="align-center" /></p>
+<p><img src="\assets\images\sql3\1.png" alt="SQL1" class="align-center" /></p>
 
 <hr />
 
-<p><strong>2.What are the total sales for albums in the second quarter of 2013?</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT SUM(Quantity * Unit_Price) AS Album_Total_Sales  
-FROM A2C_Order_Fact O  
-	JOIN A2C_Date_Dimension DD ON O.Date_Key = DD.Date_Key  
-	JOIN A2C_Item_Dimension ID ON O.Item_Key = ID.Item_Key  
-WHERE Quarter_of_Year = 2 AND Item_Type = 'Album' AND Year_Number = 2013;  
+<h4 id="2-ddl-from-a-conceptual-data-model">2. DDL from a Conceptual Data Model</h4>
+<p>Create the required tables and relationships based on the following conceptual data model, making any necessary adjustments or additions to implement it as a 3NF logical and physical model. Make reasonable assumptions about data types for each field, and be sure to include a field that can store the player’s performance (e.g., winnings in $) for each tournament.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CREATE TABLE A1B_City
+(
+	CityId INT PRIMARY KEY IDENTITY (1,1),
+	City NVARCHAR(50) NULL,
+)
+
+CREATE TABLE A1B_State
+(
+	StateId INT PRIMARY KEY IDENTITY (1,1),
+	State NVARCHAR(50) NULL,
+)
+
+CREATE TABLE A1B_Tournament
+(
+	TournamentId INT PRIMARY KEY IDENTITY (1,1),
+	TournamentType NVARCHAR(50) NULL,
+	StartDate DATETIME NULL,
+	EndDate DATETIME NULL,
+	TotalPrizeMoney INT NULL,
+	CityId INT FOREIGN KEY REFERENCES A1B_City(CityId),
+	StateId INT FOREIGN KEY REFERENCES A1B_State(StateId),
+)
+
+CREATE TABLE A1B_Player
+(
+	PlayerId INT PRIMARY KEY IDENTITY(1,1),
+	FirstName VARCHAR(50) NULL,
+	LastName VARCHAR (50) NULL,
+	Email NVARCHAR(50),
+	PhoneNumber NVARCHAR(50) NULL,
+)
+
+CREATE TABLE A1B_Perfomance
+(
+	PerformanceId INT PRIMARY KEY IDENTITY (1,1),
+	SkillRating DECIMAL(8,2),
+	PrizeReceived DECIMAL(8,2),
+	TournamentId INT FOREIGN KEY REFERENCES A1B_Tournament(TournamentId),
+	PlayerId INT FOREIGN KEY REFERENCES A1B_Player(PlayerId),
+)
+
 </code></pre></div></div>
-<p><img src="\assets\images\sql1\2.png" alt="SQL2" class="align-center" /></p>
+<p><img src="\assets\images\sql3\2.png" alt="SQL2" class="align-center" /></p>
 
 <hr />
 
-<p><strong>3.What are the total sales of albums, bought by female customers living in Arizona and California?</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT SUM(Quantity * Unit_Price) AS Female_Album_Sales  
-FROM A2C_Order_Fact O  
-	JOIN A2C_Customer_Dimension CD ON O.Customer_Key = CD.Customer_Key  
-	JOIN A2C_Item_Dimension ID ON O.Item_Key = ID.Item_Key  
-WHERE CD.Gender = 'F' AND CD.State_Name IN ('Arizona', 'California') AND Item_Type = 'Album';  
+<h4 id="3-ddl-from-a-narrative-case">3. DDL from a Narrative Case</h4>
+<p>Create the required tables and relationships based on the following requirements narrative.
+We need a better system to track our product inventory across locations. Right now, we’re tracking everything on a spreadsheet, but it’s getting too big to manage and is difficult to share. We want to keep it simple for now, and maybe invest in a big ERP system in the future. We need to track the basic information about each location (there’s a code we use, the location, and the type of facility that we have there). As far as the products, we just want to track what it is, how we measure it, and how many units we have in stock currently at each location with the last count date (no need for inventory history, but if you want to put that in the design, I suppose that’s ok).</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CREATE TABLE A1B_Location
+(
+	LocId INT PRIMARY KEY IDENTITY (1,1),
+	Location NVARCHAR(50) NULL,
+	LocationType NVARCHAR(50) NULL,
+)
+
+CREATE TABLE A1B_Product
+(
+	ProductId INT PRIMARY KEY IDENTITY (1,1),
+	DescriptionChar NVARCHAR(50) NULL,
+	UnitMeasurement NVARCHAR(50) NULL,
+)
+
+CREATE TABLE A1B_ProductLocation
+(
+	ProductLocId INT PRIMARY KEY IDENTITY (1,1),
+	Inventory INT NULL,
+	CountDate DATE NULL,
+	ProductId INT FOREIGN KEY REFERENCES A1B_Product(ProductId),
+	LocId INT FOREIGN KEY REFERENCES A1B_Location(LocId),
+)
 </code></pre></div></div>
-<p><img src="\assets\images\sql1\3.png" alt="SQL3" class="align-center" /></p>
-
-<hr />
-
-<p><strong>4.Who is the best agent, according to the sales data for 2014?</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT TOP 1 SUM(Quantity * Unit_Price) AS Total_Sales, Agent_Name  
-FROM A2C_Order_Fact O  
-	JOIN A2C_Date_Dimension DD on O.Date_Key = DD.Date_Key  
-	JOIN A2C_Item_Dimension ID on O.Item_Key = ID.Item_Key  
-WHERE Year_Number = 2014  
-GROUP BY Agent_Name  
-ORDER BY Total_Sales DESC;  
-</code></pre></div></div>
-<p><img src="\assets\images\sql1\4.png" alt="SQL4" class="align-center" /></p>
-
-<hr />
-
-<p><strong>5.What are the total sales from each customer each year?</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT Customer_Name, SUM(Quantity * Unit_Price) AS Total_Sales, Year_Number  
-FROM A2C_Order_Fact O  
-	JOIN A2C_Customer_Dimension CD ON O.Customer_Key = CD.Customer_Key  
-	JOIN A2C_Date_Dimension DD ON O.Date_Key = DD.Date_Key  
-GROUP BY Customer_Name, Year_Number  
-ORDER BY Customer_Name, Total_Sales DESC;  
-</code></pre></div></div>
-<p><img src="\assets\images\sql1\5.png" alt="SQL5" class="align-center" /></p>
-
-<hr />
-
-<p><strong>6.How much revenue each state generates by year?</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT State_Name, Year_Number, SUM(Quantity * Unit_Price) AS Total_Sales  
-from A2C_Order_Fact O  
-	JOIN A2C_Customer_Dimension CD ON O.Customer_Key = CD.Customer_Key  
-	JOIN A2C_Date_Dimension DD ON O.Date_Key = DD.Date_Key  
-GROUP BY State_Name, Year_Number  
-ORDER BY Total_Sales DESC;  
-</code></pre></div></div>
-<p><img src="\assets\images\sql1\6.png" alt="SQL6" class="align-center" /></p>
+<p><img src="\assets\images\sql3\3.png" alt="SQL3" class="align-center" /></p>
 
 
         

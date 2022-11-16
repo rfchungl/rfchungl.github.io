@@ -1,4 +1,107 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-11-16T10:53:05-06:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">RUBEN’S PORTFOLIO</title><author><name>Ruben Chung</name></author><entry><title type="html">SQL Dump - Part 2</title><link href="http://localhost:4000/SQL-Dump-Part-2/" rel="alternate" type="text/html" title="SQL Dump - Part 2" /><published>2022-11-16T00:00:00-06:00</published><updated>2022-11-16T00:00:00-06:00</updated><id>http://localhost:4000/SQL-Dump-Part-2</id><content type="html" xml:base="http://localhost:4000/SQL-Dump-Part-2/"><![CDATA[<p>Intermediate SQL statements with outputs</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-11-16T11:42:30-06:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">RUBEN’S PORTFOLIO</title><author><name>Ruben Chung</name></author><entry><title type="html">SQL Data Definition Language - Part 1</title><link href="http://localhost:4000/SQL-DDL-Part-1/" rel="alternate" type="text/html" title="SQL Data Definition Language - Part 1" /><published>2022-11-16T00:00:00-06:00</published><updated>2022-11-16T00:00:00-06:00</updated><id>http://localhost:4000/SQL-DDL-Part-1</id><content type="html" xml:base="http://localhost:4000/SQL-DDL-Part-1/"><![CDATA[<p>Introduction to using SQL data definition language to create tables with relationships.</p>
+
+<h3 id="description">Description</h3>
+<p>An introduction to data definition language by creating tables and its relationships based on the scenario.</p>
+
+<hr />
+<h3 id="problems">Problems</h3>
+
+<h4 id="1-ddl-from-a-logical-data-model--data-dictionary-specification">1. DDL from a Logical Data Model &amp; Data Dictionary Specification.</h4>
+<p>Create the tables and relationships based on the following logical data model and data dictionary.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CREATE TABLE A1B_Band 
+(
+	BandId	INT PRIMARY KEY IDENTITY (1,1),
+	BandName VARCHAR(25) NULL,
+	FormationDate DATETIME NULL,
+)
+CREATE TABLE A1B_Album 
+(
+	AlbumId INT PRIMARY KEY IDENTITY (1,1),
+	AlbumTitle VARCHAR(30) NULL,
+	ReleaseDate DATETIME NULL,
+	ProductionCost DECIMAL(10,2) NULL,
+	BandId INT FOREIGN KEY REFERENCES A1B_Band(BandId),
+)
+</code></pre></div></div>
+<p><img src="\assets\images\sql3\1.png" alt="SQL1" class="align-center" /></p>
+
+<hr />
+
+<h4 id="2-ddl-from-a-conceptual-data-model">2. DDL from a Conceptual Data Model</h4>
+<p>Create the required tables and relationships based on the following conceptual data model, making any necessary adjustments or additions to implement it as a 3NF logical and physical model. Make reasonable assumptions about data types for each field, and be sure to include a field that can store the player’s performance (e.g., winnings in $) for each tournament.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CREATE TABLE A1B_City
+(
+	CityId INT PRIMARY KEY IDENTITY (1,1),
+	City NVARCHAR(50) NULL,
+)
+
+CREATE TABLE A1B_State
+(
+	StateId INT PRIMARY KEY IDENTITY (1,1),
+	State NVARCHAR(50) NULL,
+)
+
+CREATE TABLE A1B_Tournament
+(
+	TournamentId INT PRIMARY KEY IDENTITY (1,1),
+	TournamentType NVARCHAR(50) NULL,
+	StartDate DATETIME NULL,
+	EndDate DATETIME NULL,
+	TotalPrizeMoney INT NULL,
+	CityId INT FOREIGN KEY REFERENCES A1B_City(CityId),
+	StateId INT FOREIGN KEY REFERENCES A1B_State(StateId),
+)
+
+CREATE TABLE A1B_Player
+(
+	PlayerId INT PRIMARY KEY IDENTITY(1,1),
+	FirstName VARCHAR(50) NULL,
+	LastName VARCHAR (50) NULL,
+	Email NVARCHAR(50),
+	PhoneNumber NVARCHAR(50) NULL,
+)
+
+CREATE TABLE A1B_Perfomance
+(
+	PerformanceId INT PRIMARY KEY IDENTITY (1,1),
+	SkillRating DECIMAL(8,2),
+	PrizeReceived DECIMAL(8,2),
+	TournamentId INT FOREIGN KEY REFERENCES A1B_Tournament(TournamentId),
+	PlayerId INT FOREIGN KEY REFERENCES A1B_Player(PlayerId),
+)
+
+</code></pre></div></div>
+<p><img src="\assets\images\sql3\2.png" alt="SQL2" class="align-center" /></p>
+
+<hr />
+
+<h4 id="3-ddl-from-a-narrative-case">3. DDL from a Narrative Case</h4>
+<p>Create the required tables and relationships based on the following requirements narrative.
+We need a better system to track our product inventory across locations. Right now, we’re tracking everything on a spreadsheet, but it’s getting too big to manage and is difficult to share. We want to keep it simple for now, and maybe invest in a big ERP system in the future. We need to track the basic information about each location (there’s a code we use, the location, and the type of facility that we have there). As far as the products, we just want to track what it is, how we measure it, and how many units we have in stock currently at each location with the last count date (no need for inventory history, but if you want to put that in the design, I suppose that’s ok).</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CREATE TABLE A1B_Location
+(
+	LocId INT PRIMARY KEY IDENTITY (1,1),
+	Location NVARCHAR(50) NULL,
+	LocationType NVARCHAR(50) NULL,
+)
+
+CREATE TABLE A1B_Product
+(
+	ProductId INT PRIMARY KEY IDENTITY (1,1),
+	DescriptionChar NVARCHAR(50) NULL,
+	UnitMeasurement NVARCHAR(50) NULL,
+)
+
+CREATE TABLE A1B_ProductLocation
+(
+	ProductLocId INT PRIMARY KEY IDENTITY (1,1),
+	Inventory INT NULL,
+	CountDate DATE NULL,
+	ProductId INT FOREIGN KEY REFERENCES A1B_Product(ProductId),
+	LocId INT FOREIGN KEY REFERENCES A1B_Location(LocId),
+)
+</code></pre></div></div>
+<p><img src="\assets\images\sql3\3.png" alt="SQL3" class="align-center" /></p>]]></content><author><name>Ruben Chung</name></author><category term="sql" /><summary type="html"><![CDATA[Introduction to using SQL data definition language to create tables with relationships.]]></summary></entry><entry><title type="html">SQL Dump - Part 2</title><link href="http://localhost:4000/SQL-Dump-Part-2/" rel="alternate" type="text/html" title="SQL Dump - Part 2" /><published>2022-11-16T00:00:00-06:00</published><updated>2022-11-16T00:00:00-06:00</updated><id>http://localhost:4000/SQL-Dump-Part-2</id><content type="html" xml:base="http://localhost:4000/SQL-Dump-Part-2/"><![CDATA[<p>Intermediate SQL statements with outputs</p>
 
 <h3 id="description">Description</h3>
 <p>A mix of SQL problems that involves aggregate functions, joins, and window functions.</p>
@@ -46,6 +149,8 @@ WHERE SKU = '1137460' AND STORE IN (171 , 723);
 </code></pre></div></div>
 <p><img src="\assets\images\sql2\2.png" alt="SQL2" class="align-center" /></p>
 
+<hr />
+
 <p><strong>Database: Sam’s Club</strong><br />
 <strong>3. We want to look at meat price trends. What was the average retail price for 
 BOLOGNA by month between January and March of 2014?</strong><br />
@@ -73,6 +178,8 @@ GROUP BY STATE, STORE_INFO.STORE_NBR
 ORDER BY STATE, UNIT_SALES DESC, STORE_RANK;
 </code></pre></div></div>
 <p><img src="\assets\images\sql2\4.png" alt="SQL4" class="align-center" /></p>
+
+<hr />
 
 <h4 id="enterprise-data-sets-on-teradata">Enterprise Data Sets on Teradata</h4>
 <p><strong>Database: Dillards</strong></p>
@@ -113,6 +220,8 @@ ORDER BY EXTRACT(MONTH FROM TRAN_DATE);
 </code></pre></div></div>
 <p><img src="\assets\images\sql2\6.png" alt="SQL6" class="align-center" /></p>
 
+<hr />
+
 <p><strong>Database: Sam’s Club</strong><br />
 <strong>7. How many stores are in each state? Provide a report showing each state and the 
 number of stores it has. Order by the number of stores, descending (and only 
@@ -142,6 +251,8 @@ ORDER BY STATE, STATE_RANK;
 </code></pre></div></div>
 <p><img src="\assets\images\sql2\8.png" alt="SQL8" class="align-center" /></p>
 
+<hr />
+
 <h4 id="building-my-own-queries-using-enterprise-datasets">Building My Own Queries Using Enterprise Datasets</h4>
 
 <p><strong>9. Which department century generates the most revenue and from what state is? Provide 
@@ -154,7 +265,154 @@ FROM TRANSACT
 GROUP BY STATE, DEPTCENT_DESC
 ORDER BY STATE, SUM(TRAN_AMT) DESC;
 </code></pre></div></div>
-<p><img src="\assets\images\sql2\9.png" alt="SQL9" class="align-center" /></p>]]></content><author><name>Ruben Chung</name></author><category term="sql" /><summary type="html"><![CDATA[Intermediate SQL statements with outputs]]></summary></entry><entry><title type="html">Business Case: OzarkRide</title><link href="http://localhost:4000/OzarkRide/" rel="alternate" type="text/html" title="Business Case: OzarkRide" /><published>2022-11-13T00:00:00-06:00</published><updated>2022-11-13T00:00:00-06:00</updated><id>http://localhost:4000/OzarkRide</id><content type="html" xml:base="http://localhost:4000/OzarkRide/"><![CDATA[<p>Using Excel and SAS to perform business and statistics analysis such as ANOVA and regressions to help OzarkRide to expand.</p>
+<p><img src="\assets\images\sql2\9.png" alt="SQL9" class="align-center" /></p>]]></content><author><name>Ruben Chung</name></author><category term="sql" /><summary type="html"><![CDATA[Intermediate SQL statements with outputs]]></summary></entry><entry><title type="html">SQL Data Definition Language - Part 2</title><link href="http://localhost:4000/SQL-DDL-Part-2/" rel="alternate" type="text/html" title="SQL Data Definition Language - Part 2" /><published>2022-11-16T00:00:00-06:00</published><updated>2022-11-16T00:00:00-06:00</updated><id>http://localhost:4000/SQL-DDL-Part-2</id><content type="html" xml:base="http://localhost:4000/SQL-DDL-Part-2/"><![CDATA[<p>Intermediate to using SQL data definition language to create tables with relationships.</p>
+
+<h3 id="description">Description</h3>
+<p>Intermediate problems to data definition language and different ways and scenarios to apply them using create and alter functions.</p>
+
+<hr />
+<h3 id="problems">Problems</h3>
+
+<h4 id="1-dimensional-data-model--data-dictionary-specification---ddl">1. Dimensional Data Model &amp; Data Dictionary Specification -&gt; DDL</h4>
+<p>Our DW consultant gave us a good starting point for a simple “sales” data mart design. Create the tables and relationships based on the following data model and data dictionary.
+<img src="\assets\images\sql4\1.png" alt="SQL1" class="align-center" /></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CREATE TABLE A2B_Item_Dim  (
+    Item_Key  int NOT NULL,
+    Item_Id  int NOT NULL,
+    Item_Name varchar(50) NOT NULL,
+    Item_Type varchar(10) NOT NULL,
+    Band_Name varchar(50) NOT NULL,
+    Release_Date DATE   NOT NULL,
+    Agent_Name varchar(40) NOT NULL,
+    PRIMARY KEY (Item_Key)
+);
+CREATE TABLE A2B_Date_Dim  (
+    Date_Key   int NOT NULL,
+    Date_Desc  DATE NOT NULL,
+    Day_of_Month int NOT NULL,
+    Month_of_Year int NOT NULL,
+    Year_Number int NOT NULL,
+    Day_of_Year int NOT NULL,
+    Quarter_of_Year int NOT NULL,
+    Day_of_Week varchar(15) NOT NULL,
+    PRIMARY KEY (Date_Key)
+);
+CREATE TABLE A2B_Customer_Dim (
+    Customer_Key   int NOT NULL,
+    Customer_Id  int NOT NULL,
+    Customer_Name varchar(50) NOT NULL,
+    Street_Address varchar(50) NOT NULL,
+    Zip_Code char(5) NOT NULL,
+    City varchar(20) NOT NULL,
+    State_Name varchar(15) NOT NULL,
+    Gender varchar(1) NOT NULL,
+    DOB DATE   NOT NULL,
+    SC_Begin_Date DATE   NOT NULL,
+    SC_End_Date DATE   NOT NULL,
+    PRIMARY KEY (Customer_Key)
+);
+CREATE TABLE A2B_Order_Fact   (
+    Item_Key  int NOT NULL,
+    Customer_Key  int NOT NULL,
+    Date_Key  int NOT NULL,
+    Order_Id  int NOT NULL,
+    Quantity  int NOT NULL,
+    Unit_Price  DECIMAL(6,2) NOT NULL,
+    FOREIGN KEY (Item_Key) REFERENCES A2B_Item_Dim(Item_Key),
+    FOREIGN KEY (Customer_Key) REFERENCES A2B_Customer_Dim(Customer_Key),
+    FOREIGN KEY (Date_Key) REFERENCES A2B_Date_Dim(Date_Key)
+);
+</code></pre></div></div>
+
+<hr />
+
+<h4 id="2-external-data-source--data-mart-extension---ddl">2. External Data Source &amp; Data Mart Extension -&gt; DDL</h4>
+<p>Hallux has recently started receiving enhanced Billboard® charting information for the songs in their catalog, including weekly rank, previous week rank, number of downloads, iTunes sales and Spotify streams. We need to be able to take this data and merge it with our existing warehouse tables to allow us to perform analysis over time on this new data stream. Include fields for our internal weekly sales (in units and $) to store alongside this data. You can assume that the ETL job that will be loading this data can locate the correct item_key that corresponds with the Song data coming from Billboard (hint: conformed dimension). We need to make sure that we have the appropriate units of time in a dimension such as week of the year, month of the year, month description, season, and a flag for “festival season” (which stretches from late Spring to early Fall). Here’s a snippet of the csv file coming from Billboard:
+<img src="\assets\images\sql4\2.png" alt="SQL2" class="align-center" /></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CREATE TABLE A2B_Band_Dim (
+Band_ID int NOT NULL,
+Band_Name varchar(50) NOT NULL,
+PRIMARY KEY (Band_ID)
+);
+CREATE TABLE A2B_Song_Dim (
+Song_ID int NOT NULL,
+Item_Key int NOT NULL,
+Song_Name varchar(40) NOT NULL,
+PRIMARY KEY (Song_ID),
+FOREIGN KEY (Item_Key) REFERENCES A2B_Item_Dim(Item_Key)
+);
+CREATE TABLE A2B_Sales_Fact (
+Sales_ID int NOT NULL,
+Previous_rank int,
+Current_rank int,
+Downloads int NOT NULL,
+iTunes_Sales decimal(10,2) NOT NULL,
+Spotify_Streams int NOT NULL,
+Date_Key int NOT Null,
+Item_Key int NOT NULL,
+Band_ID int NOT NULL,
+PRIMARY KEY (Sales_ID),
+FOREIGN KEY (Item_Key) REFERENCES A2B_Item_Dim(Item_Key),
+FOREIGN KEY (Date_Key) REFERENCES A2B_Date_Dim(Date_Key),
+FOREIGN KEY (Band_ID) REFERENCES A2B_Band_Dim(Band_ID)
+);
+</code></pre></div></div>
+
+<hr />
+
+<h4 id="3-extending-the-dw-from-a-system-of-record-sor---ddl">3. Extending the DW from a System of Record (SoR) -&gt; DDL</h4>
+<p>Management has asked that we add performance metrics to the DW. Using the data in our existing transaction system, we need to construct a star schema that allows us to track the revenue for each performance by venue, date, band and booking agent. We will need important information about the venue (including name, contact information, and location details), the band (including name, formation date, genres, and contact information) and the booking agent (at this point we’re only concerned about the agent’s name). For bands, consider how you need to represent that the band might be in multiple genres, capturing at least a primary and secondary genre. For venues, they sometimes move across town or change their name under new ownership, so design to track such changes. Where possible, use conformed dimensions (hint: likely only one in this case). Here are the relevant tables from the SoR.
+<img src="\assets\images\sql4\3.png" alt="SQL3" class="align-center" /></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ALTER TABLE A2B_Band_Dim 
+ADD Contact_Info varchar(15), Formation_Date datetime
+
+CREATE TABLE A2B_Genre_Dim (
+Genre_ID int NOT NULL,
+Band_ID int NOT NULL,
+Genre1 varchar(20) NOT NULL,
+Genre2 varchar(20) NOT NULL,
+PRIMARY KEY (Genre_ID),
+FOREIGN KEY (Band_ID) REFERENCES A2B_Band_Dim(Band_ID)
+);
+CREATE TABLE A2B_Booking_Agent_Dim (
+Genre_ID int NOT NULL,
+Agent_ID int NOT NULL,
+Band_ID int NOT NULL,
+Agent_Name varchar(50) NOT NULL,
+PRIMARY KEY (Agent_ID),
+FOREIGN KEY (Band_ID) REFERENCES A2B_Band_Dim(Band_ID)
+);
+CREATE TABLE A2B_Venue_Dim (
+Venue_ID int NOT NULL,
+Venue_Name varchar(40) NOT NULL,
+Venue_Contact_Info varchar(15),
+Location_Details varchar(50),
+PRIMARY KEY (Venue_ID)
+);
+CREATE TABLE A2B_Performance_Dim (
+Performance_ID int NOT NULL,
+Band_ID int NOT NULL,
+Venue_ID int NOT NULL,
+Agent_ID int NOT NULL,
+Performance_Date datetime,
+PRIMARY KEY (Performance_ID),
+FOREIGN KEY (Band_ID) REFERENCES A2B_Band_Dim(Band_ID),
+FOREIGN KEY (Venue_ID) REFERENCES A2B_Venue_Dim(Venue_ID),
+FOREIGN KEY (Agent_ID) REFERENCES A2B_Booking_Agent_Dim(Agent_ID)
+);
+CREATE TABLE A2B_Revenue_Fact (
+Revenue_ID int NOT NULL,
+Revenue decimal(10,2) NOT NULL,
+Performance_ID int NOT NULL,
+Band_ID int NOT NULL,
+Venue_ID int NOT NULL,
+Agent_ID int NOT NULL,
+FOREIGN KEY (Band_ID) REFERENCES A2B_Band_Dim(Band_ID),
+FOREIGN KEY (Venue_ID) REFERENCES A2B_Venue_Dim(Venue_ID),
+FOREIGN KEY (Agent_ID) REFERENCES A2B_Booking_Agent_Dim(Agent_ID),
+FOREIGN KEY (Performance_ID) REFERENCES A2B_Performance_Dim(Performance_ID)
+);
+</code></pre></div></div>]]></content><author><name>Ruben Chung</name></author><category term="sql" /><summary type="html"><![CDATA[Intermediate to using SQL data definition language to create tables with relationships.]]></summary></entry><entry><title type="html">Business Case: OzarkRide</title><link href="http://localhost:4000/OzarkRide/" rel="alternate" type="text/html" title="Business Case: OzarkRide" /><published>2022-11-13T00:00:00-06:00</published><updated>2022-11-13T00:00:00-06:00</updated><id>http://localhost:4000/OzarkRide</id><content type="html" xml:base="http://localhost:4000/OzarkRide/"><![CDATA[<p>Using Excel and SAS to perform business and statistics analysis such as ANOVA and regressions to help OzarkRide to expand.</p>
 
 <h3 id="business-scenario">Business Scenario</h3>
 <p>OzarkRide is a local bike rental founded in 2011 from Fayetteville which focuses on a 
@@ -355,6 +613,8 @@ GROUP BY Quarter_of_Year;
 </code></pre></div></div>
 <p><img src="\assets\images\sql1\1.png" alt="SQL1" class="align-center" /></p>
 
+<hr />
+
 <p><strong>2.What are the total sales for albums in the second quarter of 2013?</strong></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT SUM(Quantity * Unit_Price) AS Album_Total_Sales  
 FROM A2C_Order_Fact O  
@@ -364,6 +624,8 @@ WHERE Quarter_of_Year = 2 AND Item_Type = 'Album' AND Year_Number = 2013;
 </code></pre></div></div>
 <p><img src="\assets\images\sql1\2.png" alt="SQL2" class="align-center" /></p>
 
+<hr />
+
 <p><strong>3.What are the total sales of albums, bought by female customers living in Arizona and California?</strong></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT SUM(Quantity * Unit_Price) AS Female_Album_Sales  
 FROM A2C_Order_Fact O  
@@ -372,6 +634,8 @@ FROM A2C_Order_Fact O
 WHERE CD.Gender = 'F' AND CD.State_Name IN ('Arizona', 'California') AND Item_Type = 'Album';  
 </code></pre></div></div>
 <p><img src="\assets\images\sql1\3.png" alt="SQL3" class="align-center" /></p>
+
+<hr />
 
 <p><strong>4.Who is the best agent, according to the sales data for 2014?</strong></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT TOP 1 SUM(Quantity * Unit_Price) AS Total_Sales, Agent_Name  
@@ -384,6 +648,8 @@ ORDER BY Total_Sales DESC;
 </code></pre></div></div>
 <p><img src="\assets\images\sql1\4.png" alt="SQL4" class="align-center" /></p>
 
+<hr />
+
 <p><strong>5.What are the total sales from each customer each year?</strong></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT Customer_Name, SUM(Quantity * Unit_Price) AS Total_Sales, Year_Number  
 FROM A2C_Order_Fact O  
@@ -394,6 +660,8 @@ ORDER BY Customer_Name, Total_Sales DESC;
 </code></pre></div></div>
 <p><img src="\assets\images\sql1\5.png" alt="SQL5" class="align-center" /></p>
 
+<hr />
+
 <p><strong>6.How much revenue each state generates by year?</strong></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT State_Name, Year_Number, SUM(Quantity * Unit_Price) AS Total_Sales  
 from A2C_Order_Fact O  
@@ -402,7 +670,64 @@ from A2C_Order_Fact O
 GROUP BY State_Name, Year_Number  
 ORDER BY Total_Sales DESC;  
 </code></pre></div></div>
-<p><img src="\assets\images\sql1\6.png" alt="SQL6" class="align-center" /></p>]]></content><author><name>Ruben Chung</name></author><category term="sql" /><summary type="html"><![CDATA[Introductory SQL statements with outputs]]></summary></entry><entry><title type="html">Business Case: Basket Market Analysis</title><link href="http://localhost:4000/Basket-Market-Analysis/" rel="alternate" type="text/html" title="Business Case: Basket Market Analysis" /><published>2022-11-12T00:00:00-06:00</published><updated>2022-11-12T00:00:00-06:00</updated><id>http://localhost:4000/Basket-Market-Analysis</id><content type="html" xml:base="http://localhost:4000/Basket-Market-Analysis/"><![CDATA[<p>Using Excel and Python to perform market basket/association analysis using dataset from a bakery.</p>
+<p><img src="\assets\images\sql1\6.png" alt="SQL6" class="align-center" /></p>]]></content><author><name>Ruben Chung</name></author><category term="sql" /><summary type="html"><![CDATA[Introductory SQL statements with outputs]]></summary></entry><entry><title type="html">Python: Getting University Names Based On The Country Inserted</title><link href="http://localhost:4000/Country-API/" rel="alternate" type="text/html" title="Python: Getting University Names Based On The Country Inserted" /><published>2022-11-12T00:00:00-06:00</published><updated>2022-11-12T00:00:00-06:00</updated><id>http://localhost:4000/Country-API</id><content type="html" xml:base="http://localhost:4000/Country-API/"><![CDATA[<p>Combining Python and API to generate university names once the name of the country is inserted</p>
+
+<h3 id="description">Description</h3>
+<p>Using API and JSON library to create a Python program.</p>
+
+<h3 id="what-does-this-program-do">What does this program do?</h3>
+<p>The Python code uses an API that shows you the college names based on the country you input. Once the user type the country name, it asks the API to retrieve the college names, in order to save them, we gather the results in JSON then use python dictionary to print the results.</p>
+
+<hr />
+<h3 id="code">Code</h3>
+<p><strong>The Python code has comments on what does each line do for a better understanding of the program.</strong><br />
+<br />
+<strong>Things needed to run the Python code:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import urllib.request
+import json 
+</code></pre></div></div>
+
+<p><strong>Insert country</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>print('BROWSE UNIVERSITIES FROM DIFFERENT COUNTRIES')
+# as long as the user doesn't type x then this program will keep running
+while True:
+    # ask user to enter a country
+    country = input('Enter country or enter "x" to exit: ')
+    # if user inputted letter x then end the program
+    if country == 'x': 
+        quit() 
+</code></pre></div></div>
+
+<p><strong>Url of the API + the input of what the user typed. In this case, the name of the country</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    url = "http://universities.hipolabs.com/search?country=" + country
+
+    # url can't have space, I added this so that the user can input countries with space in between such as United States, United Kingdom, Saudi Arabia, United Arab Emirates, etc
+    urlreplace = url.replace(" ","%20")
+</code></pre></div></div>
+
+<p><strong>Requesting JSON data from the API</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    json_data = urllib.request.urlopen(urlreplace)
+</code></pre></div></div>
+
+<p><strong>Convert the JSON to Python Dictionary</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    data = json.loads(json_data.read()) 
+</code></pre></div></div>
+
+<p><strong>If user doesn’t type the country name correctly, it will keep prompting “Please enter a valid country”</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    if len(data) == 0:
+        print('Please enter a valid country!')
+    else:
+        for item in data:
+            print(item['name'])
+</code></pre></div></div>
+
+<hr />
+<h3 id="output">Output</h3>
+<p><img src="https://user-images.githubusercontent.com/115122030/197109556-754f44ee-aded-4dd7-84c3-ba5494afdacc.png" alt="image" /></p>
+
+<hr />
+<h3 id="python">Python</h3>
+<p><a href="https://github.com/rfchungl/Projects-Portfolio/blob/main/API/API.py">Python File Here</a></p>]]></content><author><name>Ruben Chung</name></author><category term="python" /><summary type="html"><![CDATA[Combining Python and API to generate university names once the name of the country is inserted]]></summary></entry><entry><title type="html">Business Case: Basket Market Analysis</title><link href="http://localhost:4000/Basket-Market-Analysis/" rel="alternate" type="text/html" title="Business Case: Basket Market Analysis" /><published>2022-11-12T00:00:00-06:00</published><updated>2022-11-12T00:00:00-06:00</updated><id>http://localhost:4000/Basket-Market-Analysis</id><content type="html" xml:base="http://localhost:4000/Basket-Market-Analysis/"><![CDATA[<p>Using Excel and Python to perform market basket/association analysis using dataset from a bakery.</p>
 
 <h3 id="business-scenario">Business Scenario</h3>
 <p>Ayala’s Bakery is a family owned business with more than 30 years on the market delivering bakeries to its customers in Springdale, Arkansas. They updated their POS system a few years ago to keep track of their sales. However, they have not had success in discovering what products the customers like and what they usually like to pair with. Ayala’s Bakery have approached Ruben to dive deep into the data to look for insights and provide recommendations.</p>
@@ -487,64 +812,7 @@ The association analysis using Python shows that the customer is 1.48 times more
 
 <hr />
 <h3 id="python">Python</h3>
-<p><a href="https://github.com/rfchungl/Projects-Portfolio/blob/main/MarketBasketAnalysis/basket.py">Python File Here</a></p>]]></content><author><name>Ruben Chung</name></author><category term="python" /><category term="excel" /><category term="analysis" /><summary type="html"><![CDATA[Using Excel and Python to perform market basket/association analysis using dataset from a bakery.]]></summary></entry><entry><title type="html">Python: Getting University Names Based On The Country Inserted</title><link href="http://localhost:4000/Country-API/" rel="alternate" type="text/html" title="Python: Getting University Names Based On The Country Inserted" /><published>2022-11-12T00:00:00-06:00</published><updated>2022-11-12T00:00:00-06:00</updated><id>http://localhost:4000/Country-API</id><content type="html" xml:base="http://localhost:4000/Country-API/"><![CDATA[<p>Combining Python and API to generate university names once the name of the country is inserted</p>
-
-<h3 id="description">Description</h3>
-<p>Using API and JSON library to create a Python program.</p>
-
-<h3 id="what-does-this-program-do">What does this program do?</h3>
-<p>The Python code uses an API that shows you the college names based on the country you input. Once the user type the country name, it asks the API to retrieve the college names, in order to save them, we gather the results in JSON then use python dictionary to print the results.</p>
-
-<hr />
-<h3 id="code">Code</h3>
-<p><strong>The Python code has comments on what does each line do for a better understanding of the program.</strong><br />
-<br />
-<strong>Things needed to run the Python code:</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import urllib.request
-import json 
-</code></pre></div></div>
-
-<p><strong>Insert country</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>print('BROWSE UNIVERSITIES FROM DIFFERENT COUNTRIES')
-# as long as the user doesn't type x then this program will keep running
-while True:
-    # ask user to enter a country
-    country = input('Enter country or enter "x" to exit: ')
-    # if user inputted letter x then end the program
-    if country == 'x': 
-        quit() 
-</code></pre></div></div>
-
-<p><strong>Url of the API + the input of what the user typed. In this case, the name of the country</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    url = "http://universities.hipolabs.com/search?country=" + country
-
-    # url can't have space, I added this so that the user can input countries with space in between such as United States, United Kingdom, Saudi Arabia, United Arab Emirates, etc
-    urlreplace = url.replace(" ","%20")
-</code></pre></div></div>
-
-<p><strong>Requesting JSON data from the API</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    json_data = urllib.request.urlopen(urlreplace)
-</code></pre></div></div>
-
-<p><strong>Convert the JSON to Python Dictionary</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    data = json.loads(json_data.read()) 
-</code></pre></div></div>
-
-<p><strong>If user doesn’t type the country name correctly, it will keep prompting “Please enter a valid country”</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    if len(data) == 0:
-        print('Please enter a valid country!')
-    else:
-        for item in data:
-            print(item['name'])
-</code></pre></div></div>
-
-<hr />
-<h3 id="output">Output</h3>
-<p><img src="https://user-images.githubusercontent.com/115122030/197109556-754f44ee-aded-4dd7-84c3-ba5494afdacc.png" alt="image" /></p>
-
-<hr />
-<h3 id="python">Python</h3>
-<p><a href="https://github.com/rfchungl/Projects-Portfolio/blob/main/API/API.py">Python File Here</a></p>]]></content><author><name>Ruben Chung</name></author><category term="python" /><summary type="html"><![CDATA[Combining Python and API to generate university names once the name of the country is inserted]]></summary></entry><entry><title type="html">Python: Automated Weather Notification Using SMS</title><link href="http://localhost:4000/Automated-weather-SMS/" rel="alternate" type="text/html" title="Python: Automated Weather Notification Using SMS" /><published>2022-11-09T00:00:00-06:00</published><updated>2022-11-09T00:00:00-06:00</updated><id>http://localhost:4000/Automated-weather-SMS</id><content type="html" xml:base="http://localhost:4000/Automated-weather-SMS/"><![CDATA[<p>Scrapping weather from Google using Python then utilizing a SMS service to send customized messages based on the weather.</p>
+<p><a href="https://github.com/rfchungl/Projects-Portfolio/blob/main/MarketBasketAnalysis/basket.py">Python File Here</a></p>]]></content><author><name>Ruben Chung</name></author><category term="python" /><category term="excel" /><category term="analysis" /><summary type="html"><![CDATA[Using Excel and Python to perform market basket/association analysis using dataset from a bakery.]]></summary></entry><entry><title type="html">Python: Automated Weather Notification Using SMS</title><link href="http://localhost:4000/Automated-weather-SMS/" rel="alternate" type="text/html" title="Python: Automated Weather Notification Using SMS" /><published>2022-11-09T00:00:00-06:00</published><updated>2022-11-09T00:00:00-06:00</updated><id>http://localhost:4000/Automated-weather-SMS</id><content type="html" xml:base="http://localhost:4000/Automated-weather-SMS/"><![CDATA[<p>Scrapping weather from Google using Python then utilizing a SMS service to send customized messages based on the weather.</p>
 
 <h3 id="description">Description</h3>
 <p>When I arrived to the United States, there were days when I wore a sweater and jacket, and the day was not that cold. I felt very dumb walking down to my classes while other students were wearing t-shirts, shorts, and sandals. 
