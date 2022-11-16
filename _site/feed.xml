@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-11-16T11:42:30-06:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">RUBEN’S PORTFOLIO</title><author><name>Ruben Chung</name></author><entry><title type="html">SQL Data Definition Language - Part 1</title><link href="http://localhost:4000/SQL-DDL-Part-1/" rel="alternate" type="text/html" title="SQL Data Definition Language - Part 1" /><published>2022-11-16T00:00:00-06:00</published><updated>2022-11-16T00:00:00-06:00</updated><id>http://localhost:4000/SQL-DDL-Part-1</id><content type="html" xml:base="http://localhost:4000/SQL-DDL-Part-1/"><![CDATA[<p>Introduction to using SQL data definition language to create tables with relationships.</p>
-
-<h3 id="description">Description</h3>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-11-16T12:00:12-06:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">RUBEN’S PORTFOLIO</title><author><name>Ruben Chung</name></author><entry><title type="html">SQL Data Definition Language - Part 1</title><link href="http://localhost:4000/SQL-DDL-Part-1/" rel="alternate" type="text/html" title="SQL Data Definition Language - Part 1" /><published>2022-11-16T00:00:00-06:00</published><updated>2022-11-16T00:00:00-06:00</updated><id>http://localhost:4000/SQL-DDL-Part-1</id><content type="html" xml:base="http://localhost:4000/SQL-DDL-Part-1/"><![CDATA[<h3 id="description">Description</h3>
 <p>An introduction to data definition language by creating tables and its relationships based on the scenario.</p>
 
 <hr />
@@ -101,9 +99,7 @@ CREATE TABLE A1B_ProductLocation
 	LocId INT FOREIGN KEY REFERENCES A1B_Location(LocId),
 )
 </code></pre></div></div>
-<p><img src="\assets\images\sql3\3.png" alt="SQL3" class="align-center" /></p>]]></content><author><name>Ruben Chung</name></author><category term="sql" /><summary type="html"><![CDATA[Introduction to using SQL data definition language to create tables with relationships.]]></summary></entry><entry><title type="html">SQL Dump - Part 2</title><link href="http://localhost:4000/SQL-Dump-Part-2/" rel="alternate" type="text/html" title="SQL Dump - Part 2" /><published>2022-11-16T00:00:00-06:00</published><updated>2022-11-16T00:00:00-06:00</updated><id>http://localhost:4000/SQL-Dump-Part-2</id><content type="html" xml:base="http://localhost:4000/SQL-Dump-Part-2/"><![CDATA[<p>Intermediate SQL statements with outputs</p>
-
-<h3 id="description">Description</h3>
+<p><img src="\assets\images\sql3\3.png" alt="SQL3" class="align-center" /></p>]]></content><author><name>Ruben Chung</name></author><category term="sql" /><summary type="html"><![CDATA[Introduction to using SQL data definition language to create tables with relationships.]]></summary></entry><entry><title type="html">SQL Dump - Part 2</title><link href="http://localhost:4000/SQL-Dump-Part-2/" rel="alternate" type="text/html" title="SQL Dump - Part 2" /><published>2022-11-16T00:00:00-06:00</published><updated>2022-11-16T00:00:00-06:00</updated><id>http://localhost:4000/SQL-Dump-Part-2</id><content type="html" xml:base="http://localhost:4000/SQL-Dump-Part-2/"><![CDATA[<h3 id="description">Description</h3>
 <p>A mix of SQL problems that involves aggregate functions, joins, and window functions.</p>
 
 <hr />
@@ -265,17 +261,16 @@ FROM TRANSACT
 GROUP BY STATE, DEPTCENT_DESC
 ORDER BY STATE, SUM(TRAN_AMT) DESC;
 </code></pre></div></div>
-<p><img src="\assets\images\sql2\9.png" alt="SQL9" class="align-center" /></p>]]></content><author><name>Ruben Chung</name></author><category term="sql" /><summary type="html"><![CDATA[Intermediate SQL statements with outputs]]></summary></entry><entry><title type="html">SQL Data Definition Language - Part 2</title><link href="http://localhost:4000/SQL-DDL-Part-2/" rel="alternate" type="text/html" title="SQL Data Definition Language - Part 2" /><published>2022-11-16T00:00:00-06:00</published><updated>2022-11-16T00:00:00-06:00</updated><id>http://localhost:4000/SQL-DDL-Part-2</id><content type="html" xml:base="http://localhost:4000/SQL-DDL-Part-2/"><![CDATA[<p>Intermediate to using SQL data definition language to create tables with relationships.</p>
-
-<h3 id="description">Description</h3>
+<p><img src="\assets\images\sql2\9.png" alt="SQL9" class="align-center" /></p>]]></content><author><name>Ruben Chung</name></author><category term="sql" /><summary type="html"><![CDATA[Intermediate SQL statements with outputs]]></summary></entry><entry><title type="html">SQL Data Definition Language - Part 2</title><link href="http://localhost:4000/SQL-DDL-Part-2/" rel="alternate" type="text/html" title="SQL Data Definition Language - Part 2" /><published>2022-11-16T00:00:00-06:00</published><updated>2022-11-16T00:00:00-06:00</updated><id>http://localhost:4000/SQL-DDL-Part-2</id><content type="html" xml:base="http://localhost:4000/SQL-DDL-Part-2/"><![CDATA[<h3 id="description">Description</h3>
 <p>Intermediate problems to data definition language and different ways and scenarios to apply them using create and alter functions.</p>
 
 <hr />
 <h3 id="problems">Problems</h3>
 
 <h4 id="1-dimensional-data-model--data-dictionary-specification---ddl">1. Dimensional Data Model &amp; Data Dictionary Specification -&gt; DDL</h4>
-<p>Our DW consultant gave us a good starting point for a simple “sales” data mart design. Create the tables and relationships based on the following data model and data dictionary.
-<img src="\assets\images\sql4\1.png" alt="SQL1" class="align-center" /></p>
+<p>Our DW consultant gave us a good starting point for a simple “sales” data mart design. Create the tables and relationships based on the following data model and data dictionary.</p>
+
+<p><img src="\assets\images\sql4\1.png" alt="SQL1" class="align-center" /></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CREATE TABLE A2B_Item_Dim  (
     Item_Key  int NOT NULL,
     Item_Id  int NOT NULL,
@@ -327,8 +322,10 @@ CREATE TABLE A2B_Order_Fact   (
 <hr />
 
 <h4 id="2-external-data-source--data-mart-extension---ddl">2. External Data Source &amp; Data Mart Extension -&gt; DDL</h4>
-<p>Hallux has recently started receiving enhanced Billboard® charting information for the songs in their catalog, including weekly rank, previous week rank, number of downloads, iTunes sales and Spotify streams. We need to be able to take this data and merge it with our existing warehouse tables to allow us to perform analysis over time on this new data stream. Include fields for our internal weekly sales (in units and $) to store alongside this data. You can assume that the ETL job that will be loading this data can locate the correct item_key that corresponds with the Song data coming from Billboard (hint: conformed dimension). We need to make sure that we have the appropriate units of time in a dimension such as week of the year, month of the year, month description, season, and a flag for “festival season” (which stretches from late Spring to early Fall). Here’s a snippet of the csv file coming from Billboard:
-<img src="\assets\images\sql4\2.png" alt="SQL2" class="align-center" /></p>
+<p>Hallux has recently started receiving enhanced Billboard® charting information for the songs in their catalog, including weekly rank, previous week rank, number of downloads, iTunes sales and Spotify streams. We need to be able to take this data and merge it with our existing warehouse tables to allow us to perform analysis over time on this new data stream. Include fields for our internal weekly sales (in units and $) to store alongside this data. You can assume that the ETL job that will be loading this data can locate the correct item_key that corresponds with the Song data coming from Billboard (hint: conformed dimension). We need to make sure that we have the appropriate units of time in a dimension such as week of the year, month of the year, month description, season, and a flag for “festival season” (which stretches from late Spring to early Fall). <br />
+Here’s a snippet of the csv file coming from Billboard:</p>
+
+<p><img src="\assets\images\sql4\2.png" alt="SQL2" class="align-center" /></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CREATE TABLE A2B_Band_Dim (
 Band_ID int NOT NULL,
 Band_Name varchar(50) NOT NULL,
@@ -361,8 +358,9 @@ FOREIGN KEY (Band_ID) REFERENCES A2B_Band_Dim(Band_ID)
 <hr />
 
 <h4 id="3-extending-the-dw-from-a-system-of-record-sor---ddl">3. Extending the DW from a System of Record (SoR) -&gt; DDL</h4>
-<p>Management has asked that we add performance metrics to the DW. Using the data in our existing transaction system, we need to construct a star schema that allows us to track the revenue for each performance by venue, date, band and booking agent. We will need important information about the venue (including name, contact information, and location details), the band (including name, formation date, genres, and contact information) and the booking agent (at this point we’re only concerned about the agent’s name). For bands, consider how you need to represent that the band might be in multiple genres, capturing at least a primary and secondary genre. For venues, they sometimes move across town or change their name under new ownership, so design to track such changes. Where possible, use conformed dimensions (hint: likely only one in this case). Here are the relevant tables from the SoR.
-<img src="\assets\images\sql4\3.png" alt="SQL3" class="align-center" /></p>
+<p>Management has asked that we add performance metrics to the DW. Using the data in our existing transaction system, we need to construct a star schema that allows us to track the revenue for each performance by venue, date, band and booking agent. We will need important information about the venue (including name, contact information, and location details), the band (including name, formation date, genres, and contact information) and the booking agent (at this point we’re only concerned about the agent’s name). For bands, consider how you need to represent that the band might be in multiple genres, capturing at least a primary and secondary genre. For venues, they sometimes move across town or change their name under new ownership, so design to track such changes. Where possible, use conformed dimensions (hint: likely only one in this case). Here are the relevant tables from the SoR.</p>
+
+<p><img src="\assets\images\sql4\3.png" alt="SQL3" class="align-center" /></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ALTER TABLE A2B_Band_Dim 
 ADD Contact_Info varchar(15), Formation_Date datetime
 
@@ -412,9 +410,7 @@ FOREIGN KEY (Venue_ID) REFERENCES A2B_Venue_Dim(Venue_ID),
 FOREIGN KEY (Agent_ID) REFERENCES A2B_Booking_Agent_Dim(Agent_ID),
 FOREIGN KEY (Performance_ID) REFERENCES A2B_Performance_Dim(Performance_ID)
 );
-</code></pre></div></div>]]></content><author><name>Ruben Chung</name></author><category term="sql" /><summary type="html"><![CDATA[Intermediate to using SQL data definition language to create tables with relationships.]]></summary></entry><entry><title type="html">Business Case: OzarkRide</title><link href="http://localhost:4000/OzarkRide/" rel="alternate" type="text/html" title="Business Case: OzarkRide" /><published>2022-11-13T00:00:00-06:00</published><updated>2022-11-13T00:00:00-06:00</updated><id>http://localhost:4000/OzarkRide</id><content type="html" xml:base="http://localhost:4000/OzarkRide/"><![CDATA[<p>Using Excel and SAS to perform business and statistics analysis such as ANOVA and regressions to help OzarkRide to expand.</p>
-
-<h3 id="business-scenario">Business Scenario</h3>
+</code></pre></div></div>]]></content><author><name>Ruben Chung</name></author><category term="sql" /><summary type="html"><![CDATA[Intermediate to using SQL data definition language to create tables with relationships.]]></summary></entry><entry><title type="html">Business Case: OzarkRide</title><link href="http://localhost:4000/OzarkRide/" rel="alternate" type="text/html" title="Business Case: OzarkRide" /><published>2022-11-13T00:00:00-06:00</published><updated>2022-11-13T00:00:00-06:00</updated><id>http://localhost:4000/OzarkRide</id><content type="html" xml:base="http://localhost:4000/OzarkRide/"><![CDATA[<h3 id="business-scenario">Business Scenario</h3>
 <p>OzarkRide is a local bike rental founded in 2011 from Fayetteville which focuses on a 
 sustainable and affordable way to reach from point A to point B using environment-friendly 
 technology. OzarkRide is planning to open a new branch in a city similar to Fayetteville within a 
@@ -597,9 +593,7 @@ b2 = 0.0002</li>
 <p><a href="https://github.com/rfchungl/rchungl.github.io/blob/master/pages/Original%20Dataset.csv">Raw Dataset</a><br />
 <a href="https://github.com/rfchungl/rchungl.github.io/blob/master/pages/OzarkBike%20Analysis.xlsx">Working Dataset</a><br />
 <a href="https://github.com/rfchungl/rchungl.github.io/blob/master/pages/OzarkBike.egp">SAS Exploration</a><br />
-<a href="https://github.com/rfchungl/rchungl.github.io/blob/master/pages/OzarkRide.pdf">OzarkRide Report Version</a></p>]]></content><author><name>Ruben Chung</name></author><category term="excel" /><category term="sas" /><category term="analysis" /><summary type="html"><![CDATA[Using Excel and SAS to perform business and statistics analysis such as ANOVA and regressions to help OzarkRide to expand.]]></summary></entry><entry><title type="html">SQL Dump - Part 1</title><link href="http://localhost:4000/SQL-Dump-Part-1/" rel="alternate" type="text/html" title="SQL Dump - Part 1" /><published>2022-11-12T00:00:00-06:00</published><updated>2022-11-12T00:00:00-06:00</updated><id>http://localhost:4000/SQL-Dump-Part-1</id><content type="html" xml:base="http://localhost:4000/SQL-Dump-Part-1/"><![CDATA[<p>Introductory SQL statements with outputs</p>
-
-<h3 id="description">Description</h3>
+<a href="https://github.com/rfchungl/rchungl.github.io/blob/master/pages/OzarkRide.pdf">OzarkRide Report Version</a></p>]]></content><author><name>Ruben Chung</name></author><category term="excel" /><category term="sas" /><category term="analysis" /><summary type="html"><![CDATA[Using Excel and SAS to perform business and statistics analysis such as ANOVA and regressions to help OzarkRide to expand.]]></summary></entry><entry><title type="html">SQL Dump - Part 1</title><link href="http://localhost:4000/SQL-Dump-Part-1/" rel="alternate" type="text/html" title="SQL Dump - Part 1" /><published>2022-11-12T00:00:00-06:00</published><updated>2022-11-12T00:00:00-06:00</updated><id>http://localhost:4000/SQL-Dump-Part-1</id><content type="html" xml:base="http://localhost:4000/SQL-Dump-Part-1/"><![CDATA[<h3 id="description">Description</h3>
 <p>A mix of SQL problems that involves aggregate functions and joins.</p>
 
 <hr />
@@ -670,9 +664,7 @@ from A2C_Order_Fact O
 GROUP BY State_Name, Year_Number  
 ORDER BY Total_Sales DESC;  
 </code></pre></div></div>
-<p><img src="\assets\images\sql1\6.png" alt="SQL6" class="align-center" /></p>]]></content><author><name>Ruben Chung</name></author><category term="sql" /><summary type="html"><![CDATA[Introductory SQL statements with outputs]]></summary></entry><entry><title type="html">Python: Getting University Names Based On The Country Inserted</title><link href="http://localhost:4000/Country-API/" rel="alternate" type="text/html" title="Python: Getting University Names Based On The Country Inserted" /><published>2022-11-12T00:00:00-06:00</published><updated>2022-11-12T00:00:00-06:00</updated><id>http://localhost:4000/Country-API</id><content type="html" xml:base="http://localhost:4000/Country-API/"><![CDATA[<p>Combining Python and API to generate university names once the name of the country is inserted</p>
-
-<h3 id="description">Description</h3>
+<p><img src="\assets\images\sql1\6.png" alt="SQL6" class="align-center" /></p>]]></content><author><name>Ruben Chung</name></author><category term="sql" /><summary type="html"><![CDATA[Introductory SQL statements with outputs]]></summary></entry><entry><title type="html">Python: Getting University Names Based On The Country Inserted</title><link href="http://localhost:4000/Country-API/" rel="alternate" type="text/html" title="Python: Getting University Names Based On The Country Inserted" /><published>2022-11-12T00:00:00-06:00</published><updated>2022-11-12T00:00:00-06:00</updated><id>http://localhost:4000/Country-API</id><content type="html" xml:base="http://localhost:4000/Country-API/"><![CDATA[<h3 id="description">Description</h3>
 <p>Using API and JSON library to create a Python program.</p>
 
 <h3 id="what-does-this-program-do">What does this program do?</h3>
@@ -727,9 +719,7 @@ while True:
 
 <hr />
 <h3 id="python">Python</h3>
-<p><a href="https://github.com/rfchungl/Projects-Portfolio/blob/main/API/API.py">Python File Here</a></p>]]></content><author><name>Ruben Chung</name></author><category term="python" /><summary type="html"><![CDATA[Combining Python and API to generate university names once the name of the country is inserted]]></summary></entry><entry><title type="html">Business Case: Basket Market Analysis</title><link href="http://localhost:4000/Basket-Market-Analysis/" rel="alternate" type="text/html" title="Business Case: Basket Market Analysis" /><published>2022-11-12T00:00:00-06:00</published><updated>2022-11-12T00:00:00-06:00</updated><id>http://localhost:4000/Basket-Market-Analysis</id><content type="html" xml:base="http://localhost:4000/Basket-Market-Analysis/"><![CDATA[<p>Using Excel and Python to perform market basket/association analysis using dataset from a bakery.</p>
-
-<h3 id="business-scenario">Business Scenario</h3>
+<p><a href="https://github.com/rfchungl/Projects-Portfolio/blob/main/API/API.py">Python File Here</a></p>]]></content><author><name>Ruben Chung</name></author><category term="python" /><summary type="html"><![CDATA[Combining Python and API to generate university names once the name of the country is inserted]]></summary></entry><entry><title type="html">Business Case: Basket Market Analysis</title><link href="http://localhost:4000/Basket-Market-Analysis/" rel="alternate" type="text/html" title="Business Case: Basket Market Analysis" /><published>2022-11-12T00:00:00-06:00</published><updated>2022-11-12T00:00:00-06:00</updated><id>http://localhost:4000/Basket-Market-Analysis</id><content type="html" xml:base="http://localhost:4000/Basket-Market-Analysis/"><![CDATA[<h3 id="business-scenario">Business Scenario</h3>
 <p>Ayala’s Bakery is a family owned business with more than 30 years on the market delivering bakeries to its customers in Springdale, Arkansas. They updated their POS system a few years ago to keep track of their sales. However, they have not had success in discovering what products the customers like and what they usually like to pair with. Ayala’s Bakery have approached Ruben to dive deep into the data to look for insights and provide recommendations.</p>
 
 <hr />
@@ -812,9 +802,7 @@ The association analysis using Python shows that the customer is 1.48 times more
 
 <hr />
 <h3 id="python">Python</h3>
-<p><a href="https://github.com/rfchungl/Projects-Portfolio/blob/main/MarketBasketAnalysis/basket.py">Python File Here</a></p>]]></content><author><name>Ruben Chung</name></author><category term="python" /><category term="excel" /><category term="analysis" /><summary type="html"><![CDATA[Using Excel and Python to perform market basket/association analysis using dataset from a bakery.]]></summary></entry><entry><title type="html">Python: Automated Weather Notification Using SMS</title><link href="http://localhost:4000/Automated-weather-SMS/" rel="alternate" type="text/html" title="Python: Automated Weather Notification Using SMS" /><published>2022-11-09T00:00:00-06:00</published><updated>2022-11-09T00:00:00-06:00</updated><id>http://localhost:4000/Automated-weather-SMS</id><content type="html" xml:base="http://localhost:4000/Automated-weather-SMS/"><![CDATA[<p>Scrapping weather from Google using Python then utilizing a SMS service to send customized messages based on the weather.</p>
-
-<h3 id="description">Description</h3>
+<p><a href="https://github.com/rfchungl/Projects-Portfolio/blob/main/MarketBasketAnalysis/basket.py">Python File Here</a></p>]]></content><author><name>Ruben Chung</name></author><category term="python" /><category term="excel" /><category term="analysis" /><summary type="html"><![CDATA[Using Excel and Python to perform market basket/association analysis using dataset from a bakery.]]></summary></entry><entry><title type="html">Python: Automated Weather Notification Using SMS</title><link href="http://localhost:4000/Automated-weather-SMS/" rel="alternate" type="text/html" title="Python: Automated Weather Notification Using SMS" /><published>2022-11-09T00:00:00-06:00</published><updated>2022-11-09T00:00:00-06:00</updated><id>http://localhost:4000/Automated-weather-SMS</id><content type="html" xml:base="http://localhost:4000/Automated-weather-SMS/"><![CDATA[<h3 id="description">Description</h3>
 <p>When I arrived to the United States, there were days when I wore a sweater and jacket, and the day was not that cold. I felt very dumb walking down to my classes while other students were wearing t-shirts, shorts, and sandals. 
 I know that we can check the weather on our cellphones. However, there is too much information like humidity, water density, weather variation between hours, air quality, etc. I wanted something simpler that could just tell me the weather condition and the temperature. I do not check my emails first thing in the morning, so I did not want them to be sent to my email. Instead, I wanted something quick like an SMS.</p>
 
@@ -883,9 +871,7 @@ while True:
 <hr />
 <h3 id="python">Python</h3>
 <p><a href="https://github.com/rfchungl/Projects-Portfolio/blob/main/Weather_Scrapping/Weather_Scrapper.py"><code class="language-plaintext highlighter-rouge">Python File Here</code></a><br />
-The Python code has comments (pseudo-code) on what does each line do for a better understanding of the program.</p>]]></content><author><name>Ruben Chung</name></author><category term="python" /><summary type="html"><![CDATA[Scrapping weather from Google using Python then utilizing a SMS service to send customized messages based on the weather.]]></summary></entry><entry><title type="html">Building a Database and Visualization From Scratch</title><link href="http://localhost:4000/From-CSV-To-Database-To-Datastudio/" rel="alternate" type="text/html" title="Building a Database and Visualization From Scratch" /><published>2022-11-09T00:00:00-06:00</published><updated>2022-11-09T00:00:00-06:00</updated><id>http://localhost:4000/From-CSV-To-Database-To-Datastudio</id><content type="html" xml:base="http://localhost:4000/From-CSV-To-Database-To-Datastudio/"><![CDATA[<p>Dashboard made from scratch. It was condensed from a number of CSV files that were put into BigQuery. Afterwards, using BigQuery as the database to build the dashboard.</p>
-
-<p><strong>Visualization:</strong> <a href="https://datastudio.google.com/reporting/2004c153-b0d4-42e1-8bee-1f3c6eaa2fa8"><code class="language-plaintext highlighter-rouge">Click Here For Visualization</code></a>
+The Python code has comments (pseudo-code) on what does each line do for a better understanding of the program.</p>]]></content><author><name>Ruben Chung</name></author><category term="python" /><summary type="html"><![CDATA[Scrapping weather from Google using Python then utilizing a SMS service to send customized messages based on the weather.]]></summary></entry><entry><title type="html">Building a Database and Visualization From Scratch</title><link href="http://localhost:4000/From-CSV-To-Database-To-Datastudio/" rel="alternate" type="text/html" title="Building a Database and Visualization From Scratch" /><published>2022-11-09T00:00:00-06:00</published><updated>2022-11-09T00:00:00-06:00</updated><id>http://localhost:4000/From-CSV-To-Database-To-Datastudio</id><content type="html" xml:base="http://localhost:4000/From-CSV-To-Database-To-Datastudio/"><![CDATA[<p><strong>Visualization:</strong> <a href="https://datastudio.google.com/reporting/2004c153-b0d4-42e1-8bee-1f3c6eaa2fa8"><code class="language-plaintext highlighter-rouge">Click Here For Visualization</code></a>
 <br /><br />
 <strong>Note:</strong> The dataset was modified in order to protect the privacy of the tutors and students. The date of the sample dataset is from 08-23-2021 to 10-23-2021.
 <br /><br />

@@ -9,8 +9,6 @@ author_profile: true
 toc: true
 toc_sticky: true
 ---
-{{ page.excerpt }}
-
 **Visualization:** [`Click Here For Visualization`](https://datastudio.google.com/reporting/2004c153-b0d4-42e1-8bee-1f3c6eaa2fa8)
 <br><br>
 **Note:** The dataset was modified in order to protect the privacy of the tutors and students. The date of the sample dataset is from 08-23-2021 to 10-23-2021.

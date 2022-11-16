@@ -9,9 +9,6 @@ author_profile: true
 toc: true
 toc_sticky: true
 ---
-
-{{ page.excerpt }}
-
 ### Business Scenario  
 OzarkRide is a local bike rental founded in 2011 from Fayetteville which focuses on a 
 sustainable and affordable way to reach from point A to point B using environment-friendly 

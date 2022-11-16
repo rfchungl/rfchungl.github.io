@@ -9,8 +9,6 @@ author_profile: true
 toc: true
 toc_sticky: true
 ---
-{{ page.excerpt }}
-
 ### Description
 A mix of SQL problems that involves aggregate functions and joins. 
 

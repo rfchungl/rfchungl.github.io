@@ -292,17 +292,16 @@
             </nav>
           </aside>
         
-        <p>Intermediate to using SQL data definition language to create tables with relationships.</p>
-
-<h3 id="description">Description</h3>
+        <h3 id="description">Description</h3>
 <p>Intermediate problems to data definition language and different ways and scenarios to apply them using create and alter functions.</p>
 
 <hr />
 <h3 id="problems">Problems</h3>
 
 <h4 id="1-dimensional-data-model--data-dictionary-specification---ddl">1. Dimensional Data Model &amp; Data Dictionary Specification -&gt; DDL</h4>
-<p>Our DW consultant gave us a good starting point for a simple “sales” data mart design. Create the tables and relationships based on the following data model and data dictionary.
-<img src="\assets\images\sql4\1.png" alt="SQL1" class="align-center" /></p>
+<p>Our DW consultant gave us a good starting point for a simple “sales” data mart design. Create the tables and relationships based on the following data model and data dictionary.</p>
+
+<p><img src="\assets\images\sql4\1.png" alt="SQL1" class="align-center" /></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CREATE TABLE A2B_Item_Dim  (
     Item_Key  int NOT NULL,
     Item_Id  int NOT NULL,
@@ -354,8 +353,10 @@ CREATE TABLE A2B_Order_Fact   (
 <hr />
 
 <h4 id="2-external-data-source--data-mart-extension---ddl">2. External Data Source &amp; Data Mart Extension -&gt; DDL</h4>
-<p>Hallux has recently started receiving enhanced Billboard® charting information for the songs in their catalog, including weekly rank, previous week rank, number of downloads, iTunes sales and Spotify streams. We need to be able to take this data and merge it with our existing warehouse tables to allow us to perform analysis over time on this new data stream. Include fields for our internal weekly sales (in units and $) to store alongside this data. You can assume that the ETL job that will be loading this data can locate the correct item_key that corresponds with the Song data coming from Billboard (hint: conformed dimension). We need to make sure that we have the appropriate units of time in a dimension such as week of the year, month of the year, month description, season, and a flag for “festival season” (which stretches from late Spring to early Fall). Here’s a snippet of the csv file coming from Billboard:
-<img src="\assets\images\sql4\2.png" alt="SQL2" class="align-center" /></p>
+<p>Hallux has recently started receiving enhanced Billboard® charting information for the songs in their catalog, including weekly rank, previous week rank, number of downloads, iTunes sales and Spotify streams. We need to be able to take this data and merge it with our existing warehouse tables to allow us to perform analysis over time on this new data stream. Include fields for our internal weekly sales (in units and $) to store alongside this data. You can assume that the ETL job that will be loading this data can locate the correct item_key that corresponds with the Song data coming from Billboard (hint: conformed dimension). We need to make sure that we have the appropriate units of time in a dimension such as week of the year, month of the year, month description, season, and a flag for “festival season” (which stretches from late Spring to early Fall). <br />
+Here’s a snippet of the csv file coming from Billboard:</p>
+
+<p><img src="\assets\images\sql4\2.png" alt="SQL2" class="align-center" /></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CREATE TABLE A2B_Band_Dim (
 Band_ID int NOT NULL,
 Band_Name varchar(50) NOT NULL,
@@ -388,8 +389,9 @@ FOREIGN KEY (Band_ID) REFERENCES A2B_Band_Dim(Band_ID)
 <hr />
 
 <h4 id="3-extending-the-dw-from-a-system-of-record-sor---ddl">3. Extending the DW from a System of Record (SoR) -&gt; DDL</h4>
-<p>Management has asked that we add performance metrics to the DW. Using the data in our existing transaction system, we need to construct a star schema that allows us to track the revenue for each performance by venue, date, band and booking agent. We will need important information about the venue (including name, contact information, and location details), the band (including name, formation date, genres, and contact information) and the booking agent (at this point we’re only concerned about the agent’s name). For bands, consider how you need to represent that the band might be in multiple genres, capturing at least a primary and secondary genre. For venues, they sometimes move across town or change their name under new ownership, so design to track such changes. Where possible, use conformed dimensions (hint: likely only one in this case). Here are the relevant tables from the SoR.
-<img src="\assets\images\sql4\3.png" alt="SQL3" class="align-center" /></p>
+<p>Management has asked that we add performance metrics to the DW. Using the data in our existing transaction system, we need to construct a star schema that allows us to track the revenue for each performance by venue, date, band and booking agent. We will need important information about the venue (including name, contact information, and location details), the band (including name, formation date, genres, and contact information) and the booking agent (at this point we’re only concerned about the agent’s name). For bands, consider how you need to represent that the band might be in multiple genres, capturing at least a primary and secondary genre. For venues, they sometimes move across town or change their name under new ownership, so design to track such changes. Where possible, use conformed dimensions (hint: likely only one in this case). Here are the relevant tables from the SoR.</p>
+
+<p><img src="\assets\images\sql4\3.png" alt="SQL3" class="align-center" /></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ALTER TABLE A2B_Band_Dim 
 ADD Contact_Info varchar(15), Formation_Date datetime
 

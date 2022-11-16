@@ -9,9 +9,6 @@ toc: true
 toc_sticky: true
 excerpt: "Introduction to using SQL data definition language to create tables with relationships."
 ---
-
-{{ page.excerpt }}
-
 ### Description
 An introduction to data definition language by creating tables and its relationships based on the scenario.
 

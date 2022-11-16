@@ -9,8 +9,6 @@ author_profile: true
 toc: true
 toc_sticky: true
 ---
-{{ page.excerpt }}
-
 ### Description
 Using API and JSON library to create a Python program.  
 

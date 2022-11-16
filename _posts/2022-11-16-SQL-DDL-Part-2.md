@@ -9,9 +9,6 @@ toc: true
 toc_sticky: true
 excerpt: "Intermediate to using SQL data definition language to create tables with relationships."
 ---
-
-{{ page.excerpt }}
-
 ### Description
 Intermediate problems to data definition language and different ways and scenarios to apply them using create and alter functions.
 
@@ -19,7 +16,8 @@ Intermediate problems to data definition language and different ways and scenari
 ### Problems
 
 #### 1. Dimensional Data Model & Data Dictionary Specification -> DDL  
-Our DW consultant gave us a good starting point for a simple “sales” data mart design. Create the tables and relationships based on the following data model and data dictionary.
+Our DW consultant gave us a good starting point for a simple “sales” data mart design. Create the tables and relationships based on the following data model and data dictionary.   
+
 ![SQL1](\assets\images\sql4\1.png){: .align-center} 
 ```
 CREATE TABLE A2B_Item_Dim  (
@@ -73,7 +71,9 @@ CREATE TABLE A2B_Order_Fact   (
 ---------
 
 #### 2. External Data Source & Data Mart Extension -> DDL  
-Hallux has recently started receiving enhanced Billboard® charting information for the songs in their catalog, including weekly rank, previous week rank, number of downloads, iTunes sales and Spotify streams. We need to be able to take this data and merge it with our existing warehouse tables to allow us to perform analysis over time on this new data stream. Include fields for our internal weekly sales (in units and $) to store alongside this data. You can assume that the ETL job that will be loading this data can locate the correct item_key that corresponds with the Song data coming from Billboard (hint: conformed dimension). We need to make sure that we have the appropriate units of time in a dimension such as week of the year, month of the year, month description, season, and a flag for “festival season” (which stretches from late Spring to early Fall). Here’s a snippet of the csv file coming from Billboard:
+Hallux has recently started receiving enhanced Billboard® charting information for the songs in their catalog, including weekly rank, previous week rank, number of downloads, iTunes sales and Spotify streams. We need to be able to take this data and merge it with our existing warehouse tables to allow us to perform analysis over time on this new data stream. Include fields for our internal weekly sales (in units and $) to store alongside this data. You can assume that the ETL job that will be loading this data can locate the correct item_key that corresponds with the Song data coming from Billboard (hint: conformed dimension). We need to make sure that we have the appropriate units of time in a dimension such as week of the year, month of the year, month description, season, and a flag for “festival season” (which stretches from late Spring to early Fall).   
+Here’s a snippet of the csv file coming from Billboard:    
+
 ![SQL2](\assets\images\sql4\2.png){: .align-center}  
 ```
 CREATE TABLE A2B_Band_Dim (
@@ -108,7 +108,8 @@ FOREIGN KEY (Band_ID) REFERENCES A2B_Band_Dim(Band_ID)
 -----
 
 #### 3. Extending the DW from a System of Record (SoR) -> DDL  
-Management has asked that we add performance metrics to the DW. Using the data in our existing transaction system, we need to construct a star schema that allows us to track the revenue for each performance by venue, date, band and booking agent. We will need important information about the venue (including name, contact information, and location details), the band (including name, formation date, genres, and contact information) and the booking agent (at this point we’re only concerned about the agent’s name). For bands, consider how you need to represent that the band might be in multiple genres, capturing at least a primary and secondary genre. For venues, they sometimes move across town or change their name under new ownership, so design to track such changes. Where possible, use conformed dimensions (hint: likely only one in this case). Here are the relevant tables from the SoR.
+Management has asked that we add performance metrics to the DW. Using the data in our existing transaction system, we need to construct a star schema that allows us to track the revenue for each performance by venue, date, band and booking agent. We will need important information about the venue (including name, contact information, and location details), the band (including name, formation date, genres, and contact information) and the booking agent (at this point we’re only concerned about the agent’s name). For bands, consider how you need to represent that the band might be in multiple genres, capturing at least a primary and secondary genre. For venues, they sometimes move across town or change their name under new ownership, so design to track such changes. Where possible, use conformed dimensions (hint: likely only one in this case). Here are the relevant tables from the SoR.    
+
 ![SQL3](\assets\images\sql4\3.png){: .align-center} 
 ```
 ALTER TABLE A2B_Band_Dim 

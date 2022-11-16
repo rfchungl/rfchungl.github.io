@@ -9,8 +9,6 @@ author_profile: true
 toc: true
 toc_sticky: true
 ---
-{{ page.excerpt }}
-
 ### Business Scenario  
 Ayala's Bakery is a family owned business with more than 30 years on the market delivering bakeries to its customers in Springdale, Arkansas. They updated their POS system a few years ago to keep track of their sales. However, they have not had success in discovering what products the customers like and what they usually like to pair with. Ayala's Bakery have approached Ruben to dive deep into the data to look for insights and provide recommendations.  
 

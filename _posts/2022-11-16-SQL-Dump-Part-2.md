@@ -9,9 +9,6 @@ toc: true
 toc_sticky: true
 excerpt: "Intermediate SQL statements with outputs"
 ---
-
-{{ page.excerpt }}
-
 ### Description
 A mix of SQL problems that involves aggregate functions, joins, and window functions. 
 
