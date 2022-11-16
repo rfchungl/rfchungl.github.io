@@ -1,3 +1,3 @@
 # rfchungl.github.io
 
-Powered by jekyll using Minimal Mistake theme
+Powered by jekyll using Minimal Mistakes theme
