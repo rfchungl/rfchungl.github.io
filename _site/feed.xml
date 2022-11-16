@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-11-16T10:19:27-06:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">RUBEN’S PORTFOLIO</title><author><name>Ruben Chung</name></author><entry><title type="html">SQL Dump - Part 2</title><link href="http://localhost:4000/SQL-Dump-Part-2/" rel="alternate" type="text/html" title="SQL Dump - Part 2" /><published>2022-11-16T00:00:00-06:00</published><updated>2022-11-16T00:00:00-06:00</updated><id>http://localhost:4000/SQL-Dump-Part-2</id><content type="html" xml:base="http://localhost:4000/SQL-Dump-Part-2/"><![CDATA[<p>Intermediate SQL statements with outputs</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-11-16T10:53:05-06:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">RUBEN’S PORTFOLIO</title><author><name>Ruben Chung</name></author><entry><title type="html">SQL Dump - Part 2</title><link href="http://localhost:4000/SQL-Dump-Part-2/" rel="alternate" type="text/html" title="SQL Dump - Part 2" /><published>2022-11-16T00:00:00-06:00</published><updated>2022-11-16T00:00:00-06:00</updated><id>http://localhost:4000/SQL-Dump-Part-2</id><content type="html" xml:base="http://localhost:4000/SQL-Dump-Part-2/"><![CDATA[<p>Intermediate SQL statements with outputs</p>
 
 <h3 id="description">Description</h3>
 <p>A mix of SQL problems that involves aggregate functions, joins, and window functions.</p>
@@ -18,6 +18,7 @@ FROM SKU
 WHERE SKU.BRAND_NAME = 'NIKE'
 GROUP BY SKU.BRAND_NAME;
 </code></pre></div></div>
+<p><img src="\assets\images\sql2\1.png" alt="SQL1" class="align-center" /></p>
 
 <p><strong>2. We received a request from our pricing manager for a report containing separate 
 rows for every type of price record and value for a product. Let’s start by writing a 
@@ -43,6 +44,7 @@ SELECT SKU, STORE,'COST', COST
 FROM SKU_STORE
 WHERE SKU = '1137460' AND STORE IN (171 , 723);
 </code></pre></div></div>
+<p><img src="\assets\images\sql2\2.png" alt="SQL2" class="align-center" /></p>
 
 <p><strong>Database: Sam’s Club</strong><br />
 <strong>3. We want to look at meat price trends. What was the average retail price for 
@@ -57,6 +59,7 @@ WHERE ITEM_DESC.PRIMARY_DESC = 'BOLOGNA' AND VISIT_DATE BETWEEN
 '2014-01-01' AND '2014-03-31'
 GROUP BY DATENAME(MONTH,VISIT_DATE);
 </code></pre></div></div>
+<p><img src="\assets\images\sql2\3.png" alt="SQL3" class="align-center" /></p>
 
 <p><strong>4. Produce a store ranking report, with each store’s rank based on unit sales (sum of 
 item quantity) within their state and overall for the company. Order the report by 
@@ -69,6 +72,7 @@ WHERE STORE_INFO.STORE_NBR = ITEM_SCAN.STORE_NBR
 GROUP BY STATE, STORE_INFO.STORE_NBR
 ORDER BY STATE, UNIT_SALES DESC, STORE_RANK;
 </code></pre></div></div>
+<p><img src="\assets\images\sql2\4.png" alt="SQL4" class="align-center" /></p>
 
 <h4 id="enterprise-data-sets-on-teradata">Enterprise Data Sets on Teradata</h4>
 <p><strong>Database: Dillards</strong></p>
@@ -89,6 +93,7 @@ FROM TRANSACT
 WHERE TRAN_DATE &gt;= DATE '2015-11-27' AND 
 TRAN_DATE &lt;= DATE '2015-11-30';
 </code></pre></div></div>
+<p><img src="\assets\images\sql2\5.png" alt="SQL5" class="align-center" /></p>
 
 <p><strong>6. Was there an increase in AMERICA-themed apparel leading up to the 2016
 election? Look for any SKU with a color description containing ‘AMERICA’, and 
@@ -106,6 +111,8 @@ TRAN_DATE &lt;= DATE'2016-10-31'
 GROUP BY EXTRACT(MONTH FROM TRAN_DATE)
 ORDER BY EXTRACT(MONTH FROM TRAN_DATE);
 </code></pre></div></div>
+<p><img src="\assets\images\sql2\6.png" alt="SQL6" class="align-center" /></p>
+
 <p><strong>Database: Sam’s Club</strong><br />
 <strong>7. How many stores are in each state? Provide a report showing each state and the 
 number of stores it has. Order by the number of stores, descending (and only 
@@ -115,6 +122,7 @@ SELECT STATE, COUNT(STORE_NBR) AS STORE_COUNT FROM STORE_INFO
 GROUP BY STATE
 ORDER BY COUNT(STORE_NBR) DESC;
 </code></pre></div></div>
+<p><img src="\assets\images\sql2\7.png" alt="SQL7" class="align-center" /></p>
 
 <p><strong>8. We want to know what payment methods people are using around the country. 
 Produce a state tender ranking report, with each tender type’s rank based on the 
@@ -132,6 +140,7 @@ WHERE TENDER_TYPE IN (0,8,12,15)
 GROUP BY STATE, TENDER_TYPE
 ORDER BY STATE, STATE_RANK;
 </code></pre></div></div>
+<p><img src="\assets\images\sql2\8.png" alt="SQL8" class="align-center" /></p>
 
 <h4 id="building-my-own-queries-using-enterprise-datasets">Building My Own Queries Using Enterprise Datasets</h4>
 
@@ -144,7 +153,8 @@ FROM TRANSACT
     JOIN DEPARTMENT ON DEPARTMENT.DEPT = SKU.DEPT
 GROUP BY STATE, DEPTCENT_DESC
 ORDER BY STATE, SUM(TRAN_AMT) DESC;
-</code></pre></div></div>]]></content><author><name>Ruben Chung</name></author><category term="sql" /><summary type="html"><![CDATA[Intermediate SQL statements with outputs]]></summary></entry><entry><title type="html">Business Case: OzarkRide</title><link href="http://localhost:4000/OzarkRide/" rel="alternate" type="text/html" title="Business Case: OzarkRide" /><published>2022-11-13T00:00:00-06:00</published><updated>2022-11-13T00:00:00-06:00</updated><id>http://localhost:4000/OzarkRide</id><content type="html" xml:base="http://localhost:4000/OzarkRide/"><![CDATA[<p>Using Excel and SAS to perform business and statistics analysis such as ANOVA and regressions to help OzarkRide to expand.</p>
+</code></pre></div></div>
+<p><img src="\assets\images\sql2\9.png" alt="SQL9" class="align-center" /></p>]]></content><author><name>Ruben Chung</name></author><category term="sql" /><summary type="html"><![CDATA[Intermediate SQL statements with outputs]]></summary></entry><entry><title type="html">Business Case: OzarkRide</title><link href="http://localhost:4000/OzarkRide/" rel="alternate" type="text/html" title="Business Case: OzarkRide" /><published>2022-11-13T00:00:00-06:00</published><updated>2022-11-13T00:00:00-06:00</updated><id>http://localhost:4000/OzarkRide</id><content type="html" xml:base="http://localhost:4000/OzarkRide/"><![CDATA[<p>Using Excel and SAS to perform business and statistics analysis such as ANOVA and regressions to help OzarkRide to expand.</p>
 
 <h3 id="business-scenario">Business Scenario</h3>
 <p>OzarkRide is a local bike rental founded in 2011 from Fayetteville which focuses on a 
@@ -343,6 +353,8 @@ JOIN A2C_Date_Dimension DD ON O.Date_Key = DD.Date_Key
 WHERE Quarter_of_Year = 2 AND Year_Number = 2013  
 GROUP BY Quarter_of_Year;  
 </code></pre></div></div>
+<p><img src="\assets\images\sql1\1.png" alt="SQL1" class="align-center" /></p>
+
 <p><strong>2.What are the total sales for albums in the second quarter of 2013?</strong></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT SUM(Quantity * Unit_Price) AS Album_Total_Sales  
 FROM A2C_Order_Fact O  
@@ -350,6 +362,8 @@ FROM A2C_Order_Fact O
 	JOIN A2C_Item_Dimension ID ON O.Item_Key = ID.Item_Key  
 WHERE Quarter_of_Year = 2 AND Item_Type = 'Album' AND Year_Number = 2013;  
 </code></pre></div></div>
+<p><img src="\assets\images\sql1\2.png" alt="SQL2" class="align-center" /></p>
+
 <p><strong>3.What are the total sales of albums, bought by female customers living in Arizona and California?</strong></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT SUM(Quantity * Unit_Price) AS Female_Album_Sales  
 FROM A2C_Order_Fact O  
@@ -357,6 +371,8 @@ FROM A2C_Order_Fact O
 	JOIN A2C_Item_Dimension ID ON O.Item_Key = ID.Item_Key  
 WHERE CD.Gender = 'F' AND CD.State_Name IN ('Arizona', 'California') AND Item_Type = 'Album';  
 </code></pre></div></div>
+<p><img src="\assets\images\sql1\3.png" alt="SQL3" class="align-center" /></p>
+
 <p><strong>4.Who is the best agent, according to the sales data for 2014?</strong></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT TOP 1 SUM(Quantity * Unit_Price) AS Total_Sales, Agent_Name  
 FROM A2C_Order_Fact O  
@@ -366,6 +382,8 @@ WHERE Year_Number = 2014
 GROUP BY Agent_Name  
 ORDER BY Total_Sales DESC;  
 </code></pre></div></div>
+<p><img src="\assets\images\sql1\4.png" alt="SQL4" class="align-center" /></p>
+
 <p><strong>5.What are the total sales from each customer each year?</strong></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT Customer_Name, SUM(Quantity * Unit_Price) AS Total_Sales, Year_Number  
 FROM A2C_Order_Fact O  
@@ -374,6 +392,8 @@ FROM A2C_Order_Fact O
 GROUP BY Customer_Name, Year_Number  
 ORDER BY Customer_Name, Total_Sales DESC;  
 </code></pre></div></div>
+<p><img src="\assets\images\sql1\5.png" alt="SQL5" class="align-center" /></p>
+
 <p><strong>6.How much revenue each state generates by year?</strong></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT State_Name, Year_Number, SUM(Quantity * Unit_Price) AS Total_Sales  
 from A2C_Order_Fact O  
@@ -381,7 +401,8 @@ from A2C_Order_Fact O
 	JOIN A2C_Date_Dimension DD ON O.Date_Key = DD.Date_Key  
 GROUP BY State_Name, Year_Number  
 ORDER BY Total_Sales DESC;  
-</code></pre></div></div>]]></content><author><name>Ruben Chung</name></author><category term="sql" /><summary type="html"><![CDATA[Introductory SQL statements with outputs]]></summary></entry><entry><title type="html">Business Case: Basket Market Analysis</title><link href="http://localhost:4000/Basket-Market-Analysis/" rel="alternate" type="text/html" title="Business Case: Basket Market Analysis" /><published>2022-11-12T00:00:00-06:00</published><updated>2022-11-12T00:00:00-06:00</updated><id>http://localhost:4000/Basket-Market-Analysis</id><content type="html" xml:base="http://localhost:4000/Basket-Market-Analysis/"><![CDATA[<p>Using Excel and Python to perform market basket/association analysis using dataset from a bakery.</p>
+</code></pre></div></div>
+<p><img src="\assets\images\sql1\6.png" alt="SQL6" class="align-center" /></p>]]></content><author><name>Ruben Chung</name></author><category term="sql" /><summary type="html"><![CDATA[Introductory SQL statements with outputs]]></summary></entry><entry><title type="html">Business Case: Basket Market Analysis</title><link href="http://localhost:4000/Basket-Market-Analysis/" rel="alternate" type="text/html" title="Business Case: Basket Market Analysis" /><published>2022-11-12T00:00:00-06:00</published><updated>2022-11-12T00:00:00-06:00</updated><id>http://localhost:4000/Basket-Market-Analysis</id><content type="html" xml:base="http://localhost:4000/Basket-Market-Analysis/"><![CDATA[<p>Using Excel and Python to perform market basket/association analysis using dataset from a bakery.</p>
 
 <h3 id="business-scenario">Business Scenario</h3>
 <p>Ayala’s Bakery is a family owned business with more than 30 years on the market delivering bakeries to its customers in Springdale, Arkansas. They updated their POS system a few years ago to keep track of their sales. However, they have not had success in discovering what products the customers like and what they usually like to pair with. Ayala’s Bakery have approached Ruben to dive deep into the data to look for insights and provide recommendations.</p>

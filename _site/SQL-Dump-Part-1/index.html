@@ -306,6 +306,8 @@ JOIN A2C_Date_Dimension DD ON O.Date_Key = DD.Date_Key
 WHERE Quarter_of_Year = 2 AND Year_Number = 2013  
 GROUP BY Quarter_of_Year;  
 </code></pre></div></div>
+<p><img src="\assets\images\sql1\1.png" alt="SQL1" class="align-center" /></p>
+
 <p><strong>2.What are the total sales for albums in the second quarter of 2013?</strong></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT SUM(Quantity * Unit_Price) AS Album_Total_Sales  
 FROM A2C_Order_Fact O  
@@ -313,6 +315,8 @@ FROM A2C_Order_Fact O
 	JOIN A2C_Item_Dimension ID ON O.Item_Key = ID.Item_Key  
 WHERE Quarter_of_Year = 2 AND Item_Type = 'Album' AND Year_Number = 2013;  
 </code></pre></div></div>
+<p><img src="\assets\images\sql1\2.png" alt="SQL2" class="align-center" /></p>
+
 <p><strong>3.What are the total sales of albums, bought by female customers living in Arizona and California?</strong></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT SUM(Quantity * Unit_Price) AS Female_Album_Sales  
 FROM A2C_Order_Fact O  
@@ -320,6 +324,8 @@ FROM A2C_Order_Fact O
 	JOIN A2C_Item_Dimension ID ON O.Item_Key = ID.Item_Key  
 WHERE CD.Gender = 'F' AND CD.State_Name IN ('Arizona', 'California') AND Item_Type = 'Album';  
 </code></pre></div></div>
+<p><img src="\assets\images\sql1\3.png" alt="SQL3" class="align-center" /></p>
+
 <p><strong>4.Who is the best agent, according to the sales data for 2014?</strong></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT TOP 1 SUM(Quantity * Unit_Price) AS Total_Sales, Agent_Name  
 FROM A2C_Order_Fact O  
@@ -329,6 +335,8 @@ WHERE Year_Number = 2014
 GROUP BY Agent_Name  
 ORDER BY Total_Sales DESC;  
 </code></pre></div></div>
+<p><img src="\assets\images\sql1\4.png" alt="SQL4" class="align-center" /></p>
+
 <p><strong>5.What are the total sales from each customer each year?</strong></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT Customer_Name, SUM(Quantity * Unit_Price) AS Total_Sales, Year_Number  
 FROM A2C_Order_Fact O  
@@ -337,6 +345,8 @@ FROM A2C_Order_Fact O
 GROUP BY Customer_Name, Year_Number  
 ORDER BY Customer_Name, Total_Sales DESC;  
 </code></pre></div></div>
+<p><img src="\assets\images\sql1\5.png" alt="SQL5" class="align-center" /></p>
+
 <p><strong>6.How much revenue each state generates by year?</strong></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT State_Name, Year_Number, SUM(Quantity * Unit_Price) AS Total_Sales  
 from A2C_Order_Fact O  
@@ -345,6 +355,7 @@ from A2C_Order_Fact O
 GROUP BY State_Name, Year_Number  
 ORDER BY Total_Sales DESC;  
 </code></pre></div></div>
+<p><img src="\assets\images\sql1\6.png" alt="SQL6" class="align-center" /></p>
 
 
         

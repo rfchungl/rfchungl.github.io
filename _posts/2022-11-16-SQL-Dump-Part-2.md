@@ -31,6 +31,7 @@ FROM SKU
 WHERE SKU.BRAND_NAME = 'NIKE'
 GROUP BY SKU.BRAND_NAME;
 ```
+![SQL1](\assets\images\sql2\1.png){: .align-center} 
 
 **2. We received a request from our pricing manager for a report containing separate 
 rows for every type of price record and value for a product. Let's start by writing a 
@@ -57,6 +58,7 @@ SELECT SKU, STORE,'COST', COST
 FROM SKU_STORE
 WHERE SKU = '1137460' AND STORE IN (171 , 723);
 ```
+![SQL2](\assets\images\sql2\2.png){: .align-center} 
 
 **Database: Sam's Club**  
 **3. We want to look at meat price trends. What was the average retail price for 
@@ -72,6 +74,7 @@ WHERE ITEM_DESC.PRIMARY_DESC = 'BOLOGNA' AND VISIT_DATE BETWEEN
 '2014-01-01' AND '2014-03-31'
 GROUP BY DATENAME(MONTH,VISIT_DATE);
 ```
+![SQL3](\assets\images\sql2\3.png){: .align-center} 
 
 **4. Produce a store ranking report, with each store’s rank based on unit sales (sum of 
 item quantity) within their state and overall for the company. Order the report by 
@@ -85,6 +88,7 @@ WHERE STORE_INFO.STORE_NBR = ITEM_SCAN.STORE_NBR
 GROUP BY STATE, STORE_INFO.STORE_NBR
 ORDER BY STATE, UNIT_SALES DESC, STORE_RANK;
 ```
+![SQL4](\assets\images\sql2\4.png){: .align-center} 
 
 #### Enterprise Data Sets on Teradata
 **Database: Dillards**  
@@ -106,6 +110,7 @@ FROM TRANSACT
 WHERE TRAN_DATE >= DATE '2015-11-27' AND 
 TRAN_DATE <= DATE '2015-11-30';
 ```
+![SQL5](\assets\images\sql2\5.png){: .align-center} 
 
 **6. Was there an increase in AMERICA-themed apparel leading up to the 2016
 election? Look for any SKU with a color description containing ‘AMERICA’, and 
@@ -124,6 +129,8 @@ TRAN_DATE <= DATE'2016-10-31'
 GROUP BY EXTRACT(MONTH FROM TRAN_DATE)
 ORDER BY EXTRACT(MONTH FROM TRAN_DATE);
 ```
+![SQL6](\assets\images\sql2\6.png){: .align-center} 
+
 **Database: Sam's Club**  
 **7. How many stores are in each state? Provide a report showing each state and the 
 number of stores it has. Order by the number of stores, descending (and only 
@@ -134,6 +141,7 @@ SELECT STATE, COUNT(STORE_NBR) AS STORE_COUNT FROM STORE_INFO
 GROUP BY STATE
 ORDER BY COUNT(STORE_NBR) DESC;
 ```
+![SQL7](\assets\images\sql2\7.png){: .align-center} 
 
 **8. We want to know what payment methods people are using around the country. 
 Produce a state tender ranking report, with each tender type’s rank based on the 
@@ -152,6 +160,7 @@ WHERE TENDER_TYPE IN (0,8,12,15)
 GROUP BY STATE, TENDER_TYPE
 ORDER BY STATE, STATE_RANK;
 ```
+![SQL8](\assets\images\sql2\8.png){: .align-center} 
 
 #### Building My Own Queries Using Enterprise Datasets
 
@@ -166,5 +175,6 @@ FROM TRANSACT
 GROUP BY STATE, DEPTCENT_DESC
 ORDER BY STATE, SUM(TRAN_AMT) DESC;
 ```
+![SQL9](\assets\images\sql2\9.png){: .align-center} 
 
 
