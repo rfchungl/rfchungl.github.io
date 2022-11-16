@@ -1,0 +1,454 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Business Case: Basket Market Analysis - RUBEN’S PORTFOLIO</title>
+<meta name="description" content="Using Excel and Python to perform market basket/association analysis using dataset from a bakery.">
+
+
+  <meta name="author" content="Ruben Chung">
+  
+  <meta property="article:author" content="Ruben Chung">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="RUBEN'S PORTFOLIO">
+<meta property="og:title" content="Business Case: Basket Market Analysis">
+<meta property="og:url" content="http://localhost:4000/Basket-Market-Analysis/">
+
+
+  <meta property="og:description" content="Using Excel and Python to perform market basket/association analysis using dataset from a bakery.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-11-12T00:00:00-06:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/Basket-Market-Analysis/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Ruben Chung",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="RUBEN'S PORTFOLIO Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          RUBEN'S PORTFOLIO
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">About Me</a>
+            </li><li class="masthead__menu-item">
+              <a href="/posts/">Projects</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="https://media-exp1.licdn.com/dms/image/C4E03AQGcjdyOf5rUuQ/profile-displayphoto-shrink_400_400/0/1555974682520?e=1673481600&v=beta&t=u3V-M4gaPsJ0JoDcQ6LZMvM18lDUYJr1GdigVcZXCBU" alt="Ruben Chung" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Ruben Chung</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>Aspiring Data/Business Analyst with a Passion in Supply Chain</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Fayetteville, Arkansas</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/rfchungl/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/rfchungl" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+            <li><a href="https://instagram.com/rubenzh" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Business Case: Basket Market Analysis">
+    <meta itemprop="description" content="Using Excel and Python to perform market basket/association analysis using dataset from a bakery.">
+    <meta itemprop="datePublished" content="2022-11-12T00:00:00-06:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/Basket-Market-Analysis/" class="u-url" itemprop="url">Business Case: Basket Market Analysis
+</a>
+          </h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this project</h4></header>
+              <ul class="toc__menu"><li><a href="#business-scenario">Business Scenario</a></li><li><a href="#written-memo">Written Memo</a></li><li><a href="#analysis-with-excel">Analysis with Excel</a></li><li><a href="#python-market-analysis">Python Market Analysis</a></li><li><a href="#output">Output</a></li><li><a href="#python">Python</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p>Using Excel and Python to perform market basket/association analysis using dataset from a bakery.</p>
+
+<h3 id="business-scenario">Business Scenario</h3>
+<p>Ayala’s Bakery is a family owned business with more than 30 years on the market delivering bakeries to its customers in Springdale, Arkansas. They updated their POS system a few years ago to keep track of their sales. However, they have not had success in discovering what products the customers like and what they usually like to pair with. Ayala’s Bakery have approached Ruben to dive deep into the data to look for insights and provide recommendations.</p>
+
+<hr />
+
+<h3 id="written-memo">Written Memo</h3>
+<p>To: Ayala’s Bakery Executives<br />
+From: Ruben Chung, Data Analyst<br />
+Subject: Ayala’s Bakery Recommendations<br />
+<br />
+Based on the analyses performed, we found that the top 5 best-selling items are coffee, tea, cake, sandwich, and pastry. Coffee has by far the highest amount sold followed by tea. Interestingly, the time range where these two products are sold the most is between 10-1 pm for coffee and 2-3 pm for tea. Sandwich is best sold between 1-2 pm for lunchtime.<br />
+<br />
+Although coffee and tea are not at the top when it comes to margin, they are good to draw customers when paired with other products such as cake, pastry, and bread, thus, increasing the amount spent by customers. We found that the highest pairing combo is coffee and pastry. On the other hand, we don’t recommend pairing tea and bread. In addition, we recommend discontinuing the sale of muffins as it has the least sale and customers don’t like them.<br />
+<br />
+We recommend preparing enough coffee, tea, pastries, cakes, and sandwiches during the peak time using the time range to avoid stock out. Also, consider doing a marketing campaign that incentive customers to pair coffee or tea with any other products for a discount or loyalty points to increase Ayala’s Bakery revenue.<br />
+<br />
+If you have any questions, please contact me at rfchungl@uark.edu. Your voice matters.<br />
+<br />
+<br />
+Sincerely,<br />
+<br />
+Ruben Chung</p>
+
+<hr />
+
+<h3 id="analysis-with-excel">Analysis with Excel</h3>
+
+<p><img src="https://user-images.githubusercontent.com/115122030/196620687-b6f18dc6-cafb-4b10-a3ae-dd32ac6993d6.png" alt="image" />
+First capture shows the top 5 items that are sold at Bread Basket. You can see that the undisputed top 1 is Coffee that almost quadruple the top 2 which is Tea.<br />
+<br />
+<img src="https://user-images.githubusercontent.com/115122030/196620755-c2e2432b-c6c1-40f6-8bc8-47e0a611bb6c.png" alt="image" /><br />
+Second capture shows the years where Bread Basket was on operation. We clearly see that during 2016, December has the highest number of transactions. This could mean that because the winter season is cold, people tend to go and buy hot beverage to get warm. On the other hand, March of 2017 has the highest number of transactions which triples the amount in transactions from December of 2016.<br />
+<br />
+<img src="https://user-images.githubusercontent.com/115122030/196620794-97d09767-4256-42bb-83a1-33bfec3c641d.png" alt="image" /><br />
+Third capture shows a list of items ranked by margin gain. We can see that the top 5 most sold items in capture 1 are not as profitable as the one shown in the capture above. Although coffee and tea are within top 2 most sold, extra salami or feta and tartine get more margin.<br />
+<br />
+<img src="https://user-images.githubusercontent.com/115122030/196620841-bb6ec1df-4169-40d6-b64c-97354d8b4a4f.png" alt="image" /><br />
+Last capture shows the time where the most sold items are bought. We can see that people tend to buy more tea between 2-3pm, cake between 2-3pm after lunch, sandwich between 1-2pm during lunch time, coffee between 10-1pm, and pastry between 10-11am. I thought that people would buy more coffee in the AM time but it seems that it’s very spread-out and the main time range are between 10-1pm.</p>
+
+<hr />
+<h3 id="python-market-analysis">Python Market Analysis</h3>
+<p><strong>Python:</strong> <a href="https://github.com/rfchungl/Projects-Portfolio/blob/main/MarketBasketAnalysis/basket.py"><code class="language-plaintext highlighter-rouge">Python Code Here</code></a><br />
+<br />
+<strong>The Python code has comments on what does each line do for a better understanding of the program.</strong><br />
+<br />
+<strong>Description:</strong> Using Excel and Python to analyze the data transactions from a bakery to understand the results from the association analysis of the mentioned dataset. This project is supposed to be a business case, thus, the written memo at the end.<br />
+<br />
+<strong>What does this program do?</strong> It first read the csv file named “basket.csv” then it runs association analysis through a few lines of codes using the mlxtend.frequent_patterns apriori and association_rules libraries.<br />
+<br />
+<strong>Things needed to run the Python code:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- import pandas as pd
+- from mlxtend.frequent_patterns import apriori
+- from mlxtend.frequent_patterns import association_rules
+</code></pre></div></div>
+<p><strong>Path to Bread Basket csv</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bread = pd.read_csv(r"/Users/yourusername/Desktop/basket.csv")
+df = bread.groupby(['Transaction','Item']).size().reset_index(name='count')
+breadbasket = (df.groupby(['Transaction', 'Item'])['count']
+          .sum().unstack().reset_index().fillna(0)
+          .set_index('Transaction'))
+</code></pre></div></div>
+<p><strong>Transform values into dataframe</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def df(x):
+    if x &lt;= 0:
+        return 0
+    if x &gt;= 1:
+        return 1
+dataset = breadbasket.applymap(df)
+frequent_itemsets = apriori(dataset, min_support=0.01, use_colnames=True)
+rules = association_rules(frequent_itemsets, metric="lift")
+rules.sort_values('confidence', ascending = False, inplace = True)
+rules.head()
+print(rules)
+</code></pre></div></div>
+<hr />
+
+<h3 id="output">Output</h3>
+<p><img src="https://user-images.githubusercontent.com/115122030/196619281-acf26716-1593-4d0f-9b60-6fb53aaff9b3.png" alt="basket1" />
+<img src="https://user-images.githubusercontent.com/115122030/196619284-b262992c-c730-44cc-aeec-4e673f52e71f.png" alt="basket2" /><br />
+The association analysis using Python shows that the customer is 1.48 times more likely to buy toast then coffee than other customers.</p>
+
+<hr />
+<h3 id="python">Python</h3>
+<p><a href="https://github.com/rfchungl/Projects-Portfolio/blob/main/MarketBasketAnalysis/basket.py">Python File Here</a></p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#analysis" class="page__taxonomy-item p-category" rel="tag">analysis</a><span class="sep">, </span>
+    
+      <a href="/tags/#excel" class="page__taxonomy-item p-category" rel="tag">excel</a><span class="sep">, </span>
+    
+      <a href="/tags/#python" class="page__taxonomy-item p-category" rel="tag">python</a>
+    
+    </span>
+  </p>
+
+
+
+
+      </footer>
+
+      
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Ruben Chung. All Rights Reserved. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,445 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Building a Database and Visualization From Scratch - RUBEN’S PORTFOLIO</title>
+<meta name="description" content="Dashboard made from scratch. It was condensed from a number of CSV files that were put into BigQuery. Afterwards, using BigQuery as the database to build the dashboard.">
+
+
+  <meta name="author" content="Ruben Chung">
+  
+  <meta property="article:author" content="Ruben Chung">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="RUBEN'S PORTFOLIO">
+<meta property="og:title" content="Building a Database and Visualization From Scratch">
+<meta property="og:url" content="http://localhost:4000/From-CSV-To-Database-To-Datastudio/">
+
+
+  <meta property="og:description" content="Dashboard made from scratch. It was condensed from a number of CSV files that were put into BigQuery. Afterwards, using BigQuery as the database to build the dashboard.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-11-09T00:00:00-06:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/From-CSV-To-Database-To-Datastudio/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Ruben Chung",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="RUBEN'S PORTFOLIO Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          RUBEN'S PORTFOLIO
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">About Me</a>
+            </li><li class="masthead__menu-item">
+              <a href="/posts/">Projects</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="https://media-exp1.licdn.com/dms/image/C4E03AQGcjdyOf5rUuQ/profile-displayphoto-shrink_400_400/0/1555974682520?e=1673481600&v=beta&t=u3V-M4gaPsJ0JoDcQ6LZMvM18lDUYJr1GdigVcZXCBU" alt="Ruben Chung" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Ruben Chung</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>Aspiring Data/Business Analyst with a Passion in Supply Chain</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Fayetteville, Arkansas</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/rfchungl/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/rfchungl" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+            <li><a href="https://instagram.com/rubenzh" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Building a Database and Visualization From Scratch">
+    <meta itemprop="description" content="Dashboard made from scratch. It was condensed from a number of CSV files that were put into BigQuery. Afterwards, using BigQuery as the database to build the dashboard.">
+    <meta itemprop="datePublished" content="2022-11-09T00:00:00-06:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/From-CSV-To-Database-To-Datastudio/" class="u-url" itemprop="url">Building a Database and Visualization From Scratch
+</a>
+          </h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this project</h4></header>
+              <ul class="toc__menu"><li><a href="#business-problem">Business Problem</a></li><li><a href="#procedure">Procedure</a><ul><li><a href="#part-i">Part I</a></li><li><a href="#part-ii">Part II</a></li><li><a href="#part-iii">Part III</a><ul><li><a href="#week-1">Week #1</a></li><li><a href="#week-2">Week #2</a></li></ul></li><li><a href="#part-iv">Part IV</a></li></ul></li><li><a href="#final-result">Final Result</a></li><li><a href="#conclusion">Conclusion</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p>Dashboard made from scratch. It was condensed from a number of CSV files that were put into BigQuery. Afterwards, using BigQuery as the database to build the dashboard.</p>
+
+<p><strong>Visualization:</strong> <a href="https://datastudio.google.com/reporting/2004c153-b0d4-42e1-8bee-1f3c6eaa2fa8"><code class="language-plaintext highlighter-rouge">Click Here For Visualization</code></a>
+<br /><br />
+<strong>Note:</strong> The dataset was modified in order to protect the privacy of the tutors and students. The date of the sample dataset is from 08-23-2021 to 10-23-2021.
+<br /><br />
+<strong>Description:</strong> Condensing all weekly CSV files from tutoring into a database and use it to feed the dashboard.
+<br /></p>
+
+<hr />
+
+<h3 id="business-problem">Business Problem</h3>
+<p>Because the administrator in charge to maintain the booking systems at the university left, nobody was in charge to maintain it. The database would break by itself on days where a lot of web traffics happen. In order to prevent a disaster, the tutoring director decided to save the information of the booking appointments every week resulting in many CSV files. When there is a need to know something about tutoring, how many students came, what class was requested the most, etc, the director had to merge all the CSV files taking a lot of time just to get an answer. <br /><br />
+In order to reduce the time, I decided to condense all the CSV files into a database. In this case, I used free softwares to do that due to this being something that I purely wanted to do…not that I was required. Therefore, I chose the Google Analytics pack as the tools and used BigQuery to centralize all the booking informations and use DataStudio (Looker Studio) to provide visibility. Throughout my time working as a Graduate Assistant, I updated weekly the database once I was able to get to the CSV file.</p>
+
+<hr />
+
+<h3 id="procedure">Procedure</h3>
+
+<p>I could have done it two ways: <br />
+  1- Merge all the CSV files into Excel file and upload it to BigQuery <br />
+  2- Upload weekly CSV file into BigQuery<br />
+<br />
+To show the full functionality of how I maintained a database, I am going to showcase method #2.</p>
+
+<h4 id="part-i">Part I</h4>
+
+<p>I created a bucket to save the CSV file digitally. Due to BigQuery being a web-based database, it cannot use your own desktop to find the path to the file you are going to upload.<br />
+<br />
+<img src="https://user-images.githubusercontent.com/115122030/197105095-d1c834f0-5db3-46f6-8b57-dabd267ed68f.JPG" alt="bucket" />
+I was able to start the database with three weeks of data sample. After that, every week when I got the CSV file from the director, I would upload it into the bucket.</p>
+
+<h4 id="part-ii">Part II</h4>
+
+<p>Creating the database and setting up the schema.</p>
+
+<p><img src="https://user-images.githubusercontent.com/115122030/197105405-42d1f751-cdd6-42be-948f-881eaaa1f00e.JPG" alt="bigquery" />
+After creating the database in BigQuery, you can upload your first CSV file as the schema automatically or you can write by yourself.</p>
+
+<h4 id="part-iii">Part III</h4>
+
+<p>In order to maintain it, I had to do a weekly BigQuery update to load the weekly report from the director.</p>
+
+<p>Example of data loading:</p>
+
+<h5 id="week-1">Week #1</h5>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>LOAD DATA INTO student-success-center-326917.Fall2021.datasetfall2021
+FROM FILES (
+  format = 'CSV',
+  uris = ['gs://sscbucket/08-29-2021 to 09-04-2021.csv']);
+</code></pre></div></div>
+
+<h5 id="week-2">Week #2</h5>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>LOAD DATA INTO student-success-center-326917.Fall2021.datasetfall2021
+FROM FILES (
+  format = 'CSV',
+  uris = [' gs://sscbucket/09-05-2021 to 09-11-2021.csv']);
+</code></pre></div></div>
+
+<p><a href="https://github.com/rfchungl/Projects-Portfolio/blob/main/GoogleAnalytics/Load%20query.txt"><code class="language-plaintext highlighter-rouge">Click here for the rest of the queries</code></a></p>
+
+<h4 id="part-iv">Part IV</h4>
+
+<p>Finally, after having the database, I used Google DataStudio now called <em>(Locker Studio)</em> to visualize what we have about booking appointments.</p>
+
+<p><img src="https://user-images.githubusercontent.com/115122030/197105946-446a7fe3-8e9f-4916-a0fb-35874e92f74a.JPG" alt="database" />
+When selecting the source of the data in DataStudio, select BigQuery as the database and choose the path of your dataset. In this case, I already created it on Part II.</p>
+
+<hr />
+
+<h3 id="final-result">Final Result</h3>
+
+<p><img src="https://images.squarespace-cdn.com/content/v1/6301adc291fbaf2a00843f8f/976c7dfb-22d3-461c-8599-d67442d20e2f/fall2021.PNG?format=1000w" alt="image" /></p>
+
+<hr />
+
+<h3 id="conclusion">Conclusion</h3>
+<p>This way, I automated something that I basically had to pull every week for statistic purposes in a single dashboard where my supervisor would be able to check saving us hours of work.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#sql" class="page__taxonomy-item p-category" rel="tag">sql</a><span class="sep">, </span>
+    
+      <a href="/tags/#visualization" class="page__taxonomy-item p-category" rel="tag">visualization</a>
+    
+    </span>
+  </p>
+
+
+
+
+      </footer>
+
+      
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Ruben Chung. All Rights Reserved. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

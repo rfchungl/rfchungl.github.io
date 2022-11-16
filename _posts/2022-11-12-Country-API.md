@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "Python: Getting University Names Based On The Country Inserted"
-description: "Combining Python and API to generate university names once the name of the country is inserted"
+excerpt: "Combining Python and API to generate university names once the name of the country is inserted"
 output: html_document
 tags: [python]
 comments: false
@@ -9,6 +9,8 @@ author_profile: true
 toc: true
 toc_sticky: true
 ---
+{{ page.excerpt }}
+
 ### Description
 Using API and JSON library to create a Python program.  
 

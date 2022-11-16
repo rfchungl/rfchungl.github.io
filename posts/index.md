@@ -14,3 +14,5 @@ Most of the projects have sumaries and are explained in a way that everybody cou
 high level written details. 
 
 If you are curious about one of my projects, please shoot me an email at rfchungl@uark.edu.
+
+<meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">

@@ -1,0 +1,553 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Business Case: OzarkRide - RUBEN’S PORTFOLIO</title>
+<meta name="description" content="Using Excel and SAS to perform business and statistics analysis such as ANOVA and regressions to help OzarkRide to expand.">
+
+
+  <meta name="author" content="Ruben Chung">
+  
+  <meta property="article:author" content="Ruben Chung">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="RUBEN'S PORTFOLIO">
+<meta property="og:title" content="Business Case: OzarkRide">
+<meta property="og:url" content="http://localhost:4000/OzarkRide/">
+
+
+  <meta property="og:description" content="Using Excel and SAS to perform business and statistics analysis such as ANOVA and regressions to help OzarkRide to expand.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-11-13T00:00:00-06:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/OzarkRide/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Ruben Chung",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="RUBEN'S PORTFOLIO Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          RUBEN'S PORTFOLIO
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">About Me</a>
+            </li><li class="masthead__menu-item">
+              <a href="/posts/">Projects</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="https://media-exp1.licdn.com/dms/image/C4E03AQGcjdyOf5rUuQ/profile-displayphoto-shrink_400_400/0/1555974682520?e=1673481600&v=beta&t=u3V-M4gaPsJ0JoDcQ6LZMvM18lDUYJr1GdigVcZXCBU" alt="Ruben Chung" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Ruben Chung</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>Aspiring Data/Business Analyst with a Passion in Supply Chain</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Fayetteville, Arkansas</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/rfchungl/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/rfchungl" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+            <li><a href="https://instagram.com/rubenzh" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Business Case: OzarkRide">
+    <meta itemprop="description" content="Using Excel and SAS to perform business and statistics analysis such as ANOVA and regressions to help OzarkRide to expand.">
+    <meta itemprop="datePublished" content="2022-11-13T00:00:00-06:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/OzarkRide/" class="u-url" itemprop="url">Business Case: OzarkRide
+</a>
+          </h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this project</h4></header>
+              <ul class="toc__menu"><li><a href="#business-scenario">Business Scenario</a><ul><li><a href="#response">Response</a></li><li><a href="#recommendation">Recommendation</a></li></ul></li><li><a href="#appendix">Appendix</a><ul><li><a href="#summary-statistics">Summary Statistics</a></li><li><a href="#visualization-and-descriptive-take-away">Visualization and Descriptive Take Away</a></li></ul></li><li><a href="#hypothesis-testing">Hypothesis Testing</a><ul><li><a href="#anova-testings">ANOVA Testings</a><ul><li><a href="#levines-testing">Levine’s Testing</a></li><li><a href="#one-way-anova-testing">One-Way ANOVA Testing</a></li><li><a href="#tukeys-test">Tukey’s Test</a></li><li><a href="#one-way-anova-take-away">One-Way ANOVA Take Away</a></li></ul></li><li><a href="#regression-analysis">Regression Analysis</a><ul><li><a href="#multiple-linear-regression-take-away">Multiple Linear Regression Take Away</a></li></ul></li></ul></li><li><a href="#files">Files</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p>Using Excel and SAS to perform business and statistics analysis such as ANOVA and regressions to help OzarkRide to expand.</p>
+
+<h3 id="business-scenario">Business Scenario</h3>
+<p>OzarkRide is a local bike rental founded in 2011 from Fayetteville which focuses on a 
+sustainable and affordable way to reach from point A to point B using environment-friendly 
+technology. OzarkRide is planning to open a new branch in a city similar to Fayetteville within a 
+few months. They have hired us at Fay Consulting to dive deep into their data and provide 
+insights on the findings.<br />
+<br />
+One of the main and most important questions they have is which month should they
+launch their service? Is there anything other than the month they should consider? Support 
+with analytics.</p>
+
+<hr />
+<h4 id="response">Response</h4>
+<p><br />
+There are more than months that OzarkRide should consider when planning to open a 
+new branch in a different city. At Fay Consulting, we believe that besides months, seasonality, 
+weather, and population should be considered. As seasons are tied with the weather, by 
+common sense we know that when it is cold outside, people do not do many outdoor activities 
+and rather have indoor activities. The same when it rains; people try to stay dry and will not be 
+riding a bike.<br />
+<br />
+During our research, we found that Fall and Summer are the best time to target
+expansion. Based on the operation data, Fall has the highest number of users followed by 
+Summer. We believe that beginning the summer the month of - May through October when the 
+fall season ends - is the peak time to expand the operation in a new city.<br />
+<br />
+Knowing the population density also plays a very important role in the success of the 
+expansion. Fayetteville is a college town. Therefore, there is a high density in population during 
+school time resulting in more people using the bike rental service. Depending on where 
+OzarkRide plans to expand, a study of the population should be performed before making a 
+decision. Unfortunately, the dataset provided does not have the information necessary to 
+analyze the population.</p>
+
+<h4 id="recommendation">Recommendation</h4>
+<p>Our recommendation at Fay Consulting for OzarkRide is the following:</p>
+<ul>
+  <li>Have in mind to expand either during Summertime or during Fall. The earlier OzarkRide 
+expand, the more exposure to the population.</li>
+  <li>The best months to expand is in the range between May and October; we believe that a 
+month in the early middle of the range is the best-case scenario. In this case, the 
+months would be May, June, July, and August based on the analysis performed. The 
+later OzarkRide goes, the less exposure the company has to new customers due to 
+competition.</li>
+  <li>Perform further analysis to study the population of the city where OzarkRide wants to 
+open the new branch. This is key if OzarkRide wants to have higher traffic in the bike 
+renting service.</li>
+  <li>Study possibly competitions that provide similar services as OzarkRide. The more service 
+varieties the targeted city has, the fewer customers the company gets in the launch
+unless a strong marketing campaign with promotions is included.</li>
+</ul>
+
+<hr />
+
+<h3 id="appendix">Appendix</h3>
+<h4 id="summary-statistics">Summary Statistics</h4>
+<p><img src="\assets\images\summary statistics.PNG" alt="Summary Statistics" class="align-center" /></p>
+<ul>
+  <li>The season with the highest average mean is Fall followed by Summer.</li>
+  <li>The season with the lowest average mean is Spring. <em>(This is skewed because the data captured is wrong…January and February are considered winter, but the data has it as 
+spring)</em><br />
+<br />
+<br />
+<img src="\assets\images\total users by months.JPG" alt="Total Users by Months" class="align-center" /></li>
+  <li>May through October have very similar number in total users with August being the highest by just 5,000.<br />
+<br />
+<br />
+<img src="\assets\images\representation of users by season.JPG" alt="Representation of Users by Seasons" class="align-center" /></li>
+  <li>We clearly see that Fall has the highest representation of users followed by Summer.<br />
+<br />
+<br />
+<img src="\assets\images\user by temperature.JPG" alt="Users by Temperature" class="align-center" /></li>
+  <li>Low temperature means less people using OzarkRide service. On the other hand, as the temperature increase, the amount of rental increase for both casual and registered users.</li>
+</ul>
+
+<h4 id="visualization-and-descriptive-take-away">Visualization and Descriptive Take Away</h4>
+<ul>
+  <li>Having the highest number of users during Fall and Summer is very normal. The weather during those two seasons is warm and people usually do outdoor activities in this case, biking.</li>
+  <li>The reason why January and February have the lowest number of users is that it is the beginning of cold weather and people prefer to stay home or do indoor activities. Unfortunately, the data capture has spring starting in January and February, thus, skewing the spring data in favor of winter.</li>
+  <li>OzarkRide has two types of clients: casual users and registered users. Casual users make up about 18.8% of the revenue while registered users make up about 82% of the company’s revenue. Although the difference between casual users and registered users is alarming having 82% registered users is a very good number.</li>
+</ul>
+
+<hr />
+<h3 id="hypothesis-testing">Hypothesis Testing</h3>
+<h4 id="anova-testings">ANOVA Testings</h4>
+<p><em>OzarkRide claim that the number of users is similar throughout the four seasons. Is the average number of users different throughout the four seasons?</em></p>
+
+<h5 id="levines-testing"><em>Levine’s Testing</em></h5>
+<p><img src="\assets\images\One Way 1.PNG" alt="Levene's Testing" class="align-center" /></p>
+<blockquote>
+  <ol>
+    <li>Levine’s Testing<br />
+Ho: All variances are equal<br />
+Ha: At least one variance is different</li>
+    <li>α = 0.05</li>
+    <li>F = 170.65</li>
+    <li>p-value = 0.001 &lt; 0.05 = α</li>
+    <li>Reject the null hypothesis (proceed with caution)</li>
+    <li>Conclusion: At least one variance is different.</li>
+  </ol>
+</blockquote>
+
+<h5 id="one-way-anova-testing"><em>One-Way ANOVA Testing</em></h5>
+<p><img src="\assets\images\One Way 2.PNG" alt="One-Way Anova" class="align-center" /></p>
+<blockquote>
+  <ol>
+    <li>One-Way ANOVA Testing<br />
+Ho: All means are equal<br />
+Ha: At least one mean is different</li>
+    <li>α = 0.05</li>
+    <li>F = 409.18</li>
+    <li>p-value = 0.001 &lt; 0.05 = alpha</li>
+    <li>Reject the null hypothesis</li>
+    <li>There is a significant difference in the mean between seasons and the number of total users.</li>
+  </ol>
+</blockquote>
+
+<h5 id="tukeys-test"><em>Tukey’s Test</em></h5>
+<p><img src="\assets\images\One Way 3 Tukey.PNG" alt="Tukey's Test" class="align-center" /><br />
+The difference in the mean happens between Fall and Summer, Fall and Winter, and Fall and Spring. However, Summer and Winter means are pretty similar.</p>
+
+<h5 id="one-way-anova-take-away">One-Way ANOVA Take Away</h5>
+<ul>
+  <li>There is no statistical evidence to support OzarkRide’s claim of having a similar number of users throughout the four seasons.</li>
+  <li>Running ANOVA makes sense in this case as we are trying to understand how the different seasons affect the number of users.</li>
+  <li>Tukey’s test helps us understand that the average mean users of the seasons are significantly different. We can support that by looking at Tukey’s graph where Fall – Summer, Fall -Winter, Fall – Spring is significantly different, and only Summer – Winter is similar. (Having *** means they are different)</li>
+</ul>
+
+<h4 id="regression-analysis">Regression Analysis</h4>
+<p><em>From all the operation data, can temperature, humidity, and windspeed predict the total users?</em><br />
+<img src="\assets\images\Multiple Regression 1.PNG" alt="Regression Analysis 1" class="align-center" /></p>
+<blockquote>
+  <ol>
+    <li>Overall model is significant</li>
+    <li>temp is significant<br />
+hum is significant<br />
+windspeed is significant</li>
+    <li>b0 = 178.81,
+b1 = 362.53,
+b2 = -273.46,
+b3 = 26.32</li>
+    <li>Adj-R = 0.2512 or 25.12% of the variability can be explained by the total users, temperature, humidity, and windspeed.</li>
+    <li>Based on point #3:
+      <ul>
+        <li>If we hold all other independent variables constant, having one user increases the temperature by 362.53.</li>
+        <li>If we hold all other independent variables constant, having one user decreases the humidity by -273.46.</li>
+        <li>If we hold all other independent variables constant, having one user decreases the windspeed by 26.32.</li>
+      </ul>
+    </li>
+  </ol>
+</blockquote>
+
+<p><em>From all the operation data, can temperature predict the number of casual users, and registered users?</em><br />
+<img src="\assets\images\Multiple Regression 2.PNG" alt="Regression Analysis 2" class="align-center" /></p>
+<blockquote>
+  <ol>
+    <li>Overall model is significant</li>
+    <li>casual is significant<br />
+registered is significant</li>
+    <li>b0 = 0.42,
+b1 = 0.002,
+b2 = 0.0002</li>
+    <li>Adj-R = 0.2253 or 22.53% of the variability can be explained by the temperature, casual users, and registered users.</li>
+    <li>Based on point #3:
+      <ul>
+        <li>If we hold all other independent variables constant, increasing our temperature by 1 will increase casual users by 0.002.</li>
+        <li>If we hold all other independent variables constant, increasing our temperature by 1 will increase registered users by 0.0002</li>
+      </ul>
+    </li>
+  </ol>
+</blockquote>
+
+<h5 id="multiple-linear-regression-take-away">Multiple Linear Regression Take Away</h5>
+<ul>
+  <li>Two regression analyses were run just to make sure we were not missing anything.</li>
+  <li>On the first regression analysis, we can’t just add one user and have our temperature and windspeed increase while humidity decrease. It is not possible as we cannot control the weather.</li>
+  <li>In the second regression analysis, the result makes more sense because if the temperature increases there will be more people riding a bike. However, that is going to go until a certain point in the temperature. If the temperature is too high, it will be too hot outside, so people will not ride a bike. Therefore, as it gets warmer, more rental service will be used.</li>
+</ul>
+
+<hr />
+<h3 id="files">Files</h3>
+<p><a href="https://github.com/rfchungl/rchungl.github.io/blob/master/pages/Original%20Dataset.csv">Raw Dataset</a><br />
+<a href="https://github.com/rfchungl/rchungl.github.io/blob/master/pages/OzarkBike%20Analysis.xlsx">Working Dataset</a><br />
+<a href="https://github.com/rfchungl/rchungl.github.io/blob/master/pages/OzarkBike.egp">SAS Exploration</a><br />
+<a href="https://github.com/rfchungl/rchungl.github.io/blob/master/pages/OzarkRide.pdf">OzarkRide Report Version</a></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#analysis" class="page__taxonomy-item p-category" rel="tag">analysis</a><span class="sep">, </span>
+    
+      <a href="/tags/#excel" class="page__taxonomy-item p-category" rel="tag">excel</a><span class="sep">, </span>
+    
+      <a href="/tags/#sas" class="page__taxonomy-item p-category" rel="tag">sas</a>
+    
+    </span>
+  </p>
+
+
+
+
+      </footer>
+
+      
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Ruben Chung. All Rights Reserved. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

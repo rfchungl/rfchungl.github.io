@@ -1,0 +1,435 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Python: Automated Weather Notification Using SMS - RUBEN’S PORTFOLIO</title>
+<meta name="description" content="Scrapping weather from Google using Python then utilizing a SMS service to send customized messages based on the weather.">
+
+
+  <meta name="author" content="Ruben Chung">
+  
+  <meta property="article:author" content="Ruben Chung">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="RUBEN'S PORTFOLIO">
+<meta property="og:title" content="Python: Automated Weather Notification Using SMS">
+<meta property="og:url" content="http://localhost:4000/Automated-weather-SMS/">
+
+
+  <meta property="og:description" content="Scrapping weather from Google using Python then utilizing a SMS service to send customized messages based on the weather.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-11-09T00:00:00-06:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/Automated-weather-SMS/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Ruben Chung",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="RUBEN'S PORTFOLIO Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          RUBEN'S PORTFOLIO
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">About Me</a>
+            </li><li class="masthead__menu-item">
+              <a href="/posts/">Projects</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="https://media-exp1.licdn.com/dms/image/C4E03AQGcjdyOf5rUuQ/profile-displayphoto-shrink_400_400/0/1555974682520?e=1673481600&v=beta&t=u3V-M4gaPsJ0JoDcQ6LZMvM18lDUYJr1GdigVcZXCBU" alt="Ruben Chung" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Ruben Chung</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>Aspiring Data/Business Analyst with a Passion in Supply Chain</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Fayetteville, Arkansas</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/rfchungl/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/rfchungl" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+            <li><a href="https://instagram.com/rubenzh" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Python: Automated Weather Notification Using SMS">
+    <meta itemprop="description" content="Scrapping weather from Google using Python then utilizing a SMS service to send customized messages based on the weather.">
+    <meta itemprop="datePublished" content="2022-11-09T00:00:00-06:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/Automated-weather-SMS/" class="u-url" itemprop="url">Python: Automated Weather Notification Using SMS
+</a>
+          </h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this project</h4></header>
+              <ul class="toc__menu"><li><a href="#description">Description</a><ul><li><a href="#what-does-this-program-do">What does this program do?</a></li></ul></li><li><a href="#code">Code</a></li><li><a href="#output">Output</a></li><li><a href="#conclusion">Conclusion</a></li><li><a href="#python">Python</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p>Scrapping weather from Google using Python then utilizing a SMS service to send customized messages based on the weather.</p>
+
+<h3 id="description">Description</h3>
+<p>When I arrived to the United States, there were days when I wore a sweater and jacket, and the day was not that cold. I felt very dumb walking down to my classes while other students were wearing t-shirts, shorts, and sandals. 
+I know that we can check the weather on our cellphones. However, there is too much information like humidity, water density, weather variation between hours, air quality, etc. I wanted something simpler that could just tell me the weather condition and the temperature. I do not check my emails first thing in the morning, so I did not want them to be sent to my email. Instead, I wanted something quick like an SMS.</p>
+
+<h4 id="what-does-this-program-do">What does this program do?</h4>
+<p>This Python program scrap the weather data from Google depending on the location you put and is gathered through a few lines of Python code using the BeautifulSoup library. Then, it is sent to your phone through a SMS service (A token is needed for this).
+——————————————————</p>
+<h3 id="code">Code</h3>
+<p>** Things needed to run the Python code:**</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- import schedule
+- import requests
+- from bs4 import BeautifulSoup
+- from twilio.rest import Client
+- Token from Twilio (They offer 15 days trial)
+</code></pre></div></div>
+
+<p><strong>Things needed to get my sms going</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>account_sid = "insert account from twilio"
+auth_token  = "insert token"
+# Authenticator to get to twilio
+client = Client(account_sid, auth_token)
+</code></pre></div></div>
+
+<p><strong>Defining the block of code as weathercondition</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def weathercondition():
+# Weather city
+	city = "Fayetteville"
+# Creating url and requests instance
+	soup = BeautifulSoup(requests.get(f'https://www.google.com/search?q=weather+in+{city}').text, "html.parser")
+	#print(soup.prettify()) // this print function is disabled but I put it in here in case you want to see if the line is working.
+</code></pre></div></div>
+<p><strong>Catching what I need from beautiful soup and defining my variables</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	temperature = soup.find('div', class_= 'BNeawe iBp4i AP7Wnd').text # BNeawe iBp4i AP7Wnd is obtained by inspecting and finding the line that contains the temperature
+	region = soup.find('span', class_= 'BNeawe tAd8D AP7Wnd').text # BNeawe tAd8D AP7Wnd is obtained by inspecting and finding the line that contains the region (Fayetteville, AR)
+	day_and_weather = soup.find('div', class_= 'BNeawe tAd8D AP7Wnd').text # BNeawe iBp4i AP7Wnd is obtained by inspecting and finding the line that contains the day and type of weather
+# Day_and_weather will print the day, hour, and the type of weather...I only need the weather condition so I split and print index 1
+	condition = day_and_weather.split('\n')[1]
+</code></pre></div></div>
+
+<p><strong>Here is the condition needed to send me the sms. As long as the condition type is not 0, it will always send me a sms with the weather condition</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Alternatively, if I wanted it to send me a sms when on rainy days, I could do that too
+# Unfortunately, if you want to change the number to sent, you will have to pay as this is a free trial
+	if condition != 0:
+		message = client.messages.create(to="+14795026472", from_="+16084475947", body=f"Good morning, Ruben!\nWeather condition for today is {condition} and temperature is {temperature} in {region}.")
+		print(message.sid)
+		print("Message Sent!")
+</code></pre></div></div>
+
+<p><strong>Every day at a specific time will send me a sms reminder of the weather and weathercondition() is called. In my case, I will set it up when I wake up at 7:00AM</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>schedule.every().day.at("07:00").do(weathercondition)
+# As long as the condition is true, it will run
+while True:
+	schedule.run_pending()
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="output">Output</h3>
+<p><img src="https://user-images.githubusercontent.com/115122030/196613363-0caf92c0-1be7-43bc-9597-c05c4fc980a7.PNG" alt="output" />
+<em>The end result is once you have the program running, everyday at 7:00 AM in the morning will send you a SMS stating how is the weather condition and what you need to wear depending on how you coded it.</em>
+<br /></p>
+
+<hr />
+<h3 id="conclusion">Conclusion</h3>
+<p>As you can see, with a few line of codes plus the authetication code from twilio we can create a personalized SMS reminder of the weather.</p>
+
+<hr />
+<h3 id="python">Python</h3>
+<p><a href="https://github.com/rfchungl/Projects-Portfolio/blob/main/Weather_Scrapping/Weather_Scrapper.py"><code class="language-plaintext highlighter-rouge">Python File Here</code></a><br />
+The Python code has comments (pseudo-code) on what does each line do for a better understanding of the program.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#python" class="page__taxonomy-item p-category" rel="tag">python</a>
+    
+    </span>
+  </p>
+
+
+
+
+      </footer>
+
+      
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Ruben Chung. All Rights Reserved. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

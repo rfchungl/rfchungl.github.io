@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "SQL Dump - Part 1"
-description: "Introductory SQL statements with outputs"
+excerpt: "Introductory SQL statements with outputs"
 output: html_document
 tags: [sql]
 comments: false
@@ -9,6 +9,8 @@ author_profile: true
 toc: true
 toc_sticky: true
 ---
+{{ page.excerpt }}
+
 ### Description
 A mix of SQL problems that involves aggregate functions and joins. 
 

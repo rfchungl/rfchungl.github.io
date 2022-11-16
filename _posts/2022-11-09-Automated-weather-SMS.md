@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "Python: Automated Weather Notification Using SMS"
-description: "Scrapping weather from Google using Python then utilizing a SMS service to send customized messages based on the weather."
+excerpt: "Scrapping weather from Google using Python then utilizing a SMS service to send customized messages based on the weather."
 output: html_document
 tags: [python]
 comments: false
@@ -9,6 +9,8 @@ author_profile: true
 toc: true
 toc_sticky: true
 ---
+{{ page.excerpt }}
+
 ### Description
 When I arrived to the United States, there were days when I wore a sweater and jacket, and the day was not that cold. I felt very dumb walking down to my classes while other students were wearing t-shirts, shorts, and sandals. 
 I know that we can check the weather on our cellphones. However, there is too much information like humidity, water density, weather variation between hours, air quality, etc. I wanted something simpler that could just tell me the weather condition and the temperature. I do not check my emails first thing in the morning, so I did not want them to be sent to my email. Instead, I wanted something quick like an SMS. 

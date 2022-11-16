@@ -1,0 +1,676 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-11-16T09:59:02-06:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">RUBEN’S PORTFOLIO</title><author><name>Ruben Chung</name></author><entry><title type="html">SQL Dump - Part 2</title><link href="http://localhost:4000/SQL-Dump-Part-2/" rel="alternate" type="text/html" title="SQL Dump - Part 2" /><published>2022-11-16T00:00:00-06:00</published><updated>2022-11-16T00:00:00-06:00</updated><id>http://localhost:4000/SQL-Dump-Part-2</id><content type="html" xml:base="http://localhost:4000/SQL-Dump-Part-2/"><![CDATA[<p>Intermediate SQL statements with outputs</p>
+
+<h3 id="description">Description</h3>
+<p>A mix of SQL problems that involves aggregate functions, joins, and window functions.</p>
+
+<hr />
+<h3 id="problems">Problems</h3>
+<h4 id="enterprise-data-sets-on-sql-server">Enterprise Data Sets on SQL Server</h4>
+<p><strong>Database: Dillards</strong></p>
+
+<p><strong>1.What total quantity of products from brand Nike that has been sold to date?</strong><br />
+(Note: each record in the TRANSACT table is a single sale of an item. Label your result 
+column UNITS_SOLD.)</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SQL Query:
+SELECT COUNT(TRANSACT.TRANSACTION_ID) AS UNITS_SOLD 
+FROM SKU
+    LEFT JOIN TRANSACT ON SKU.SKU = TRANSACT.SKU
+WHERE SKU.BRAND_NAME = 'NIKE'
+GROUP BY SKU.BRAND_NAME;
+</code></pre></div></div>
+
+<p><strong>2. We received a request from our pricing manager for a report containing separate 
+rows for every type of price record and value for a product. Let’s start by writing a 
+query just for product SKU 1137460, and two stores: 171 and 723. The result should 
+contain four columns: the SKU, the STORE, a column specifying the type of price 
+record (cost, retail, original, or sale - these are in the SKU_STORE and TRANSACT 
+tables), and another column with the price value. Duplicate rows should not be 
+included, but any type of record may have multiple results.</strong><br />
+<em>(HINT: each type of price record is a separate query, and we need to combine the results into a single list).</em></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT SKU, STORE,'RETAIL' AS TYPE, RETAIL AS 'VALUE'
+FROM SKU_STORE
+WHERE SKU = '1137460' AND STORE IN (171 , 723)
+UNION
+SELECT SKU, STORE, 'ORIGINAL', ORIG_PRICE
+FROM TRANSACT
+WHERE SKU = '1137460' AND STORE IN (171 , 723)
+UNION
+SELECT SKU, STORE, 'SALE', SALE_PRICE
+FROM TRANSACT
+WHERE SKU = '1137460' AND STORE IN (171 , 723)
+UNION
+SELECT SKU, STORE,'COST', COST
+FROM SKU_STORE
+WHERE SKU = '1137460' AND STORE IN (171 , 723);
+</code></pre></div></div>
+
+<p><strong>Database: Sam’s Club</strong><br />
+<strong>3. We want to look at meat price trends. What was the average retail price for 
+BOLOGNA by month between January and March of 2014?</strong><br />
+<em>Note: this data set only contains those months but include them in your query 
+constraints for completeness.</em></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT DATENAME(MONTH,VISIT_DATE) AS MONTH2014 ,
+CAST(AVG(RETAIL_PRICE) AS DECIMAL(4,2)) AVG_PRICE 
+FROM ITEM_SCAN
+    INNER JOIN ITEM_DESC ON ITEM_SCAN.SCAN_ID = ITEM_DESC.ITEM_NBR
+WHERE ITEM_DESC.PRIMARY_DESC = 'BOLOGNA' AND VISIT_DATE BETWEEN
+'2014-01-01' AND '2014-03-31'
+GROUP BY DATENAME(MONTH,VISIT_DATE);
+</code></pre></div></div>
+
+<p><strong>4. Produce a store ranking report, with each store’s rank based on unit sales (sum of 
+item quantity) within their state and overall for the company. Order the report by 
+state and rank within the state.</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT STORE_INFO.STORE_NBR AS STORE, STATE, SUM(UNIT_QTY) AS
+UNIT_SALES,
+RANK() OVER(ORDER BY SUM(UNIT_QTY) DESC) AS STORE_RANK
+FROM STORE_INFO, ITEM_SCAN
+WHERE STORE_INFO.STORE_NBR = ITEM_SCAN.STORE_NBR
+GROUP BY STATE, STORE_INFO.STORE_NBR
+ORDER BY STATE, UNIT_SALES DESC, STORE_RANK;
+</code></pre></div></div>
+
+<h4 id="enterprise-data-sets-on-teradata">Enterprise Data Sets on Teradata</h4>
+<p><strong>Database: Dillards</strong></p>
+
+<p><strong>5. Compare our Black Friday weekend sales for 2014 (11/28 to 12/1, 2014) and 2015
+(11/27 to 11/30, 2015). You can either provide a total value across these days for 
+each year, or the values for each day.</strong><br />
+<em>Note: Teradata date formats can be a little tricky. You can use the DATE function to convert a string value to a date for 
+comparison (e.g., WHERE TRAN_DATE &gt;= DATE ‘2015-11-27’).</em></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DATABASE WCOB_DILLARDS;
+SELECT SUM(TRAN_AMT) AS BLACK_FRIDAY_SALE
+FROM TRANSACT
+WHERE TRAN_DATE &gt;= DATE'2014-11-28' AND
+TRAN_DATE &lt;= DATE'2014-12-01'
+UNION
+SELECT SUM (TRAN_AMT)
+FROM TRANSACT
+WHERE TRAN_DATE &gt;= DATE '2015-11-27' AND 
+TRAN_DATE &lt;= DATE '2015-11-30';
+</code></pre></div></div>
+
+<p><strong>6. Was there an increase in AMERICA-themed apparel leading up to the 2016
+election? Look for any SKU with a color description containing ‘AMERICA’, and 
+return the total transaction amounts for these items by month for the year 2016. 
+Order the results by month.</strong><br />
+<em>Note: Teradata date formats are tricky here as well. In SQL Server, the YEAR() and MONTH() functions are very simple. The equivalent for MONTH(TRAN_DATE) in 
+Teradata is EXTRACT(MONTH from TRAN_DATE). Also, the data ends mid-October, so you should only see numbers for the first 10 months.</em></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DATABASE WCOB_DILLARDS;
+SELECT extract(MONTH FROM TRAN_DATE) AS MONTH_2016, SUM(TRAN_AMT) AS 
+TOTAL
+FROM TRANSACT
+    INNER JOIN SKU ON SKU.SKU = TRANSACT.SKU
+WHERE COLOR LIKE '%AMERICA%' AND TRAN_DATE&gt;= DATE'2016-01-01' AND 
+TRAN_DATE &lt;= DATE'2016-10-31'
+GROUP BY EXTRACT(MONTH FROM TRAN_DATE)
+ORDER BY EXTRACT(MONTH FROM TRAN_DATE);
+</code></pre></div></div>
+<p><strong>Database: Sam’s Club</strong><br />
+<strong>7. How many stores are in each state? Provide a report showing each state and the 
+number of stores it has. Order by the number of stores, descending (and only 
+include the first 10 results in your screenshot).</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DATABASE WCOB_SAMS_STOREVISITS;
+SELECT STATE, COUNT(STORE_NBR) AS STORE_COUNT FROM STORE_INFO
+GROUP BY STATE
+ORDER BY COUNT(STORE_NBR) DESC;
+</code></pre></div></div>
+
+<p><strong>8. We want to know what payment methods people are using around the country. 
+Produce a state tender ranking report, with each tender type’s rank based on the 
+amount tendered (sum of tender amount) within their state. Only include our four 
+most common tender types: 0, 8, 12, and 15. Order the report by state and rank 
+within the state.</strong><br />
+<em>Note: The full result set will contain 196 rows, only include the first 10 in your results.</em></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DATABASE WCOB_SAMS_INTEGRATED;
+SELECT STATE, TENDER_TYPE, SUM(TENDER_AMT) AS TOTAL_TENDER,
+RANK()OVER(PARTITION BY STATE ORDER BY SUM(TENDER_AMT) DESC ) AS 
+STATE_RANK
+FROM STORE_INFO
+    JOIN TENDER ON TENDER.STORE_NBR = STORE_INFO.STORE_NBR
+WHERE TENDER_TYPE IN (0,8,12,15)
+GROUP BY STATE, TENDER_TYPE
+ORDER BY STATE, STATE_RANK;
+</code></pre></div></div>
+
+<h4 id="building-my-own-queries-using-enterprise-datasets">Building My Own Queries Using Enterprise Datasets</h4>
+
+<p><strong>9. Which department century generates the most revenue and from what state is? Provide 
+a ranking of the department century by state and revenue.</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT STATE, DEPTCENT_DESC, SUM(TRAN_AMT) AS TOTAL
+FROM TRANSACT
+    JOIN STORE ON STORE.STORE = TRANSACT.STORE
+    JOIN SKU ON SKU.SKU = TRANSACT.SKU
+    JOIN DEPARTMENT ON DEPARTMENT.DEPT = SKU.DEPT
+GROUP BY STATE, DEPTCENT_DESC
+ORDER BY STATE, SUM(TRAN_AMT) DESC;
+</code></pre></div></div>]]></content><author><name>Ruben Chung</name></author><category term="sql" /><summary type="html"><![CDATA[Intermediate SQL statements with outputs]]></summary></entry><entry><title type="html">Business Case: OzarkRide</title><link href="http://localhost:4000/OzarkRide/" rel="alternate" type="text/html" title="Business Case: OzarkRide" /><published>2022-11-13T00:00:00-06:00</published><updated>2022-11-13T00:00:00-06:00</updated><id>http://localhost:4000/OzarkRide</id><content type="html" xml:base="http://localhost:4000/OzarkRide/"><![CDATA[<p>Using Excel and SAS to perform business and statistics analysis such as ANOVA and regressions to help OzarkRide to expand.</p>
+
+<h3 id="business-scenario">Business Scenario</h3>
+<p>OzarkRide is a local bike rental founded in 2011 from Fayetteville which focuses on a 
+sustainable and affordable way to reach from point A to point B using environment-friendly 
+technology. OzarkRide is planning to open a new branch in a city similar to Fayetteville within a 
+few months. They have hired us at Fay Consulting to dive deep into their data and provide 
+insights on the findings.<br />
+<br />
+One of the main and most important questions they have is which month should they
+launch their service? Is there anything other than the month they should consider? Support 
+with analytics.</p>
+
+<hr />
+<h4 id="response">Response</h4>
+<p><br />
+There are more than months that OzarkRide should consider when planning to open a 
+new branch in a different city. At Fay Consulting, we believe that besides months, seasonality, 
+weather, and population should be considered. As seasons are tied with the weather, by 
+common sense we know that when it is cold outside, people do not do many outdoor activities 
+and rather have indoor activities. The same when it rains; people try to stay dry and will not be 
+riding a bike.<br />
+<br />
+During our research, we found that Fall and Summer are the best time to target
+expansion. Based on the operation data, Fall has the highest number of users followed by 
+Summer. We believe that beginning the summer the month of - May through October when the 
+fall season ends - is the peak time to expand the operation in a new city.<br />
+<br />
+Knowing the population density also plays a very important role in the success of the 
+expansion. Fayetteville is a college town. Therefore, there is a high density in population during 
+school time resulting in more people using the bike rental service. Depending on where 
+OzarkRide plans to expand, a study of the population should be performed before making a 
+decision. Unfortunately, the dataset provided does not have the information necessary to 
+analyze the population.</p>
+
+<h4 id="recommendation">Recommendation</h4>
+<p>Our recommendation at Fay Consulting for OzarkRide is the following:</p>
+<ul>
+  <li>Have in mind to expand either during Summertime or during Fall. The earlier OzarkRide 
+expand, the more exposure to the population.</li>
+  <li>The best months to expand is in the range between May and October; we believe that a 
+month in the early middle of the range is the best-case scenario. In this case, the 
+months would be May, June, July, and August based on the analysis performed. The 
+later OzarkRide goes, the less exposure the company has to new customers due to 
+competition.</li>
+  <li>Perform further analysis to study the population of the city where OzarkRide wants to 
+open the new branch. This is key if OzarkRide wants to have higher traffic in the bike 
+renting service.</li>
+  <li>Study possibly competitions that provide similar services as OzarkRide. The more service 
+varieties the targeted city has, the fewer customers the company gets in the launch
+unless a strong marketing campaign with promotions is included.</li>
+</ul>
+
+<hr />
+
+<h3 id="appendix">Appendix</h3>
+<h4 id="summary-statistics">Summary Statistics</h4>
+<p><img src="\assets\images\summary statistics.PNG" alt="Summary Statistics" class="align-center" /></p>
+<ul>
+  <li>The season with the highest average mean is Fall followed by Summer.</li>
+  <li>The season with the lowest average mean is Spring. <em>(This is skewed because the data captured is wrong…January and February are considered winter, but the data has it as 
+spring)</em><br />
+<br />
+<br />
+<img src="\assets\images\total users by months.JPG" alt="Total Users by Months" class="align-center" /></li>
+  <li>May through October have very similar number in total users with August being the highest by just 5,000.<br />
+<br />
+<br />
+<img src="\assets\images\representation of users by season.JPG" alt="Representation of Users by Seasons" class="align-center" /></li>
+  <li>We clearly see that Fall has the highest representation of users followed by Summer.<br />
+<br />
+<br />
+<img src="\assets\images\user by temperature.JPG" alt="Users by Temperature" class="align-center" /></li>
+  <li>Low temperature means less people using OzarkRide service. On the other hand, as the temperature increase, the amount of rental increase for both casual and registered users.</li>
+</ul>
+
+<h4 id="visualization-and-descriptive-take-away">Visualization and Descriptive Take Away</h4>
+<ul>
+  <li>Having the highest number of users during Fall and Summer is very normal. The weather during those two seasons is warm and people usually do outdoor activities in this case, biking.</li>
+  <li>The reason why January and February have the lowest number of users is that it is the beginning of cold weather and people prefer to stay home or do indoor activities. Unfortunately, the data capture has spring starting in January and February, thus, skewing the spring data in favor of winter.</li>
+  <li>OzarkRide has two types of clients: casual users and registered users. Casual users make up about 18.8% of the revenue while registered users make up about 82% of the company’s revenue. Although the difference between casual users and registered users is alarming having 82% registered users is a very good number.</li>
+</ul>
+
+<hr />
+<h3 id="hypothesis-testing">Hypothesis Testing</h3>
+<h4 id="anova-testings">ANOVA Testings</h4>
+<p><em>OzarkRide claim that the number of users is similar throughout the four seasons. Is the average number of users different throughout the four seasons?</em></p>
+
+<h5 id="levines-testing"><em>Levine’s Testing</em></h5>
+<p><img src="\assets\images\One Way 1.PNG" alt="Levene's Testing" class="align-center" /></p>
+<blockquote>
+  <ol>
+    <li>Levine’s Testing<br />
+Ho: All variances are equal<br />
+Ha: At least one variance is different</li>
+    <li>α = 0.05</li>
+    <li>F = 170.65</li>
+    <li>p-value = 0.001 &lt; 0.05 = α</li>
+    <li>Reject the null hypothesis (proceed with caution)</li>
+    <li>Conclusion: At least one variance is different.</li>
+  </ol>
+</blockquote>
+
+<h5 id="one-way-anova-testing"><em>One-Way ANOVA Testing</em></h5>
+<p><img src="\assets\images\One Way 2.PNG" alt="One-Way Anova" class="align-center" /></p>
+<blockquote>
+  <ol>
+    <li>One-Way ANOVA Testing<br />
+Ho: All means are equal<br />
+Ha: At least one mean is different</li>
+    <li>α = 0.05</li>
+    <li>F = 409.18</li>
+    <li>p-value = 0.001 &lt; 0.05 = alpha</li>
+    <li>Reject the null hypothesis</li>
+    <li>There is a significant difference in the mean between seasons and the number of total users.</li>
+  </ol>
+</blockquote>
+
+<h5 id="tukeys-test"><em>Tukey’s Test</em></h5>
+<p><img src="\assets\images\One Way 3 Tukey.PNG" alt="Tukey's Test" class="align-center" /><br />
+The difference in the mean happens between Fall and Summer, Fall and Winter, and Fall and Spring. However, Summer and Winter means are pretty similar.</p>
+
+<h5 id="one-way-anova-take-away">One-Way ANOVA Take Away</h5>
+<ul>
+  <li>There is no statistical evidence to support OzarkRide’s claim of having a similar number of users throughout the four seasons.</li>
+  <li>Running ANOVA makes sense in this case as we are trying to understand how the different seasons affect the number of users.</li>
+  <li>Tukey’s test helps us understand that the average mean users of the seasons are significantly different. We can support that by looking at Tukey’s graph where Fall – Summer, Fall -Winter, Fall – Spring is significantly different, and only Summer – Winter is similar. (Having *** means they are different)</li>
+</ul>
+
+<h4 id="regression-analysis">Regression Analysis</h4>
+<p><em>From all the operation data, can temperature, humidity, and windspeed predict the total users?</em><br />
+<img src="\assets\images\Multiple Regression 1.PNG" alt="Regression Analysis 1" class="align-center" /></p>
+<blockquote>
+  <ol>
+    <li>Overall model is significant</li>
+    <li>temp is significant<br />
+hum is significant<br />
+windspeed is significant</li>
+    <li>b0 = 178.81,
+b1 = 362.53,
+b2 = -273.46,
+b3 = 26.32</li>
+    <li>Adj-R = 0.2512 or 25.12% of the variability can be explained by the total users, temperature, humidity, and windspeed.</li>
+    <li>Based on point #3:
+      <ul>
+        <li>If we hold all other independent variables constant, having one user increases the temperature by 362.53.</li>
+        <li>If we hold all other independent variables constant, having one user decreases the humidity by -273.46.</li>
+        <li>If we hold all other independent variables constant, having one user decreases the windspeed by 26.32.</li>
+      </ul>
+    </li>
+  </ol>
+</blockquote>
+
+<p><em>From all the operation data, can temperature predict the number of casual users, and registered users?</em><br />
+<img src="\assets\images\Multiple Regression 2.PNG" alt="Regression Analysis 2" class="align-center" /></p>
+<blockquote>
+  <ol>
+    <li>Overall model is significant</li>
+    <li>casual is significant<br />
+registered is significant</li>
+    <li>b0 = 0.42,
+b1 = 0.002,
+b2 = 0.0002</li>
+    <li>Adj-R = 0.2253 or 22.53% of the variability can be explained by the temperature, casual users, and registered users.</li>
+    <li>Based on point #3:
+      <ul>
+        <li>If we hold all other independent variables constant, increasing our temperature by 1 will increase casual users by 0.002.</li>
+        <li>If we hold all other independent variables constant, increasing our temperature by 1 will increase registered users by 0.0002</li>
+      </ul>
+    </li>
+  </ol>
+</blockquote>
+
+<h5 id="multiple-linear-regression-take-away">Multiple Linear Regression Take Away</h5>
+<ul>
+  <li>Two regression analyses were run just to make sure we were not missing anything.</li>
+  <li>On the first regression analysis, we can’t just add one user and have our temperature and windspeed increase while humidity decrease. It is not possible as we cannot control the weather.</li>
+  <li>In the second regression analysis, the result makes more sense because if the temperature increases there will be more people riding a bike. However, that is going to go until a certain point in the temperature. If the temperature is too high, it will be too hot outside, so people will not ride a bike. Therefore, as it gets warmer, more rental service will be used.</li>
+</ul>
+
+<hr />
+<h3 id="files">Files</h3>
+<p><a href="https://github.com/rfchungl/rchungl.github.io/blob/master/pages/Original%20Dataset.csv">Raw Dataset</a><br />
+<a href="https://github.com/rfchungl/rchungl.github.io/blob/master/pages/OzarkBike%20Analysis.xlsx">Working Dataset</a><br />
+<a href="https://github.com/rfchungl/rchungl.github.io/blob/master/pages/OzarkBike.egp">SAS Exploration</a><br />
+<a href="https://github.com/rfchungl/rchungl.github.io/blob/master/pages/OzarkRide.pdf">OzarkRide Report Version</a></p>]]></content><author><name>Ruben Chung</name></author><category term="excel" /><category term="sas" /><category term="analysis" /><summary type="html"><![CDATA[Using Excel and SAS to perform business and statistics analysis such as ANOVA and regressions to help OzarkRide to expand.]]></summary></entry><entry><title type="html">SQL Dump - Part 1</title><link href="http://localhost:4000/SQL-Dump-Part-1/" rel="alternate" type="text/html" title="SQL Dump - Part 1" /><published>2022-11-12T00:00:00-06:00</published><updated>2022-11-12T00:00:00-06:00</updated><id>http://localhost:4000/SQL-Dump-Part-1</id><content type="html" xml:base="http://localhost:4000/SQL-Dump-Part-1/"><![CDATA[<p>Introductory SQL statements with outputs</p>
+
+<h3 id="description">Description</h3>
+<p>A mix of SQL problems that involves aggregate functions and joins.</p>
+
+<hr />
+<h3 id="problems">Problems</h3>
+<p><strong>1.What are the total sales for the second quarter of 2013?</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT SUM(Quantity * Unit_Price) AS Total_Sales  
+FROM A2C_Order_Fact O  
+JOIN A2C_Date_Dimension DD ON O.Date_Key = DD.Date_Key  
+WHERE Quarter_of_Year = 2 AND Year_Number = 2013  
+GROUP BY Quarter_of_Year;  
+</code></pre></div></div>
+<p><strong>2.What are the total sales for albums in the second quarter of 2013?</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT SUM(Quantity * Unit_Price) AS Album_Total_Sales  
+FROM A2C_Order_Fact O  
+	JOIN A2C_Date_Dimension DD ON O.Date_Key = DD.Date_Key  
+	JOIN A2C_Item_Dimension ID ON O.Item_Key = ID.Item_Key  
+WHERE Quarter_of_Year = 2 AND Item_Type = 'Album' AND Year_Number = 2013;  
+</code></pre></div></div>
+<p><strong>3.What are the total sales of albums, bought by female customers living in Arizona and California?</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT SUM(Quantity * Unit_Price) AS Female_Album_Sales  
+FROM A2C_Order_Fact O  
+	JOIN A2C_Customer_Dimension CD ON O.Customer_Key = CD.Customer_Key  
+	JOIN A2C_Item_Dimension ID ON O.Item_Key = ID.Item_Key  
+WHERE CD.Gender = 'F' AND CD.State_Name IN ('Arizona', 'California') AND Item_Type = 'Album';  
+</code></pre></div></div>
+<p><strong>4.Who is the best agent, according to the sales data for 2014?</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT TOP 1 SUM(Quantity * Unit_Price) AS Total_Sales, Agent_Name  
+FROM A2C_Order_Fact O  
+	JOIN A2C_Date_Dimension DD on O.Date_Key = DD.Date_Key  
+	JOIN A2C_Item_Dimension ID on O.Item_Key = ID.Item_Key  
+WHERE Year_Number = 2014  
+GROUP BY Agent_Name  
+ORDER BY Total_Sales DESC;  
+</code></pre></div></div>
+<p><strong>5.What are the total sales from each customer each year?</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT Customer_Name, SUM(Quantity * Unit_Price) AS Total_Sales, Year_Number  
+FROM A2C_Order_Fact O  
+	JOIN A2C_Customer_Dimension CD ON O.Customer_Key = CD.Customer_Key  
+	JOIN A2C_Date_Dimension DD ON O.Date_Key = DD.Date_Key  
+GROUP BY Customer_Name, Year_Number  
+ORDER BY Customer_Name, Total_Sales DESC;  
+</code></pre></div></div>
+<p><strong>6.How much revenue each state generates by year?</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT State_Name, Year_Number, SUM(Quantity * Unit_Price) AS Total_Sales  
+from A2C_Order_Fact O  
+	JOIN A2C_Customer_Dimension CD ON O.Customer_Key = CD.Customer_Key  
+	JOIN A2C_Date_Dimension DD ON O.Date_Key = DD.Date_Key  
+GROUP BY State_Name, Year_Number  
+ORDER BY Total_Sales DESC;  
+</code></pre></div></div>]]></content><author><name>Ruben Chung</name></author><category term="sql" /><summary type="html"><![CDATA[Introductory SQL statements with outputs]]></summary></entry><entry><title type="html">Business Case: Basket Market Analysis</title><link href="http://localhost:4000/Basket-Market-Analysis/" rel="alternate" type="text/html" title="Business Case: Basket Market Analysis" /><published>2022-11-12T00:00:00-06:00</published><updated>2022-11-12T00:00:00-06:00</updated><id>http://localhost:4000/Basket-Market-Analysis</id><content type="html" xml:base="http://localhost:4000/Basket-Market-Analysis/"><![CDATA[<p>Using Excel and Python to perform market basket/association analysis using dataset from a bakery.</p>
+
+<h3 id="business-scenario">Business Scenario</h3>
+<p>Ayala’s Bakery is a family owned business with more than 30 years on the market delivering bakeries to its customers in Springdale, Arkansas. They updated their POS system a few years ago to keep track of their sales. However, they have not had success in discovering what products the customers like and what they usually like to pair with. Ayala’s Bakery have approached Ruben to dive deep into the data to look for insights and provide recommendations.</p>
+
+<hr />
+
+<h3 id="written-memo">Written Memo</h3>
+<p>To: Ayala’s Bakery Executives<br />
+From: Ruben Chung, Data Analyst<br />
+Subject: Ayala’s Bakery Recommendations<br />
+<br />
+Based on the analyses performed, we found that the top 5 best-selling items are coffee, tea, cake, sandwich, and pastry. Coffee has by far the highest amount sold followed by tea. Interestingly, the time range where these two products are sold the most is between 10-1 pm for coffee and 2-3 pm for tea. Sandwich is best sold between 1-2 pm for lunchtime.<br />
+<br />
+Although coffee and tea are not at the top when it comes to margin, they are good to draw customers when paired with other products such as cake, pastry, and bread, thus, increasing the amount spent by customers. We found that the highest pairing combo is coffee and pastry. On the other hand, we don’t recommend pairing tea and bread. In addition, we recommend discontinuing the sale of muffins as it has the least sale and customers don’t like them.<br />
+<br />
+We recommend preparing enough coffee, tea, pastries, cakes, and sandwiches during the peak time using the time range to avoid stock out. Also, consider doing a marketing campaign that incentive customers to pair coffee or tea with any other products for a discount or loyalty points to increase Ayala’s Bakery revenue.<br />
+<br />
+If you have any questions, please contact me at rfchungl@uark.edu. Your voice matters.<br />
+<br />
+<br />
+Sincerely,<br />
+<br />
+Ruben Chung</p>
+
+<hr />
+
+<h3 id="analysis-with-excel">Analysis with Excel</h3>
+
+<p><img src="https://user-images.githubusercontent.com/115122030/196620687-b6f18dc6-cafb-4b10-a3ae-dd32ac6993d6.png" alt="image" />
+First capture shows the top 5 items that are sold at Bread Basket. You can see that the undisputed top 1 is Coffee that almost quadruple the top 2 which is Tea.<br />
+<br />
+<img src="https://user-images.githubusercontent.com/115122030/196620755-c2e2432b-c6c1-40f6-8bc8-47e0a611bb6c.png" alt="image" /><br />
+Second capture shows the years where Bread Basket was on operation. We clearly see that during 2016, December has the highest number of transactions. This could mean that because the winter season is cold, people tend to go and buy hot beverage to get warm. On the other hand, March of 2017 has the highest number of transactions which triples the amount in transactions from December of 2016.<br />
+<br />
+<img src="https://user-images.githubusercontent.com/115122030/196620794-97d09767-4256-42bb-83a1-33bfec3c641d.png" alt="image" /><br />
+Third capture shows a list of items ranked by margin gain. We can see that the top 5 most sold items in capture 1 are not as profitable as the one shown in the capture above. Although coffee and tea are within top 2 most sold, extra salami or feta and tartine get more margin.<br />
+<br />
+<img src="https://user-images.githubusercontent.com/115122030/196620841-bb6ec1df-4169-40d6-b64c-97354d8b4a4f.png" alt="image" /><br />
+Last capture shows the time where the most sold items are bought. We can see that people tend to buy more tea between 2-3pm, cake between 2-3pm after lunch, sandwich between 1-2pm during lunch time, coffee between 10-1pm, and pastry between 10-11am. I thought that people would buy more coffee in the AM time but it seems that it’s very spread-out and the main time range are between 10-1pm.</p>
+
+<hr />
+<h3 id="python-market-analysis">Python Market Analysis</h3>
+<p><strong>Python:</strong> <a href="https://github.com/rfchungl/Projects-Portfolio/blob/main/MarketBasketAnalysis/basket.py"><code class="language-plaintext highlighter-rouge">Python Code Here</code></a><br />
+<br />
+<strong>The Python code has comments on what does each line do for a better understanding of the program.</strong><br />
+<br />
+<strong>Description:</strong> Using Excel and Python to analyze the data transactions from a bakery to understand the results from the association analysis of the mentioned dataset. This project is supposed to be a business case, thus, the written memo at the end.<br />
+<br />
+<strong>What does this program do?</strong> It first read the csv file named “basket.csv” then it runs association analysis through a few lines of codes using the mlxtend.frequent_patterns apriori and association_rules libraries.<br />
+<br />
+<strong>Things needed to run the Python code:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- import pandas as pd
+- from mlxtend.frequent_patterns import apriori
+- from mlxtend.frequent_patterns import association_rules
+</code></pre></div></div>
+<p><strong>Path to Bread Basket csv</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bread = pd.read_csv(r"/Users/yourusername/Desktop/basket.csv")
+df = bread.groupby(['Transaction','Item']).size().reset_index(name='count')
+breadbasket = (df.groupby(['Transaction', 'Item'])['count']
+          .sum().unstack().reset_index().fillna(0)
+          .set_index('Transaction'))
+</code></pre></div></div>
+<p><strong>Transform values into dataframe</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def df(x):
+    if x &lt;= 0:
+        return 0
+    if x &gt;= 1:
+        return 1
+dataset = breadbasket.applymap(df)
+frequent_itemsets = apriori(dataset, min_support=0.01, use_colnames=True)
+rules = association_rules(frequent_itemsets, metric="lift")
+rules.sort_values('confidence', ascending = False, inplace = True)
+rules.head()
+print(rules)
+</code></pre></div></div>
+<hr />
+
+<h3 id="output">Output</h3>
+<p><img src="https://user-images.githubusercontent.com/115122030/196619281-acf26716-1593-4d0f-9b60-6fb53aaff9b3.png" alt="basket1" />
+<img src="https://user-images.githubusercontent.com/115122030/196619284-b262992c-c730-44cc-aeec-4e673f52e71f.png" alt="basket2" /><br />
+The association analysis using Python shows that the customer is 1.48 times more likely to buy toast then coffee than other customers.</p>
+
+<hr />
+<h3 id="python">Python</h3>
+<p><a href="https://github.com/rfchungl/Projects-Portfolio/blob/main/MarketBasketAnalysis/basket.py">Python File Here</a></p>]]></content><author><name>Ruben Chung</name></author><category term="python" /><category term="excel" /><category term="analysis" /><summary type="html"><![CDATA[Using Excel and Python to perform market basket/association analysis using dataset from a bakery.]]></summary></entry><entry><title type="html">Python: Getting University Names Based On The Country Inserted</title><link href="http://localhost:4000/Country-API/" rel="alternate" type="text/html" title="Python: Getting University Names Based On The Country Inserted" /><published>2022-11-12T00:00:00-06:00</published><updated>2022-11-12T00:00:00-06:00</updated><id>http://localhost:4000/Country-API</id><content type="html" xml:base="http://localhost:4000/Country-API/"><![CDATA[<p>Combining Python and API to generate university names once the name of the country is inserted</p>
+
+<h3 id="description">Description</h3>
+<p>Using API and JSON library to create a Python program.</p>
+
+<h3 id="what-does-this-program-do">What does this program do?</h3>
+<p>The Python code uses an API that shows you the college names based on the country you input. Once the user type the country name, it asks the API to retrieve the college names, in order to save them, we gather the results in JSON then use python dictionary to print the results.</p>
+
+<hr />
+<h3 id="code">Code</h3>
+<p><strong>The Python code has comments on what does each line do for a better understanding of the program.</strong><br />
+<br />
+<strong>Things needed to run the Python code:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import urllib.request
+import json 
+</code></pre></div></div>
+
+<p><strong>Insert country</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>print('BROWSE UNIVERSITIES FROM DIFFERENT COUNTRIES')
+# as long as the user doesn't type x then this program will keep running
+while True:
+    # ask user to enter a country
+    country = input('Enter country or enter "x" to exit: ')
+    # if user inputted letter x then end the program
+    if country == 'x': 
+        quit() 
+</code></pre></div></div>
+
+<p><strong>Url of the API + the input of what the user typed. In this case, the name of the country</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    url = "http://universities.hipolabs.com/search?country=" + country
+
+    # url can't have space, I added this so that the user can input countries with space in between such as United States, United Kingdom, Saudi Arabia, United Arab Emirates, etc
+    urlreplace = url.replace(" ","%20")
+</code></pre></div></div>
+
+<p><strong>Requesting JSON data from the API</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    json_data = urllib.request.urlopen(urlreplace)
+</code></pre></div></div>
+
+<p><strong>Convert the JSON to Python Dictionary</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    data = json.loads(json_data.read()) 
+</code></pre></div></div>
+
+<p><strong>If user doesn’t type the country name correctly, it will keep prompting “Please enter a valid country”</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    if len(data) == 0:
+        print('Please enter a valid country!')
+    else:
+        for item in data:
+            print(item['name'])
+</code></pre></div></div>
+
+<hr />
+<h3 id="output">Output</h3>
+<p><img src="https://user-images.githubusercontent.com/115122030/197109556-754f44ee-aded-4dd7-84c3-ba5494afdacc.png" alt="image" /></p>
+
+<hr />
+<h3 id="python">Python</h3>
+<p><a href="https://github.com/rfchungl/Projects-Portfolio/blob/main/API/API.py">Python File Here</a></p>]]></content><author><name>Ruben Chung</name></author><category term="python" /><summary type="html"><![CDATA[Combining Python and API to generate university names once the name of the country is inserted]]></summary></entry><entry><title type="html">Python: Automated Weather Notification Using SMS</title><link href="http://localhost:4000/Automated-weather-SMS/" rel="alternate" type="text/html" title="Python: Automated Weather Notification Using SMS" /><published>2022-11-09T00:00:00-06:00</published><updated>2022-11-09T00:00:00-06:00</updated><id>http://localhost:4000/Automated-weather-SMS</id><content type="html" xml:base="http://localhost:4000/Automated-weather-SMS/"><![CDATA[<p>Scrapping weather from Google using Python then utilizing a SMS service to send customized messages based on the weather.</p>
+
+<h3 id="description">Description</h3>
+<p>When I arrived to the United States, there were days when I wore a sweater and jacket, and the day was not that cold. I felt very dumb walking down to my classes while other students were wearing t-shirts, shorts, and sandals. 
+I know that we can check the weather on our cellphones. However, there is too much information like humidity, water density, weather variation between hours, air quality, etc. I wanted something simpler that could just tell me the weather condition and the temperature. I do not check my emails first thing in the morning, so I did not want them to be sent to my email. Instead, I wanted something quick like an SMS.</p>
+
+<h4 id="what-does-this-program-do">What does this program do?</h4>
+<p>This Python program scrap the weather data from Google depending on the location you put and is gathered through a few lines of Python code using the BeautifulSoup library. Then, it is sent to your phone through a SMS service (A token is needed for this).
+——————————————————</p>
+<h3 id="code">Code</h3>
+<p>** Things needed to run the Python code:**</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- import schedule
+- import requests
+- from bs4 import BeautifulSoup
+- from twilio.rest import Client
+- Token from Twilio (They offer 15 days trial)
+</code></pre></div></div>
+
+<p><strong>Things needed to get my sms going</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>account_sid = "insert account from twilio"
+auth_token  = "insert token"
+# Authenticator to get to twilio
+client = Client(account_sid, auth_token)
+</code></pre></div></div>
+
+<p><strong>Defining the block of code as weathercondition</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def weathercondition():
+# Weather city
+	city = "Fayetteville"
+# Creating url and requests instance
+	soup = BeautifulSoup(requests.get(f'https://www.google.com/search?q=weather+in+{city}').text, "html.parser")
+	#print(soup.prettify()) // this print function is disabled but I put it in here in case you want to see if the line is working.
+</code></pre></div></div>
+<p><strong>Catching what I need from beautiful soup and defining my variables</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	temperature = soup.find('div', class_= 'BNeawe iBp4i AP7Wnd').text # BNeawe iBp4i AP7Wnd is obtained by inspecting and finding the line that contains the temperature
+	region = soup.find('span', class_= 'BNeawe tAd8D AP7Wnd').text # BNeawe tAd8D AP7Wnd is obtained by inspecting and finding the line that contains the region (Fayetteville, AR)
+	day_and_weather = soup.find('div', class_= 'BNeawe tAd8D AP7Wnd').text # BNeawe iBp4i AP7Wnd is obtained by inspecting and finding the line that contains the day and type of weather
+# Day_and_weather will print the day, hour, and the type of weather...I only need the weather condition so I split and print index 1
+	condition = day_and_weather.split('\n')[1]
+</code></pre></div></div>
+
+<p><strong>Here is the condition needed to send me the sms. As long as the condition type is not 0, it will always send me a sms with the weather condition</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Alternatively, if I wanted it to send me a sms when on rainy days, I could do that too
+# Unfortunately, if you want to change the number to sent, you will have to pay as this is a free trial
+	if condition != 0:
+		message = client.messages.create(to="+14795026472", from_="+16084475947", body=f"Good morning, Ruben!\nWeather condition for today is {condition} and temperature is {temperature} in {region}.")
+		print(message.sid)
+		print("Message Sent!")
+</code></pre></div></div>
+
+<p><strong>Every day at a specific time will send me a sms reminder of the weather and weathercondition() is called. In my case, I will set it up when I wake up at 7:00AM</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>schedule.every().day.at("07:00").do(weathercondition)
+# As long as the condition is true, it will run
+while True:
+	schedule.run_pending()
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="output">Output</h3>
+<p><img src="https://user-images.githubusercontent.com/115122030/196613363-0caf92c0-1be7-43bc-9597-c05c4fc980a7.PNG" alt="output" />
+<em>The end result is once you have the program running, everyday at 7:00 AM in the morning will send you a SMS stating how is the weather condition and what you need to wear depending on how you coded it.</em>
+<br /></p>
+
+<hr />
+<h3 id="conclusion">Conclusion</h3>
+<p>As you can see, with a few line of codes plus the authetication code from twilio we can create a personalized SMS reminder of the weather.</p>
+
+<hr />
+<h3 id="python">Python</h3>
+<p><a href="https://github.com/rfchungl/Projects-Portfolio/blob/main/Weather_Scrapping/Weather_Scrapper.py"><code class="language-plaintext highlighter-rouge">Python File Here</code></a><br />
+The Python code has comments (pseudo-code) on what does each line do for a better understanding of the program.</p>]]></content><author><name>Ruben Chung</name></author><category term="python" /><summary type="html"><![CDATA[Scrapping weather from Google using Python then utilizing a SMS service to send customized messages based on the weather.]]></summary></entry><entry><title type="html">Building a Database and Visualization From Scratch</title><link href="http://localhost:4000/From-CSV-To-Database-To-Datastudio/" rel="alternate" type="text/html" title="Building a Database and Visualization From Scratch" /><published>2022-11-09T00:00:00-06:00</published><updated>2022-11-09T00:00:00-06:00</updated><id>http://localhost:4000/From-CSV-To-Database-To-Datastudio</id><content type="html" xml:base="http://localhost:4000/From-CSV-To-Database-To-Datastudio/"><![CDATA[<p>Dashboard made from scratch. It was condensed from a number of CSV files that were put into BigQuery. Afterwards, using BigQuery as the database to build the dashboard.</p>
+
+<p><strong>Visualization:</strong> <a href="https://datastudio.google.com/reporting/2004c153-b0d4-42e1-8bee-1f3c6eaa2fa8"><code class="language-plaintext highlighter-rouge">Click Here For Visualization</code></a>
+<br /><br />
+<strong>Note:</strong> The dataset was modified in order to protect the privacy of the tutors and students. The date of the sample dataset is from 08-23-2021 to 10-23-2021.
+<br /><br />
+<strong>Description:</strong> Condensing all weekly CSV files from tutoring into a database and use it to feed the dashboard.
+<br /></p>
+
+<hr />
+
+<h3 id="business-problem">Business Problem</h3>
+<p>Because the administrator in charge to maintain the booking systems at the university left, nobody was in charge to maintain it. The database would break by itself on days where a lot of web traffics happen. In order to prevent a disaster, the tutoring director decided to save the information of the booking appointments every week resulting in many CSV files. When there is a need to know something about tutoring, how many students came, what class was requested the most, etc, the director had to merge all the CSV files taking a lot of time just to get an answer. <br /><br />
+In order to reduce the time, I decided to condense all the CSV files into a database. In this case, I used free softwares to do that due to this being something that I purely wanted to do…not that I was required. Therefore, I chose the Google Analytics pack as the tools and used BigQuery to centralize all the booking informations and use DataStudio (Looker Studio) to provide visibility. Throughout my time working as a Graduate Assistant, I updated weekly the database once I was able to get to the CSV file.</p>
+
+<hr />
+
+<h3 id="procedure">Procedure</h3>
+
+<p>I could have done it two ways: <br />
+  1- Merge all the CSV files into Excel file and upload it to BigQuery <br />
+  2- Upload weekly CSV file into BigQuery<br />
+<br />
+To show the full functionality of how I maintained a database, I am going to showcase method #2.</p>
+
+<h4 id="part-i">Part I</h4>
+
+<p>I created a bucket to save the CSV file digitally. Due to BigQuery being a web-based database, it cannot use your own desktop to find the path to the file you are going to upload.<br />
+<br />
+<img src="https://user-images.githubusercontent.com/115122030/197105095-d1c834f0-5db3-46f6-8b57-dabd267ed68f.JPG" alt="bucket" />
+I was able to start the database with three weeks of data sample. After that, every week when I got the CSV file from the director, I would upload it into the bucket.</p>
+
+<h4 id="part-ii">Part II</h4>
+
+<p>Creating the database and setting up the schema.</p>
+
+<p><img src="https://user-images.githubusercontent.com/115122030/197105405-42d1f751-cdd6-42be-948f-881eaaa1f00e.JPG" alt="bigquery" />
+After creating the database in BigQuery, you can upload your first CSV file as the schema automatically or you can write by yourself.</p>
+
+<h4 id="part-iii">Part III</h4>
+
+<p>In order to maintain it, I had to do a weekly BigQuery update to load the weekly report from the director.</p>
+
+<p>Example of data loading:</p>
+
+<h5 id="week-1">Week #1</h5>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>LOAD DATA INTO student-success-center-326917.Fall2021.datasetfall2021
+FROM FILES (
+  format = 'CSV',
+  uris = ['gs://sscbucket/08-29-2021 to 09-04-2021.csv']);
+</code></pre></div></div>
+
+<h5 id="week-2">Week #2</h5>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>LOAD DATA INTO student-success-center-326917.Fall2021.datasetfall2021
+FROM FILES (
+  format = 'CSV',
+  uris = [' gs://sscbucket/09-05-2021 to 09-11-2021.csv']);
+</code></pre></div></div>
+
+<p><a href="https://github.com/rfchungl/Projects-Portfolio/blob/main/GoogleAnalytics/Load%20query.txt"><code class="language-plaintext highlighter-rouge">Click here for the rest of the queries</code></a></p>
+
+<h4 id="part-iv">Part IV</h4>
+
+<p>Finally, after having the database, I used Google DataStudio now called <em>(Locker Studio)</em> to visualize what we have about booking appointments.</p>
+
+<p><img src="https://user-images.githubusercontent.com/115122030/197105946-446a7fe3-8e9f-4916-a0fb-35874e92f74a.JPG" alt="database" />
+When selecting the source of the data in DataStudio, select BigQuery as the database and choose the path of your dataset. In this case, I already created it on Part II.</p>
+
+<hr />
+
+<h3 id="final-result">Final Result</h3>
+
+<p><img src="https://images.squarespace-cdn.com/content/v1/6301adc291fbaf2a00843f8f/976c7dfb-22d3-461c-8599-d67442d20e2f/fall2021.PNG?format=1000w" alt="image" /></p>
+
+<hr />
+
+<h3 id="conclusion">Conclusion</h3>
+<p>This way, I automated something that I basically had to pull every week for statistic purposes in a single dashboard where my supervisor would be able to check saving us hours of work.</p>]]></content><author><name>Ruben Chung</name></author><category term="visualization" /><category term="sql" /><summary type="html"><![CDATA[Dashboard made from scratch. It was condensed from a number of CSV files that were put into BigQuery. Afterwards, using BigQuery as the database to build the dashboard.]]></summary></entry></feed>

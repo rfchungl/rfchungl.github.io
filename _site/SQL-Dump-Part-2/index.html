@@ -1,0 +1,511 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>SQL Dump - Part 2 - RUBEN’S PORTFOLIO</title>
+<meta name="description" content="Intermediate SQL statements with outputs">
+
+
+  <meta name="author" content="Ruben Chung">
+  
+  <meta property="article:author" content="Ruben Chung">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="RUBEN'S PORTFOLIO">
+<meta property="og:title" content="SQL Dump - Part 2">
+<meta property="og:url" content="http://localhost:4000/SQL-Dump-Part-2/">
+
+
+  <meta property="og:description" content="Intermediate SQL statements with outputs">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-11-16T00:00:00-06:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/SQL-Dump-Part-2/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Ruben Chung",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="RUBEN'S PORTFOLIO Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          RUBEN'S PORTFOLIO
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">About Me</a>
+            </li><li class="masthead__menu-item">
+              <a href="/posts/">Projects</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="https://media-exp1.licdn.com/dms/image/C4E03AQGcjdyOf5rUuQ/profile-displayphoto-shrink_400_400/0/1555974682520?e=1673481600&v=beta&t=u3V-M4gaPsJ0JoDcQ6LZMvM18lDUYJr1GdigVcZXCBU" alt="Ruben Chung" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Ruben Chung</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>Aspiring Data/Business Analyst with a Passion in Supply Chain</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Fayetteville, Arkansas</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/rfchungl/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/rfchungl" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+            <li><a href="https://instagram.com/rubenzh" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="SQL Dump - Part 2">
+    <meta itemprop="description" content="Intermediate SQL statements with outputs">
+    <meta itemprop="datePublished" content="2022-11-16T00:00:00-06:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/SQL-Dump-Part-2/" class="u-url" itemprop="url">SQL Dump - Part 2
+</a>
+          </h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this project</h4></header>
+              <ul class="toc__menu"><li><a href="#description">Description</a></li><li><a href="#problems">Problems</a><ul><li><a href="#enterprise-data-sets-on-sql-server">Enterprise Data Sets on SQL Server</a></li><li><a href="#enterprise-data-sets-on-teradata">Enterprise Data Sets on Teradata</a></li><li><a href="#building-my-own-queries-using-enterprise-datasets">Building My Own Queries Using Enterprise Datasets</a></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p>Intermediate SQL statements with outputs</p>
+
+<h3 id="description">Description</h3>
+<p>A mix of SQL problems that involves aggregate functions, joins, and window functions.</p>
+
+<hr />
+<h3 id="problems">Problems</h3>
+<h4 id="enterprise-data-sets-on-sql-server">Enterprise Data Sets on SQL Server</h4>
+<p><strong>Database: Dillards</strong></p>
+
+<p><strong>1.What total quantity of products from brand Nike that has been sold to date?</strong><br />
+(Note: each record in the TRANSACT table is a single sale of an item. Label your result 
+column UNITS_SOLD.)</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SQL Query:
+SELECT COUNT(TRANSACT.TRANSACTION_ID) AS UNITS_SOLD 
+FROM SKU
+    LEFT JOIN TRANSACT ON SKU.SKU = TRANSACT.SKU
+WHERE SKU.BRAND_NAME = 'NIKE'
+GROUP BY SKU.BRAND_NAME;
+</code></pre></div></div>
+
+<p><strong>2. We received a request from our pricing manager for a report containing separate 
+rows for every type of price record and value for a product. Let’s start by writing a 
+query just for product SKU 1137460, and two stores: 171 and 723. The result should 
+contain four columns: the SKU, the STORE, a column specifying the type of price 
+record (cost, retail, original, or sale - these are in the SKU_STORE and TRANSACT 
+tables), and another column with the price value. Duplicate rows should not be 
+included, but any type of record may have multiple results.</strong><br />
+<em>(HINT: each type of price record is a separate query, and we need to combine the results into a single list).</em></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT SKU, STORE,'RETAIL' AS TYPE, RETAIL AS 'VALUE'
+FROM SKU_STORE
+WHERE SKU = '1137460' AND STORE IN (171 , 723)
+UNION
+SELECT SKU, STORE, 'ORIGINAL', ORIG_PRICE
+FROM TRANSACT
+WHERE SKU = '1137460' AND STORE IN (171 , 723)
+UNION
+SELECT SKU, STORE, 'SALE', SALE_PRICE
+FROM TRANSACT
+WHERE SKU = '1137460' AND STORE IN (171 , 723)
+UNION
+SELECT SKU, STORE,'COST', COST
+FROM SKU_STORE
+WHERE SKU = '1137460' AND STORE IN (171 , 723);
+</code></pre></div></div>
+
+<p><strong>Database: Sam’s Club</strong><br />
+<strong>3. We want to look at meat price trends. What was the average retail price for 
+BOLOGNA by month between January and March of 2014?</strong><br />
+<em>Note: this data set only contains those months but include them in your query 
+constraints for completeness.</em></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT DATENAME(MONTH,VISIT_DATE) AS MONTH2014 ,
+CAST(AVG(RETAIL_PRICE) AS DECIMAL(4,2)) AVG_PRICE 
+FROM ITEM_SCAN
+    INNER JOIN ITEM_DESC ON ITEM_SCAN.SCAN_ID = ITEM_DESC.ITEM_NBR
+WHERE ITEM_DESC.PRIMARY_DESC = 'BOLOGNA' AND VISIT_DATE BETWEEN
+'2014-01-01' AND '2014-03-31'
+GROUP BY DATENAME(MONTH,VISIT_DATE);
+</code></pre></div></div>
+
+<p><strong>4. Produce a store ranking report, with each store’s rank based on unit sales (sum of 
+item quantity) within their state and overall for the company. Order the report by 
+state and rank within the state.</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT STORE_INFO.STORE_NBR AS STORE, STATE, SUM(UNIT_QTY) AS
+UNIT_SALES,
+RANK() OVER(ORDER BY SUM(UNIT_QTY) DESC) AS STORE_RANK
+FROM STORE_INFO, ITEM_SCAN
+WHERE STORE_INFO.STORE_NBR = ITEM_SCAN.STORE_NBR
+GROUP BY STATE, STORE_INFO.STORE_NBR
+ORDER BY STATE, UNIT_SALES DESC, STORE_RANK;
+</code></pre></div></div>
+
+<h4 id="enterprise-data-sets-on-teradata">Enterprise Data Sets on Teradata</h4>
+<p><strong>Database: Dillards</strong></p>
+
+<p><strong>5. Compare our Black Friday weekend sales for 2014 (11/28 to 12/1, 2014) and 2015
+(11/27 to 11/30, 2015). You can either provide a total value across these days for 
+each year, or the values for each day.</strong><br />
+<em>Note: Teradata date formats can be a little tricky. You can use the DATE function to convert a string value to a date for 
+comparison (e.g., WHERE TRAN_DATE &gt;= DATE ‘2015-11-27’).</em></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DATABASE WCOB_DILLARDS;
+SELECT SUM(TRAN_AMT) AS BLACK_FRIDAY_SALE
+FROM TRANSACT
+WHERE TRAN_DATE &gt;= DATE'2014-11-28' AND
+TRAN_DATE &lt;= DATE'2014-12-01'
+UNION
+SELECT SUM (TRAN_AMT)
+FROM TRANSACT
+WHERE TRAN_DATE &gt;= DATE '2015-11-27' AND 
+TRAN_DATE &lt;= DATE '2015-11-30';
+</code></pre></div></div>
+
+<p><strong>6. Was there an increase in AMERICA-themed apparel leading up to the 2016
+election? Look for any SKU with a color description containing ‘AMERICA’, and 
+return the total transaction amounts for these items by month for the year 2016. 
+Order the results by month.</strong><br />
+<em>Note: Teradata date formats are tricky here as well. In SQL Server, the YEAR() and MONTH() functions are very simple. The equivalent for MONTH(TRAN_DATE) in 
+Teradata is EXTRACT(MONTH from TRAN_DATE). Also, the data ends mid-October, so you should only see numbers for the first 10 months.</em></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DATABASE WCOB_DILLARDS;
+SELECT extract(MONTH FROM TRAN_DATE) AS MONTH_2016, SUM(TRAN_AMT) AS 
+TOTAL
+FROM TRANSACT
+    INNER JOIN SKU ON SKU.SKU = TRANSACT.SKU
+WHERE COLOR LIKE '%AMERICA%' AND TRAN_DATE&gt;= DATE'2016-01-01' AND 
+TRAN_DATE &lt;= DATE'2016-10-31'
+GROUP BY EXTRACT(MONTH FROM TRAN_DATE)
+ORDER BY EXTRACT(MONTH FROM TRAN_DATE);
+</code></pre></div></div>
+<p><strong>Database: Sam’s Club</strong><br />
+<strong>7. How many stores are in each state? Provide a report showing each state and the 
+number of stores it has. Order by the number of stores, descending (and only 
+include the first 10 results in your screenshot).</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DATABASE WCOB_SAMS_STOREVISITS;
+SELECT STATE, COUNT(STORE_NBR) AS STORE_COUNT FROM STORE_INFO
+GROUP BY STATE
+ORDER BY COUNT(STORE_NBR) DESC;
+</code></pre></div></div>
+
+<p><strong>8. We want to know what payment methods people are using around the country. 
+Produce a state tender ranking report, with each tender type’s rank based on the 
+amount tendered (sum of tender amount) within their state. Only include our four 
+most common tender types: 0, 8, 12, and 15. Order the report by state and rank 
+within the state.</strong><br />
+<em>Note: The full result set will contain 196 rows, only include the first 10 in your results.</em></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DATABASE WCOB_SAMS_INTEGRATED;
+SELECT STATE, TENDER_TYPE, SUM(TENDER_AMT) AS TOTAL_TENDER,
+RANK()OVER(PARTITION BY STATE ORDER BY SUM(TENDER_AMT) DESC ) AS 
+STATE_RANK
+FROM STORE_INFO
+    JOIN TENDER ON TENDER.STORE_NBR = STORE_INFO.STORE_NBR
+WHERE TENDER_TYPE IN (0,8,12,15)
+GROUP BY STATE, TENDER_TYPE
+ORDER BY STATE, STATE_RANK;
+</code></pre></div></div>
+
+<h4 id="building-my-own-queries-using-enterprise-datasets">Building My Own Queries Using Enterprise Datasets</h4>
+
+<p><strong>9. Which department century generates the most revenue and from what state is? Provide 
+a ranking of the department century by state and revenue.</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT STATE, DEPTCENT_DESC, SUM(TRAN_AMT) AS TOTAL
+FROM TRANSACT
+    JOIN STORE ON STORE.STORE = TRANSACT.STORE
+    JOIN SKU ON SKU.SKU = TRANSACT.SKU
+    JOIN DEPARTMENT ON DEPARTMENT.DEPT = SKU.DEPT
+GROUP BY STATE, DEPTCENT_DESC
+ORDER BY STATE, SUM(TRAN_AMT) DESC;
+</code></pre></div></div>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#sql" class="page__taxonomy-item p-category" rel="tag">sql</a>
+    
+    </span>
+  </p>
+
+
+
+
+      </footer>
+
+      
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Ruben Chung. All Rights Reserved. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
