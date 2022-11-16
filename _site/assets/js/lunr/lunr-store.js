@@ -35,6 +35,12 @@ var store = [{
         "url": "/OzarkRide/",
         "teaser": null
       },{
+        "title": "Business Case: OzarkWine",
+        "excerpt":"Business Scenario OzarkWine is a local vineyard specializing in both red and white wines. Their goal is to “provide the highest quality wine while perfectly balancing acidity, sweetness, and pallet”. The company has now grown to a point where they would like to incorporate some data analytics to improve their...","categories": [],
+        "tags": ["sas","analysis"],
+        "url": "/OzarkWine/",
+        "teaser": null
+      },{
         "title": "SQL Data Definition Language - Part 1",
         "excerpt":"Description An introduction to data definition language by creating tables and its relationships based on the scenario. Problems 1. DDL from a Logical Data Model &amp; Data Dictionary Specification. Create the tables and relationships based on the following logical data model and data dictionary. CREATE TABLE A1B_Band ( BandId INT...","categories": [],
         "tags": ["sql"],
