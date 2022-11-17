@@ -74,7 +74,7 @@ CREATE TABLE A2B_Order_Fact   (
 Hallux has recently started receiving enhanced Billboard® charting information for the songs in their catalog, including weekly rank, previous week rank, number of downloads, iTunes sales and Spotify streams. We need to be able to take this data and merge it with our existing warehouse tables to allow us to perform analysis over time on this new data stream. Include fields for our internal weekly sales (in units and $) to store alongside this data. You can assume that the ETL job that will be loading this data can locate the correct item_key that corresponds with the Song data coming from Billboard (hint: conformed dimension). We need to make sure that we have the appropriate units of time in a dimension such as week of the year, month of the year, month description, season, and a flag for “festival season” (which stretches from late Spring to early Fall).   
 Here’s a snippet of the csv file coming from Billboard:    
 
-![SQL2](\assets\images\sql4\2.png){: .align-center}  
+![SQL2](\assets\images\sql4\2.PNG){: .align-center}  
 ```
 CREATE TABLE A2B_Band_Dim (
 Band_ID int NOT NULL,
