@@ -4,7 +4,8 @@ excerpt: "Blog on data analysis, visualization, data mining, database management
 author_profile: true
 ---
 
-This is the homepage and blog of Ruben Chung. For more about me, <a href="/about" style="text-decoration: underline">see here</a>.  
-<br>
-I hope you enjoy looking at my projects just as much as I did doing them.
+Welcome to Ruben Chung's homepage and blog, where you can explore my <a href="/posts" style="text-decoration: underline">projects</a> and learn more about me by checking out my <a href="/about" style="text-decoration: underline">about</a> page. 
 
+I'm excited to share my projects and hope that you will enjoy viewing my work as much as I enjoyed creating them. 
+
+Thank you for visiting!

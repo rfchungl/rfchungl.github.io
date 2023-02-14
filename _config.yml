@@ -105,10 +105,10 @@ analytics:
 # Site Author
 author:
   name             : "Ruben Chung"
-  avatar           : https://media-exp1.licdn.com/dms/image/C4E03AQGcjdyOf5rUuQ/profile-displayphoto-shrink_400_400/0/1555974682520?e=1673481600&v=beta&t=u3V-M4gaPsJ0JoDcQ6LZMvM18lDUYJr1GdigVcZXCBU
-  bio              : "Aspiring Data/Business Analyst with a Passion in Supply Chain"
+  avatar           : https://media.licdn.com/dms/image/C4E03AQGcjdyOf5rUuQ/profile-displayphoto-shrink_200_200/0/1555974682520?e=1681948800&v=beta&t=KBO4sMRJrxK4r7K8Q9iyq2UkbYyrls0SYsoeLncLY-g
+  bio              : "Business/Data Analyst with a Passion in Supply Chain"
   location         : "Fayetteville, Arkansas"
-  email            : #"rfchungl@uark.edu"
+  email            : #"rfchungl@gmail.com"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
