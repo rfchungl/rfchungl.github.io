@@ -1,4 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-02-14T17:33:45-06:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">RUBEN’S PORTFOLIO</title><author><name>Ruben Chung</name></author><entry><title type="html">Business Case: OzarkWine</title><link href="http://localhost:4000/OzarkWine/" rel="alternate" type="text/html" title="Business Case: OzarkWine" /><published>2022-11-16T00:00:00-06:00</published><updated>2022-11-16T00:00:00-06:00</updated><id>http://localhost:4000/OzarkWine</id><content type="html" xml:base="http://localhost:4000/OzarkWine/"><![CDATA[<h3 id="business-scenario">Business Scenario</h3>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-02-28T16:13:09-06:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">RUBEN’S PORTFOLIO</title><author><name>Ruben Chung</name></author><entry><title type="html">Tableau Visualization Examples</title><link href="http://localhost:4000/Tableau-Viz-Examples/" rel="alternate" type="text/html" title="Tableau Visualization Examples" /><published>2023-02-28T00:00:00-06:00</published><updated>2023-02-28T00:00:00-06:00</updated><id>http://localhost:4000/Tableau-Viz-Examples</id><content type="html" xml:base="http://localhost:4000/Tableau-Viz-Examples/"><![CDATA[<h3 id="description">Description</h3>
+<p>Here are a few examples of visualization I created when I was working as an intern at Copa Airlines. They were built from scratch and all the data extraction and ETS were performed by myself.</p>
+
+<hr />
+
+<p>Platform used:</p>
+<ul>
+  <li>Teradata</li>
+  <li>Alteryx</li>
+  <li>Tableau</li>
+  <li>Excel</li>
+</ul>
+
+<hr />
+<h3 id="result">Result</h3>
+
+<p><img src="https://user-images.githubusercontent.com/115122030/197111182-05ca7156-cb8e-4499-aa2f-1f24f04cfe04.png" alt="image" /></p>
+<ul>
+  <li>I provided a visualization showing the top 10 and bottom 10 of the stations by GPU that the airline fly to. It also shows the average, year over year comparison and the current savings in $ based on the initiative.</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/115122030/197111169-f2b55ce3-d415-4eea-a218-f8f9336b1513.png" alt="image2" /></p>
+<ul>
+  <li>This visualization shows the top 20 and bottom 20 of the stations that use APU and using a map to represent where the stations are located.</li>
+</ul>]]></content><author><name>Ruben Chung</name></author><category term="visualization" /><summary type="html"><![CDATA[A few examples of visualization using Tableau.]]></summary></entry><entry><title type="html">Business Case: OzarkWine</title><link href="http://localhost:4000/OzarkWine/" rel="alternate" type="text/html" title="Business Case: OzarkWine" /><published>2022-11-16T00:00:00-06:00</published><updated>2022-11-16T00:00:00-06:00</updated><id>http://localhost:4000/OzarkWine</id><content type="html" xml:base="http://localhost:4000/OzarkWine/"><![CDATA[<h3 id="business-scenario">Business Scenario</h3>
 <p>OzarkWine is a local vineyard specializing in both red and white wines. Their goal is to “provide the highest quality wine while perfectly balancing acidity, sweetness, and pallet”. The company has now grown to a point where they would like to incorporate some data analytics to improve their overall process and gain insights to beat out the competition.</p>
 
 <hr />
@@ -686,7 +710,90 @@ b2 = 0.0002</li>
 <p><a href="https://github.com/rfchungl/rchungl.github.io/blob/master/pages/Original%20Dataset.csv">Raw Dataset</a><br />
 <a href="https://github.com/rfchungl/rchungl.github.io/blob/master/pages/OzarkBike%20Analysis.xlsx">Working Dataset</a><br />
 <a href="https://github.com/rfchungl/rchungl.github.io/blob/master/pages/OzarkBike.egp">SAS Exploration</a><br />
-<a href="https://github.com/rfchungl/rchungl.github.io/blob/master/pages/OzarkRide.pdf">OzarkRide Report Version</a></p>]]></content><author><name>Ruben Chung</name></author><category term="excel" /><category term="sas" /><category term="analysis" /><summary type="html"><![CDATA[Using Excel and SAS to perform business and statistics analysis such as ANOVA and regressions to help OzarkRide to expand.]]></summary></entry><entry><title type="html">SQL Dump - Part 1</title><link href="http://localhost:4000/SQL-Dump-Part-1/" rel="alternate" type="text/html" title="SQL Dump - Part 1" /><published>2022-11-12T00:00:00-06:00</published><updated>2022-11-12T00:00:00-06:00</updated><id>http://localhost:4000/SQL-Dump-Part-1</id><content type="html" xml:base="http://localhost:4000/SQL-Dump-Part-1/"><![CDATA[<h3 id="description">Description</h3>
+<a href="https://github.com/rfchungl/rchungl.github.io/blob/master/pages/OzarkRide.pdf">OzarkRide Report Version</a></p>]]></content><author><name>Ruben Chung</name></author><category term="excel" /><category term="sas" /><category term="analysis" /><summary type="html"><![CDATA[Using Excel and SAS to perform business and statistics analysis such as ANOVA and regressions to help OzarkRide to expand.]]></summary></entry><entry><title type="html">Business Case: Basket Market Analysis</title><link href="http://localhost:4000/Basket-Market-Analysis/" rel="alternate" type="text/html" title="Business Case: Basket Market Analysis" /><published>2022-11-12T00:00:00-06:00</published><updated>2022-11-12T00:00:00-06:00</updated><id>http://localhost:4000/Basket-Market-Analysis</id><content type="html" xml:base="http://localhost:4000/Basket-Market-Analysis/"><![CDATA[<h3 id="business-scenario">Business Scenario</h3>
+<p>Ayala’s Bakery is a family owned business with more than 30 years on the market delivering bakeries to its customers in Springdale, Arkansas. They updated their POS system a few years ago to keep track of their sales. However, they have not had success in discovering what products the customers like and what they usually like to pair with. Ayala’s Bakery have approached Ruben to dive deep into the data to look for insights and provide recommendations.</p>
+
+<hr />
+
+<h3 id="written-memo">Written Memo</h3>
+<p>To: Ayala’s Bakery Executives<br />
+From: Ruben Chung, Data Analyst<br />
+Subject: Ayala’s Bakery Recommendations<br />
+<br />
+Based on the analyses performed, we found that the top 5 best-selling items are coffee, tea, cake, sandwich, and pastry. Coffee has by far the highest amount sold followed by tea. Interestingly, the time range where these two products are sold the most is between 10-1 pm for coffee and 2-3 pm for tea. Sandwich is best sold between 1-2 pm for lunchtime.<br />
+<br />
+Although coffee and tea are not at the top when it comes to margin, they are good to draw customers when paired with other products such as cake, pastry, and bread, thus, increasing the amount spent by customers. We found that the highest pairing combo is coffee and pastry. On the other hand, we don’t recommend pairing tea and bread. In addition, we recommend discontinuing the sale of muffins as it has the least sale and customers don’t like them.<br />
+<br />
+We recommend preparing enough coffee, tea, pastries, cakes, and sandwiches during the peak time using the time range to avoid stock out. Also, consider doing a marketing campaign that incentive customers to pair coffee or tea with any other products for a discount or loyalty points to increase Ayala’s Bakery revenue.<br />
+<br />
+If you have any questions, please contact me at rfchungl@uark.edu. Your voice matters.<br />
+<br />
+<br />
+Sincerely,<br />
+<br />
+Ruben Chung</p>
+
+<hr />
+
+<h3 id="analysis-with-excel">Analysis with Excel</h3>
+
+<p><img src="https://user-images.githubusercontent.com/115122030/196620687-b6f18dc6-cafb-4b10-a3ae-dd32ac6993d6.png" alt="image" />
+First capture shows the top 5 items that are sold at Bread Basket. You can see that the undisputed top 1 is Coffee that almost quadruple the top 2 which is Tea.<br />
+<br />
+<img src="https://user-images.githubusercontent.com/115122030/196620755-c2e2432b-c6c1-40f6-8bc8-47e0a611bb6c.png" alt="image" /><br />
+Second capture shows the years where Bread Basket was on operation. We clearly see that during 2016, December has the highest number of transactions. This could mean that because the winter season is cold, people tend to go and buy hot beverage to get warm. On the other hand, March of 2017 has the highest number of transactions which triples the amount in transactions from December of 2016.<br />
+<br />
+<img src="https://user-images.githubusercontent.com/115122030/196620794-97d09767-4256-42bb-83a1-33bfec3c641d.png" alt="image" /><br />
+Third capture shows a list of items ranked by margin gain. We can see that the top 5 most sold items in capture 1 are not as profitable as the one shown in the capture above. Although coffee and tea are within top 2 most sold, extra salami or feta and tartine get more margin.<br />
+<br />
+<img src="https://user-images.githubusercontent.com/115122030/196620841-bb6ec1df-4169-40d6-b64c-97354d8b4a4f.png" alt="image" /><br />
+Last capture shows the time where the most sold items are bought. We can see that people tend to buy more tea between 2-3pm, cake between 2-3pm after lunch, sandwich between 1-2pm during lunch time, coffee between 10-1pm, and pastry between 10-11am. I thought that people would buy more coffee in the AM time but it seems that it’s very spread-out and the main time range are between 10-1pm.</p>
+
+<hr />
+<h3 id="python-market-analysis">Python Market Analysis</h3>
+<p><strong>Python:</strong> <a href="https://github.com/rfchungl/Projects-Portfolio/blob/main/MarketBasketAnalysis/basket.py"><code class="language-plaintext highlighter-rouge">Python Code Here</code></a><br />
+<br />
+<strong>The Python code has comments on what does each line do for a better understanding of the program.</strong><br />
+<br />
+<strong>Description:</strong> Using Excel and Python to analyze the data transactions from a bakery to understand the results from the association analysis of the mentioned dataset. This project is supposed to be a business case, thus, the written memo at the end.<br />
+<br />
+<strong>What does this program do?</strong> It first read the csv file named “basket.csv” then it runs association analysis through a few lines of codes using the mlxtend.frequent_patterns apriori and association_rules libraries.<br />
+<br />
+<strong>Things needed to run the Python code:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- import pandas as pd
+- from mlxtend.frequent_patterns import apriori
+- from mlxtend.frequent_patterns import association_rules
+</code></pre></div></div>
+<p><strong>Path to Bread Basket csv</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bread = pd.read_csv(r"/Users/yourusername/Desktop/basket.csv")
+df = bread.groupby(['Transaction','Item']).size().reset_index(name='count')
+breadbasket = (df.groupby(['Transaction', 'Item'])['count']
+          .sum().unstack().reset_index().fillna(0)
+          .set_index('Transaction'))
+</code></pre></div></div>
+<p><strong>Transform values into dataframe</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def df(x):
+    if x &lt;= 0:
+        return 0
+    if x &gt;= 1:
+        return 1
+dataset = breadbasket.applymap(df)
+frequent_itemsets = apriori(dataset, min_support=0.01, use_colnames=True)
+rules = association_rules(frequent_itemsets, metric="lift")
+rules.sort_values('confidence', ascending = False, inplace = True)
+rules.head()
+print(rules)
+</code></pre></div></div>
+<hr />
+
+<h3 id="output">Output</h3>
+<p><img src="https://user-images.githubusercontent.com/115122030/196619281-acf26716-1593-4d0f-9b60-6fb53aaff9b3.png" alt="basket1" />
+<img src="https://user-images.githubusercontent.com/115122030/196619284-b262992c-c730-44cc-aeec-4e673f52e71f.png" alt="basket2" /><br />
+The association analysis using Python shows that the customer is 1.48 times more likely to buy toast then coffee than other customers.</p>
+
+<hr />
+<h3 id="python">Python</h3>
+<p><a href="https://github.com/rfchungl/Projects-Portfolio/blob/main/MarketBasketAnalysis/basket.py">Python File Here</a></p>]]></content><author><name>Ruben Chung</name></author><category term="python" /><category term="excel" /><category term="analysis" /><summary type="html"><![CDATA[Using Excel and Python to perform market basket/association analysis using dataset from a bakery.]]></summary></entry><entry><title type="html">SQL Dump - Part 1</title><link href="http://localhost:4000/SQL-Dump-Part-1/" rel="alternate" type="text/html" title="SQL Dump - Part 1" /><published>2022-11-12T00:00:00-06:00</published><updated>2022-11-12T00:00:00-06:00</updated><id>http://localhost:4000/SQL-Dump-Part-1</id><content type="html" xml:base="http://localhost:4000/SQL-Dump-Part-1/"><![CDATA[<h3 id="description">Description</h3>
 <p>A mix of SQL problems that involves aggregate functions and joins.</p>
 
 <hr />
@@ -812,90 +919,7 @@ while True:
 
 <hr />
 <h3 id="python">Python</h3>
-<p><a href="https://github.com/rfchungl/Projects-Portfolio/blob/main/API/API.py">Python File Here</a></p>]]></content><author><name>Ruben Chung</name></author><category term="python" /><summary type="html"><![CDATA[Combining Python and API to generate university names once the name of the country is inserted]]></summary></entry><entry><title type="html">Business Case: Basket Market Analysis</title><link href="http://localhost:4000/Basket-Market-Analysis/" rel="alternate" type="text/html" title="Business Case: Basket Market Analysis" /><published>2022-11-12T00:00:00-06:00</published><updated>2022-11-12T00:00:00-06:00</updated><id>http://localhost:4000/Basket-Market-Analysis</id><content type="html" xml:base="http://localhost:4000/Basket-Market-Analysis/"><![CDATA[<h3 id="business-scenario">Business Scenario</h3>
-<p>Ayala’s Bakery is a family owned business with more than 30 years on the market delivering bakeries to its customers in Springdale, Arkansas. They updated their POS system a few years ago to keep track of their sales. However, they have not had success in discovering what products the customers like and what they usually like to pair with. Ayala’s Bakery have approached Ruben to dive deep into the data to look for insights and provide recommendations.</p>
-
-<hr />
-
-<h3 id="written-memo">Written Memo</h3>
-<p>To: Ayala’s Bakery Executives<br />
-From: Ruben Chung, Data Analyst<br />
-Subject: Ayala’s Bakery Recommendations<br />
-<br />
-Based on the analyses performed, we found that the top 5 best-selling items are coffee, tea, cake, sandwich, and pastry. Coffee has by far the highest amount sold followed by tea. Interestingly, the time range where these two products are sold the most is between 10-1 pm for coffee and 2-3 pm for tea. Sandwich is best sold between 1-2 pm for lunchtime.<br />
-<br />
-Although coffee and tea are not at the top when it comes to margin, they are good to draw customers when paired with other products such as cake, pastry, and bread, thus, increasing the amount spent by customers. We found that the highest pairing combo is coffee and pastry. On the other hand, we don’t recommend pairing tea and bread. In addition, we recommend discontinuing the sale of muffins as it has the least sale and customers don’t like them.<br />
-<br />
-We recommend preparing enough coffee, tea, pastries, cakes, and sandwiches during the peak time using the time range to avoid stock out. Also, consider doing a marketing campaign that incentive customers to pair coffee or tea with any other products for a discount or loyalty points to increase Ayala’s Bakery revenue.<br />
-<br />
-If you have any questions, please contact me at rfchungl@uark.edu. Your voice matters.<br />
-<br />
-<br />
-Sincerely,<br />
-<br />
-Ruben Chung</p>
-
-<hr />
-
-<h3 id="analysis-with-excel">Analysis with Excel</h3>
-
-<p><img src="https://user-images.githubusercontent.com/115122030/196620687-b6f18dc6-cafb-4b10-a3ae-dd32ac6993d6.png" alt="image" />
-First capture shows the top 5 items that are sold at Bread Basket. You can see that the undisputed top 1 is Coffee that almost quadruple the top 2 which is Tea.<br />
-<br />
-<img src="https://user-images.githubusercontent.com/115122030/196620755-c2e2432b-c6c1-40f6-8bc8-47e0a611bb6c.png" alt="image" /><br />
-Second capture shows the years where Bread Basket was on operation. We clearly see that during 2016, December has the highest number of transactions. This could mean that because the winter season is cold, people tend to go and buy hot beverage to get warm. On the other hand, March of 2017 has the highest number of transactions which triples the amount in transactions from December of 2016.<br />
-<br />
-<img src="https://user-images.githubusercontent.com/115122030/196620794-97d09767-4256-42bb-83a1-33bfec3c641d.png" alt="image" /><br />
-Third capture shows a list of items ranked by margin gain. We can see that the top 5 most sold items in capture 1 are not as profitable as the one shown in the capture above. Although coffee and tea are within top 2 most sold, extra salami or feta and tartine get more margin.<br />
-<br />
-<img src="https://user-images.githubusercontent.com/115122030/196620841-bb6ec1df-4169-40d6-b64c-97354d8b4a4f.png" alt="image" /><br />
-Last capture shows the time where the most sold items are bought. We can see that people tend to buy more tea between 2-3pm, cake between 2-3pm after lunch, sandwich between 1-2pm during lunch time, coffee between 10-1pm, and pastry between 10-11am. I thought that people would buy more coffee in the AM time but it seems that it’s very spread-out and the main time range are between 10-1pm.</p>
-
-<hr />
-<h3 id="python-market-analysis">Python Market Analysis</h3>
-<p><strong>Python:</strong> <a href="https://github.com/rfchungl/Projects-Portfolio/blob/main/MarketBasketAnalysis/basket.py"><code class="language-plaintext highlighter-rouge">Python Code Here</code></a><br />
-<br />
-<strong>The Python code has comments on what does each line do for a better understanding of the program.</strong><br />
-<br />
-<strong>Description:</strong> Using Excel and Python to analyze the data transactions from a bakery to understand the results from the association analysis of the mentioned dataset. This project is supposed to be a business case, thus, the written memo at the end.<br />
-<br />
-<strong>What does this program do?</strong> It first read the csv file named “basket.csv” then it runs association analysis through a few lines of codes using the mlxtend.frequent_patterns apriori and association_rules libraries.<br />
-<br />
-<strong>Things needed to run the Python code:</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- import pandas as pd
-- from mlxtend.frequent_patterns import apriori
-- from mlxtend.frequent_patterns import association_rules
-</code></pre></div></div>
-<p><strong>Path to Bread Basket csv</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bread = pd.read_csv(r"/Users/yourusername/Desktop/basket.csv")
-df = bread.groupby(['Transaction','Item']).size().reset_index(name='count')
-breadbasket = (df.groupby(['Transaction', 'Item'])['count']
-          .sum().unstack().reset_index().fillna(0)
-          .set_index('Transaction'))
-</code></pre></div></div>
-<p><strong>Transform values into dataframe</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def df(x):
-    if x &lt;= 0:
-        return 0
-    if x &gt;= 1:
-        return 1
-dataset = breadbasket.applymap(df)
-frequent_itemsets = apriori(dataset, min_support=0.01, use_colnames=True)
-rules = association_rules(frequent_itemsets, metric="lift")
-rules.sort_values('confidence', ascending = False, inplace = True)
-rules.head()
-print(rules)
-</code></pre></div></div>
-<hr />
-
-<h3 id="output">Output</h3>
-<p><img src="https://user-images.githubusercontent.com/115122030/196619281-acf26716-1593-4d0f-9b60-6fb53aaff9b3.png" alt="basket1" />
-<img src="https://user-images.githubusercontent.com/115122030/196619284-b262992c-c730-44cc-aeec-4e673f52e71f.png" alt="basket2" /><br />
-The association analysis using Python shows that the customer is 1.48 times more likely to buy toast then coffee than other customers.</p>
-
-<hr />
-<h3 id="python">Python</h3>
-<p><a href="https://github.com/rfchungl/Projects-Portfolio/blob/main/MarketBasketAnalysis/basket.py">Python File Here</a></p>]]></content><author><name>Ruben Chung</name></author><category term="python" /><category term="excel" /><category term="analysis" /><summary type="html"><![CDATA[Using Excel and Python to perform market basket/association analysis using dataset from a bakery.]]></summary></entry><entry><title type="html">Python: Automated Weather Notification Using SMS</title><link href="http://localhost:4000/Automated-weather-SMS/" rel="alternate" type="text/html" title="Python: Automated Weather Notification Using SMS" /><published>2022-11-09T00:00:00-06:00</published><updated>2022-11-09T00:00:00-06:00</updated><id>http://localhost:4000/Automated-weather-SMS</id><content type="html" xml:base="http://localhost:4000/Automated-weather-SMS/"><![CDATA[<h3 id="description">Description</h3>
+<p><a href="https://github.com/rfchungl/Projects-Portfolio/blob/main/API/API.py">Python File Here</a></p>]]></content><author><name>Ruben Chung</name></author><category term="python" /><summary type="html"><![CDATA[Combining Python and API to generate university names once the name of the country is inserted]]></summary></entry><entry><title type="html">Python: Automated Weather Notification Using SMS</title><link href="http://localhost:4000/Automated-weather-SMS/" rel="alternate" type="text/html" title="Python: Automated Weather Notification Using SMS" /><published>2022-11-09T00:00:00-06:00</published><updated>2022-11-09T00:00:00-06:00</updated><id>http://localhost:4000/Automated-weather-SMS</id><content type="html" xml:base="http://localhost:4000/Automated-weather-SMS/"><![CDATA[<h3 id="description">Description</h3>
 <p>When I arrived to the United States, there were days when I wore a sweater and jacket, and the day was not that cold. I felt very dumb walking down to my classes while other students were wearing t-shirts, shorts, and sandals. 
 I know that we can check the weather on our cellphones. However, there is too much information like humidity, water density, weather variation between hours, air quality, etc. I wanted something simpler that could just tell me the weather condition and the temperature. I do not check my emails first thing in the morning, so I did not want them to be sent to my email. Instead, I wanted something quick like an SMS.</p>
 
@@ -964,81 +988,4 @@ while True:
 <hr />
 <h3 id="python">Python</h3>
 <p><a href="https://github.com/rfchungl/Projects-Portfolio/blob/main/Weather_Scrapping/Weather_Scrapper.py"><code class="language-plaintext highlighter-rouge">Python File Here</code></a><br />
-The Python code has comments (pseudo-code) on what does each line do for a better understanding of the program.</p>]]></content><author><name>Ruben Chung</name></author><category term="python" /><summary type="html"><![CDATA[Scrapping weather from Google using Python then utilizing a SMS service to send customized messages based on the weather.]]></summary></entry><entry><title type="html">Building a Database and Visualization From Scratch</title><link href="http://localhost:4000/From-CSV-To-Database-To-Datastudio/" rel="alternate" type="text/html" title="Building a Database and Visualization From Scratch" /><published>2022-11-09T00:00:00-06:00</published><updated>2022-11-09T00:00:00-06:00</updated><id>http://localhost:4000/From-CSV-To-Database-To-Datastudio</id><content type="html" xml:base="http://localhost:4000/From-CSV-To-Database-To-Datastudio/"><![CDATA[<p><strong>Visualization:</strong> <a href="https://datastudio.google.com/reporting/2004c153-b0d4-42e1-8bee-1f3c6eaa2fa8"><code class="language-plaintext highlighter-rouge">Click Here For Visualization</code></a>
-<br /><br />
-<strong>Note:</strong> The dataset was modified in order to protect the privacy of the tutors and students. The date of the sample dataset is from 08-23-2021 to 10-23-2021.
-<br /><br />
-<strong>Description:</strong> Condensing all weekly CSV files from tutoring into a database and use it to feed the dashboard.
-<br /></p>
-
-<hr />
-
-<h3 id="business-problem">Business Problem</h3>
-<p>Because the administrator in charge to maintain the booking systems at the university left, nobody was in charge to maintain it. The database would break by itself on days where a lot of web traffics happen. In order to prevent a disaster, the tutoring director decided to save the information of the booking appointments every week resulting in many CSV files. When there is a need to know something about tutoring, how many students came, what class was requested the most, etc, the director had to merge all the CSV files taking a lot of time just to get an answer. <br /><br />
-In order to reduce the time, I decided to condense all the CSV files into a database. In this case, I used free softwares to do that due to this being something that I purely wanted to do…not that I was required. Therefore, I chose the Google Analytics pack as the tools and used BigQuery to centralize all the booking informations and use DataStudio (Looker Studio) to provide visibility. Throughout my time working as a Graduate Assistant, I updated weekly the database once I was able to get to the CSV file.</p>
-
-<hr />
-
-<h3 id="procedure">Procedure</h3>
-
-<p>I could have done it two ways: <br />
-  1- Merge all the CSV files into Excel file and upload it to BigQuery <br />
-  2- Upload weekly CSV file into BigQuery<br />
-<br />
-To show the full functionality of how I maintained a database, I am going to showcase method #2.</p>
-
-<h4 id="part-i">Part I</h4>
-
-<p>I created a bucket to save the CSV file digitally. Due to BigQuery being a web-based database, it cannot use your own desktop to find the path to the file you are going to upload.<br />
-<br />
-<img src="https://user-images.githubusercontent.com/115122030/197105095-d1c834f0-5db3-46f6-8b57-dabd267ed68f.JPG" alt="bucket" />
-I was able to start the database with three weeks of data sample. After that, every week when I got the CSV file from the director, I would upload it into the bucket.</p>
-
-<h4 id="part-ii">Part II</h4>
-
-<p>Creating the database and setting up the schema.</p>
-
-<p><img src="https://user-images.githubusercontent.com/115122030/197105405-42d1f751-cdd6-42be-948f-881eaaa1f00e.JPG" alt="bigquery" />
-After creating the database in BigQuery, you can upload your first CSV file as the schema automatically or you can write by yourself.</p>
-
-<h4 id="part-iii">Part III</h4>
-
-<p>In order to maintain it, I had to do a weekly BigQuery update to load the weekly report from the director.</p>
-
-<p>Example of data loading:</p>
-
-<h5 id="week-1">Week #1</h5>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>LOAD DATA INTO student-success-center-326917.Fall2021.datasetfall2021
-FROM FILES (
-  format = 'CSV',
-  uris = ['gs://sscbucket/08-29-2021 to 09-04-2021.csv']);
-</code></pre></div></div>
-
-<h5 id="week-2">Week #2</h5>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>LOAD DATA INTO student-success-center-326917.Fall2021.datasetfall2021
-FROM FILES (
-  format = 'CSV',
-  uris = [' gs://sscbucket/09-05-2021 to 09-11-2021.csv']);
-</code></pre></div></div>
-
-<p><a href="https://github.com/rfchungl/Projects-Portfolio/blob/main/GoogleAnalytics/Load%20query.txt"><code class="language-plaintext highlighter-rouge">Click here for the rest of the queries</code></a></p>
-
-<h4 id="part-iv">Part IV</h4>
-
-<p>Finally, after having the database, I used Google DataStudio now called <em>(Locker Studio)</em> to visualize what we have about booking appointments.</p>
-
-<p><img src="https://user-images.githubusercontent.com/115122030/197105946-446a7fe3-8e9f-4916-a0fb-35874e92f74a.JPG" alt="database" />
-When selecting the source of the data in DataStudio, select BigQuery as the database and choose the path of your dataset. In this case, I already created it on Part II.</p>
-
-<hr />
-
-<h3 id="final-result">Final Result</h3>
-
-<p><img src="https://images.squarespace-cdn.com/content/v1/6301adc291fbaf2a00843f8f/976c7dfb-22d3-461c-8599-d67442d20e2f/fall2021.PNG?format=1000w" alt="image" /></p>
-
-<hr />
-
-<h3 id="conclusion">Conclusion</h3>
-<p>This way, I automated something that I basically had to pull every week for statistic purposes in a single dashboard where my supervisor would be able to check saving us hours of work.</p>]]></content><author><name>Ruben Chung</name></author><category term="visualization" /><category term="sql" /><summary type="html"><![CDATA[Dashboard made from scratch. It was condensed from a number of CSV files that were put into BigQuery. Afterwards, using BigQuery as the database to build the dashboard.]]></summary></entry></feed>
+The Python code has comments (pseudo-code) on what does each line do for a better understanding of the program.</p>]]></content><author><name>Ruben Chung</name></author><category term="python" /><summary type="html"><![CDATA[Scrapping weather from Google using Python then utilizing a SMS service to send customized messages based on the weather.]]></summary></entry></feed>

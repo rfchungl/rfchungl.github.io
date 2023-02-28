@@ -58,4 +58,10 @@ var store = [{
         "tags": ["sql"],
         "url": "/SQL-Dump-Part-2/",
         "teaser": null
+      },{
+        "title": "Tableau Visualization Examples",
+        "excerpt":"Description Here are a few examples of visualization I created when I was working as an intern at Copa Airlines. They were built from scratch and all the data extraction and ETS were performed by myself. Platform used: Teradata Alteryx Tableau Excel Result I provided a visualization showing the top...","categories": [],
+        "tags": ["visualization"],
+        "url": "/Tableau-Viz-Examples/",
+        "teaser": null
       }]

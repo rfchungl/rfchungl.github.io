@@ -84,7 +84,7 @@ When selecting the source of the data in DataStudio, select BigQuery as the data
 
 ### Final Result
 
-![image](https://images.squarespace-cdn.com/content/v1/6301adc291fbaf2a00843f8f/976c7dfb-22d3-461c-8599-d67442d20e2f/fall2021.PNG?format=1000w)
+![image](https://raw.githubusercontent.com/rfchungl/Projects-Portfolio/main/TableauVisualization/tutoring%20dashboard.PNG)
 
 --------------------------------------------------
 
